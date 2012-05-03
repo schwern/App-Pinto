@@ -5,7 +5,7 @@ package App::Pinto::Command::init;
 use strict;
 use warnings;
 
-use Pinto::Initializer;
+use Class::Load;
 
 #-----------------------------------------------------------------------------
 
@@ -21,8 +21,8 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'log_level=s' => 'Minimum logging level for the repository log file'    ],
-        [ 'source=s@'   => 'URL of upstream repository (repeatable)' ],
+        [ 'log_level=s' => 'Minimum logging level for the repository log file' ],
+        [ 'source=s@'   => 'URL of upstream repository (repeatable)'           ],
     );
 }
 
@@ -31,10 +31,18 @@ sub opt_spec {
 sub execute {
     my ($self, $opts, $args) = @_;
 
-    my $global_opts = $self->app->global_options();
+    ## no critic qw(Carping)
+
+    Class::Load::try_load_class('Pinto::Initializer')
+        or die 'Must install Pinto to create new repositories';
+
+    my $global_opts = $self->app->global_options;
 
     $global_opts->{root}
-        or die 'Must specify a repository root directory';    ## no critic qw(Carp)
+        or die 'Must specify a repository root directory';
+
+    $global_opts->{root} =~ m{^https?://}
+        and die 'Cannot create remote repositories';
 
     # Combine repeatable "source" options into one space-delimited "sources" option.
     # TODO: Use a config file format that allows multiple values per key (MVP perhaps?).
