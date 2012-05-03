@@ -25,7 +25,7 @@ sub usage_desc {
     my ($command) = $self->command_names();
 
  my $usage =  <<"END_USAGE";
-%c --root=PATH $command
+%c --root=REPOSITORY_ROOT $command
 END_USAGE
 
     chomp $usage;
@@ -41,7 +41,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=/some/dir statistics
+  pinto --root=REPOSITORY_ROOT statistics
 
 =head1 DESCRIPTION
 

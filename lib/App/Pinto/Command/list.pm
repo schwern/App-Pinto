@@ -59,7 +59,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=/some/dir list [OPTIONS]
+  pinto --root=REPOSITORY_ROOT list [OPTIONS]
 
 =head1 DESCRIPTION
 
@@ -77,8 +77,8 @@ precise filtering, consider running the output through C<grep>.
 As an alternative to the C<--stack> option, you can also specify the
 stack as an argument. So the following examples are equivalent:
 
-  pinto --root /some/dir list --stack dev
-  pinto --root /some/dir list dev
+  pinto --root REPOSITORY_ROOT list --stack dev
+  pinto --root REPOSITORY_ROOT list dev
 
 A stack specified as an argument in this fashion will override any
 stack specified with the C<--stack> option.

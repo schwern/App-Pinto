@@ -46,7 +46,7 @@ sub usage_desc {
     my ($command) = $self->command_names();
 
     my $usage =  <<"END_USAGE";
-%c --root=PATH stack $command [OPTIONS] FROM_STACK TO_STACK
+%c --root=REPOSITORY_ROOT $command [OPTIONS] FROM_STACK TO_STACK
 END_USAGE
 
     chomp $usage;
@@ -73,7 +73,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=/some/dir stack merge [OPTIONS] SOURCE_STACK TARGET_STACK
+  pinto --root=REPOSITORY_ROOT stack merge [OPTIONS] SOURCE_STACK TARGET_STACK
 
 =head1 DESCRIPTION
 

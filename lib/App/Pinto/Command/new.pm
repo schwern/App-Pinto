@@ -44,7 +44,7 @@ sub usage_desc {
     my ($command) = $self->command_names();
 
     my $usage =  <<"END_USAGE";
-%c --root=PATH stack $command [OPTIONS] STACK
+%c --root=REPOSITORY_ROOT $command [OPTIONS] STACK
 END_USAGE
 
     chomp $usage;
@@ -71,7 +71,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=/some/dir stack create [OPTIONS] STACK
+  pinto --root=REPOSITORY_ROOT stack create [OPTIONS] STACK
 
 =head1 DESCRIPTION
 

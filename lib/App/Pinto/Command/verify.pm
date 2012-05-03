@@ -21,7 +21,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=/some/dir verify
+  pinto --root=REPOSITORY_ROOT verify
 
 =head1 DESCRIPTION
 

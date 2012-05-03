@@ -45,7 +45,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=/some/dir nop [OPTIONS]
+  pinto --root=REPOSITORY_ROOT nop [OPTIONS]
 
 =head1 DESCRIPTION
 
