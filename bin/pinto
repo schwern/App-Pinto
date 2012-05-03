@@ -23,21 +23,21 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto-admin --root=/path/to/repos [global options] COMMAND [command options] [ARGS]
+  pinto --root=/path/to/repos [global options] COMMAND [command options] [ARGS]
 
 =head1 BASIC USAGE
 
   # Create an empty repository at /some/dir
-  pinto-admin --root=/some/dir create
+  pinto --root=/some/dir create
 
   # Add your own distribution to the repository
-  pinto-admin --root=/some/dir add Foo-Bar-1.2.tar.gz
+  pinto --root=/some/dir add Foo-Bar-1.2.tar.gz
 
   # Fetch a module and all its dependencies
-  pinto-admin --root=/some/dir import Plack
+  pinto --root=/some/dir pull Plack
 
   # Fetch the latest version of all modules
-  pinto-admin --root=/some/dir mirror
+  pinto --root=/some/dir mirror
 
   # Then install stuff, forcing everything to come from your repository
   cpanm --mirror-only --mirror file:///some/dir Foo::Bar
@@ -47,7 +47,7 @@ __END__
 
 =head1 DESCRIPTION
 
-C<pinto-admin> is a command line utility for creating and managing a
+C<pinto> is a command line utility for creating and managing a
 local Pinto repository.  The repository can contain your own
 distributions and/or foreign distributions from another repository
 (such as a CPAN mirror).  You can also put locally patched versions of
@@ -85,20 +85,20 @@ times for greater effect.
 
 =head1 COMMANDS
 
-L<pinto-admin> supports several commands that perform various
+L<pinto> supports several commands that perform various
 operations on your repository, or report information about your
 repository.  To get a listing of all the available commands:
 
-  $> pinto-admin commands
+  $> pinto commands
 
 Each command has its own options and arguments.  To get a brief
 summary:
 
-  $> pinto-admin help COMMAND
+  $> pinto help COMMAND
 
 To see the complete manual for a command:
 
-  $> pinto-admin manual COMMAND
+  $> pinto manual COMMAND
 
 =head1 CONFIGURATION
 
@@ -125,7 +125,7 @@ index.  Defaults to 0.
 
 Sets the minimum logging level for the repository's log file.  The
 default is C<notice>.  This is independent of the screen logs
-that L<pinto-admin> and L<pinto-server> emit.
+that L<pinto> and L<pinto-server> emit.
 
 =item noinit = 0|1
 
