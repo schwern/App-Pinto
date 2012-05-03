@@ -1,10 +1,10 @@
 # NAME
 
-App::Pinto::Admin - Command-line driver for Pinto::Admin
+App::Pinto - Command-line driver for Pinto
 
 # VERSION
 
-version 0.001
+version 0.040_01
 
 # METHODS
 
