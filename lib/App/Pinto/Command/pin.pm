@@ -5,8 +5,6 @@ package App::Pinto::Command::pin;
 use strict;
 use warnings;
 
-use Pinto::Util;
-
 #------------------------------------------------------------------------------
 
 use base 'App::Pinto::Command';

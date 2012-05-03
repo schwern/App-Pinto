@@ -5,8 +5,6 @@ package App::Pinto::Command;
 use strict;
 use warnings;
 
-use Carp;
-
 #-----------------------------------------------------------------------------
 
 use App::Cmd::Setup -command;
@@ -20,16 +18,16 @@ use App::Cmd::Setup -command;
 sub usage_desc {
     my ($self) = @_;
 
-    my ($command) = $self->command_names();
+    my ($command) = $self->command_names;
 
-    return "%c --root=PATH $command [OPTIONS] [ARGS]"
+    return "%c --root=REPOSITORY_ROOT $command [OPTIONS] [ARGS]"
 }
 
 #-----------------------------------------------------------------------------
 
 sub pinto {
     my ($self) = @_;
-    return $self->app->pinto();
+    return $self->app->pinto;
 }
 
 #-----------------------------------------------------------------------------
@@ -59,13 +57,13 @@ sub execute {
 sub process_args {
     my ($self, $args) = @_;
 
-    my $attr = $self->args_attribute or return;
+    my $attr_name = $self->args_attribute or return;
 
     if ( ! @{$args} && $self->args_from_stdin) {
-        return ($attr => [ Pinto::Util::args_from_fh(\*STDIN) ]);
+        return ($attr_name => [ _args_from_fh(\*STDIN) ]);
     }
 
-    return ($attr => $args);
+    return ($attr_name => $args);
 }
 
 #-----------------------------------------------------------------------------
@@ -77,7 +75,7 @@ sub action_name {
     my $prefix = $self->command_namespace_prefix();
 
     $class =~ m/ ^ ${prefix}:: (.+) /mx
-        or confess "Unable to parse Action name from $class";
+        or die "Unable to parse Action name from $class";  ## no critic qw(Carping)
 
     # Convert foo::bar::baz -> Foo::Bar:Baz
     # TODO: consider using a regex to do the conversion
@@ -87,6 +85,23 @@ sub action_name {
 }
 
 #-----------------------------------------------------------------------------
+
+sub _args_from_fh {
+    my ($fh) = @_;
+
+    my @args;
+    while (my $line = <$fh>) {
+        chomp $line;
+        next if not length $line;
+        next if $line =~ m/^ \s* [;#]/x;
+        next if $line !~ m/\S/x;
+        push @args, $line;
+    }
+
+    return @args;
+}
+
+#-------------------------------------------------------------------------------
 
 sub args_attribute { return '' }
 
