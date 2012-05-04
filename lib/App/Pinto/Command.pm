@@ -71,11 +71,11 @@ sub process_args {
 sub action_name {
     my ($self) = @_;
 
-    my $class = ref $self || $self;  # why ref $self ??
+    my $class = ref $self;
     my $prefix = $self->command_namespace_prefix();
 
     $class =~ m/ ^ ${prefix}:: (.+) /mx
-        or die "Unable to parse Action name from $class\n";  
+        or die "Unable to parse Action name from $class\n";
 
     # Convert foo::bar::baz -> Foo::Bar:Baz
     # TODO: consider using a regex to do the conversion
