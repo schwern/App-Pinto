@@ -19,7 +19,7 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'dryrun'      => 'Do not commit any changes'         ]
+        [ 'dryrun'      => 'Do not commit any changes'         ],
         [ 'norecurse'   => 'Do not recursively pull prereqs'   ],
         [ 'pin'         => 'Pin all the packages to the stack' ],
         [ 'stack|s=s'   => 'Put packages into this stack'      ],

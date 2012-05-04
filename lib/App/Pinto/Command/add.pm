@@ -20,7 +20,7 @@ sub opt_spec {
 
     return (
         [ 'author=s'    => 'Your (alphanumeric) author ID'     ],
-        [ 'dryrun'      => 'Do not commit any changes'         ]
+        [ 'dryrun'      => 'Do not commit any changes'         ],
         [ 'norecurse'   => 'Do not recursively import prereqs' ],
         [ 'pin'         => 'Pin packages to the stack'         ],
         [ 'stack|s=s'   => 'Put packages into this stack'      ],
