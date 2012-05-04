@@ -72,7 +72,7 @@ __END__
 
 =head1 DESCRIPTION
 
-!! THIS COMMAND IS EXPERIMENTAL. DO NOT USE ON A LIVE REPOSITORY !!
+!! THIS COMMAND IS EXPERIMENTAL !!
 
 This command merges the packages from one stack (the C<SOURCE>) into
 another (the C<TARGET>).  Merge rules are as follows:
