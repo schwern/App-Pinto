@@ -79,7 +79,7 @@ This command creates a new empty stack.
 
 Please see the L<copy|App::Pinto::Command::copy> command to
 create a new stack from another one, or the
-L<edit:App::Pinto::Command::copy> subcommand to change a
+L<edit:App::Pinto::Command::copy> command to change a
 stack's properties after it has been created.
 
 =head1 COMMAND ARGUMENTS
