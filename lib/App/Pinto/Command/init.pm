@@ -39,7 +39,7 @@ sub execute {
     $global_opts->{root}
         or die "Must specify a repository root directory\n";
 
-    $global_opts->{root} =~ m{^https?://}
+    $global_opts->{root} =~ m{^https?://}x
         and die "Cannot create remote repositories\n";
 
     # Combine repeatable "source" options into one space-delimited "sources" option.
