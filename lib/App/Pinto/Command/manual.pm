@@ -50,7 +50,7 @@ sub execute {
     $relative_path .= '.pm';
 
     my $absolute_path = $INC{$relative_path}
-        or die "No manual available for $class";  ## no critic qw(Carping)
+        or die "No manual available for $class\n"; 
 
     pod2usage(-verbose => 2, -input => $absolute_path, -exitval => 0);
 

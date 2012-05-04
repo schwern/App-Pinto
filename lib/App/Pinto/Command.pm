@@ -75,7 +75,7 @@ sub action_name {
     my $prefix = $self->command_namespace_prefix();
 
     $class =~ m/ ^ ${prefix}:: (.+) /mx
-        or die "Unable to parse Action name from $class";  ## no critic qw(Carping)
+        or die "Unable to parse Action name from $class\n";  
 
     # Convert foo::bar::baz -> Foo::Bar:Baz
     # TODO: consider using a regex to do the conversion

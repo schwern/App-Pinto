@@ -31,18 +31,16 @@ sub opt_spec {
 sub execute {
     my ($self, $opts, $args) = @_;
 
-    ## no critic qw(Carping)
-
     Class::Load::try_load_class('Pinto::Initializer')
-        or die 'Must install Pinto to create new repositories';
+        or die "Must install Pinto to create new repositories\n";
 
     my $global_opts = $self->app->global_options;
 
     $global_opts->{root}
-        or die 'Must specify a repository root directory';
+        or die "Must specify a repository root directory\n";
 
     $global_opts->{root} =~ m{^https?://}
-        and die 'Cannot create remote repositories';
+        and die "Cannot create remote repositories\n";
 
     # Combine repeatable "source" options into one space-delimited "sources" option.
     # TODO: Use a config file format that allows multiple values per key (MVP perhaps?).
