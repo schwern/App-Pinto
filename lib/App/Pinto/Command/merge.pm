@@ -15,16 +15,11 @@ use base 'App::Pinto::Command';
 
 #------------------------------------------------------------------------------
 
-sub command_names { qw(merge) }
-
-#------------------------------------------------------------------------------
-
 sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'dryrun'          => 'Do not actually perform the merge' ],
-        [ 'message|m=s'     => 'Message for the revision log'  ],
+        [ 'dryrun'  => 'Do not commit any changes' ],
     );
 }
 
@@ -73,7 +68,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT stack merge [OPTIONS] SOURCE_STACK TARGET_STACK
+  pinto --root=REPOSITORY_ROOT merge [OPTIONS] SOURCE_STACK TARGET_STACK
 
 =head1 DESCRIPTION
 
@@ -114,9 +109,9 @@ the C<TARGET> stack.
 
 =item --dryrun
 
-Conflicts will be reported, but the stacks will not be merged and the
-repository will not be changed.  Note: This option is currently not
-functional.
+Go through all the motions, but do not actually commit any changes to
+the repository.  Use this option to see potential conflicts that a
+would prevent a real merge.
 
 =back
 

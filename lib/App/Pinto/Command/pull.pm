@@ -15,14 +15,11 @@ use base 'App::Pinto::Command';
 
 #-----------------------------------------------------------------------------
 
-sub command_names { return qw( pull ) }
-
-#-----------------------------------------------------------------------------
-
 sub opt_spec {
     my ($self, $app) = @_;
 
     return (
+        [ 'dryrun'      => 'Do not commit any changes'         ]
         [ 'norecurse'   => 'Do not recursively pull prereqs'   ],
         [ 'pin'         => 'Pin all the packages to the stack' ],
         [ 'stack|s=s'   => 'Put packages into this stack'      ],
@@ -100,6 +97,12 @@ or ';') will be ignored.
 =head1 COMMAND OPTIONS
 
 =over 4
+
+=item --dryrun
+
+Go through all the motions, but do not actually commit any changes to
+the repository.  Use this option to see how upgrades would potentially
+impact the stack.
 
 =item --norecurse
 

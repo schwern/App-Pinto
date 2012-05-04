@@ -15,18 +15,15 @@ use base 'App::Pinto::Command';
 
 #-----------------------------------------------------------------------------
 
-sub command_names { return qw( add inject ) }
-
-#-----------------------------------------------------------------------------
-
 sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'author=s'    => 'Your (alphanumeric) author ID' ],
+        [ 'author=s'    => 'Your (alphanumeric) author ID'     ],
+        [ 'dryrun'      => 'Do not commit any changes'         ]
         [ 'norecurse'   => 'Do not recursively import prereqs' ],
-        [ 'pin'         => 'Pin packages to the stack' ],
-        [ 'stack|s=s'   => 'Put packages into this stack' ],
+        [ 'pin'         => 'Pin packages to the stack'         ],
+        [ 'stack|s=s'   => 'Put packages into this stack'      ],
     );
 }
 
@@ -95,6 +92,13 @@ alphanumeric characters (no spaces) and will be forced to uppercase.
 Defaults to the C<user> specified in your C<~/.pause> configuration
 file (if such file exists).  Otherwise, defaults to your current login
 username.
+
+=item --dryrun
+
+Go through all the motions, but do not actually commit any changes to
+the repository.  Use this option to see how upgrades would potentially
+impact the stack.
+
 
 =item --norecurse
 
