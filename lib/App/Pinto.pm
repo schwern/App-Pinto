@@ -49,9 +49,12 @@ sub pinto {
         my %global_options = %{ $self->global_options() };
 
         $global_options{root} ||= $ENV{PINTO_REPOSITORY_ROOT}
-            || $self->usage_error('Must specify a repository root directory');
+            || $self->usage_error('Must specify a repository root');
 
-        my $pinto_class = $self->pinto_class();
+        # TODO: Give helpful error message if the right backend
+        # is not installed.
+
+        my $pinto_class = $self->pinto_class($global_options{root});
         Class::Load::load_class($pinto_class);
 
         my $pinto = $pinto_class->new(%global_options);
@@ -59,6 +62,13 @@ sub pinto {
 
         $pinto;
     };
+}
+
+#------------------------------------------------------------------------------
+
+sub pinto_class {
+    my ($self, $root) = @_;
+    return $root =~ m{^http://}x ? 'Pinto::Remote' : 'Pinto';
 }
 
 #------------------------------------------------------------------------------
@@ -96,10 +106,6 @@ sub log_colors {
 #------------------------------------------------------------------------------
 
 sub default_log_colors { return $PINTO_DEFAULT_LOG_COLORS }
-
-#------------------------------------------------------------------------------
-
-sub pinto_class { return 'Pinto' }
 
 #------------------------------------------------------------------------------
 
