@@ -19,16 +19,6 @@ sub command_names { return qw( manual man --man ) }
 
 #-----------------------------------------------------------------------------
 
-sub usage_desc {
-    my ($self) = @_;
-
-    my ($command) = $self->command_names();
-
-    return "%c $command COMMAND"
-}
-
-#-------------------------------------------------------------------------------
-
 sub validate_args {
     my ($self, $opts, $args) = @_;
 

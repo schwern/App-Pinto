@@ -29,22 +29,6 @@ sub opt_spec {
 
 #------------------------------------------------------------------------------
 
-sub usage_desc {
-    my ($self) = @_;
-
-    my ($command) = $self->command_names();
-
-    my $usage =  <<"END_USAGE";
-%c --root=REPOSITORY_ROOT $command [OPTIONS] ARCHIVE_FILE ...
-%c --root=REPOSITORY_ROOT $command [OPTIONS] < LIST_OF_ARCHIVE_FILES
-END_USAGE
-
-    chomp $usage;
-    return $usage;
-}
-
-#------------------------------------------------------------------------------
-
 sub args_attribute { return 'archives' }
 
 #------------------------------------------------------------------------------

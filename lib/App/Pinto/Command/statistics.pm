@@ -18,23 +18,6 @@ use base 'App::Pinto::Command';
 sub command_names { return qw( statistics stats ) }
 
 #------------------------------------------------------------------------------
-
-sub usage_desc {
-    my ($self) = @_;
-
-    my ($command) = $self->command_names();
-
- my $usage =  <<"END_USAGE";
-%c --root=REPOSITORY_ROOT $command
-END_USAGE
-
-    chomp $usage;
-    return $usage;
-}
-
-
-#------------------------------------------------------------------------------
-
 1;
 
 __END__

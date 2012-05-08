@@ -36,21 +36,6 @@ sub validate_args {
 
 #------------------------------------------------------------------------------
 
-sub usage_desc {
-    my ($self) = @_;
-
-    my ($command) = $self->command_names();
-
-    my $usage =  <<"END_USAGE";
-%c --root=REPOSITORY_ROOT $command [OPTIONS] [STACK]
-END_USAGE
-
-    chomp $usage;
-    return $usage;
-}
-
-#------------------------------------------------------------------------------
-
 sub execute {
     my ($self, $opts, $args) = @_;
 

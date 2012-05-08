@@ -15,16 +15,6 @@ use base qw(App::Pinto::Command);
 
 #-------------------------------------------------------------------------------
 
-sub usage_desc {
-    my ($self) = @_;
-
-    my ($command) = $self->command_names();
-
-    return "%c $command"
-}
-
-#-------------------------------------------------------------------------------
-
 sub execute {
     my ($self, $opts, $args) = @_;
 

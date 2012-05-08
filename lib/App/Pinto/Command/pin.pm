@@ -25,22 +25,6 @@ sub opt_spec {
 
 #------------------------------------------------------------------------------
 
-sub usage_desc {
-    my ($self) = @_;
-
-    my ($command) = $self->command_names();
-
-    my $usage =  <<"END_USAGE";
-%c --root=REPOSITORY_ROOT $command [OPTIONS] TARGET ...
-%c --root=REPOSITORY_ROOT $command [OPTIONS] < LIST_OF_TARGETSS
-END_USAGE
-
-    chomp $usage;
-    return $usage;
-}
-
-#------------------------------------------------------------------------------
-
 sub args_attribute { return 'targets' }
 
 #------------------------------------------------------------------------------
