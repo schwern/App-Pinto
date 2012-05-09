@@ -19,6 +19,7 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
+        [ 'dryrun'    => 'Do not commit any changes'            ],
         [ 'stack|s=s' => 'Stack from which to unpin the target' ],
     );
 }
@@ -71,6 +72,12 @@ or ';') will be ignored.
 =head1 COMMAND OPTIONS
 
 =over 4
+
+=item --dryrun
+
+Go through all the motions, but do not actually commit any changes to
+the repository.  Use this option to see how upgrades would potentially
+impact the stack.
 
 =item --stack=NAME
 

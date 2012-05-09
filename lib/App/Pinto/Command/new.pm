@@ -20,6 +20,7 @@ sub opt_spec {
 
     return (
         [ 'description|d=s' => 'Brief description of the stack' ],
+        [ 'dryrun'          => 'Do not commit any changes'      ],
     );
 
 
@@ -77,9 +78,15 @@ forced to lowercase.
 
 =over 4
 
-=item --description=TEXT
+=item --description TEXT
 
 Annotates this stack with a description of its purpose.
+
+=item --dryrun
+
+Go through all the motions, but do not actually commit any changes to
+the repository.  Use this option to see how operations would
+potentially impact the stack.
 
 =back
 

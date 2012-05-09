@@ -69,7 +69,7 @@ or ';') will be ignored.
 
 =over 4
 
-=item --author=NAME
+=item --author NAME
 
 Set the identity of the distribution author.  The C<NAME> must be
 alphanumeric characters (no spaces) and will be forced to uppercase.
@@ -80,8 +80,8 @@ username.
 =item --dryrun
 
 Go through all the motions, but do not actually commit any changes to
-the repository.  Use this option to see how upgrades would potentially
-impact the stack.
+the repository.  Use this option to see how operations would
+potentially impact the stack.
 
 
 =item --norecurse
@@ -97,7 +97,7 @@ prerequisites that are pulled in for this distribution.  However, you
 may pin them separately with the
 L<pin|App::Pinto::Command::pin> command, if you so desire.
 
-=item --stack=NAME
+=item --stack NAME
 
 Puts all the packages onto the stack with the given NAME.  Defaults
 to the name of whichever stack is currently marked as the default
