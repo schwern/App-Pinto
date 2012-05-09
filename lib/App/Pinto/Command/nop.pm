@@ -47,7 +47,7 @@ __END__
 
 =head1 DESCRIPTION
 
-This command is a no-operation.  It locks and initializes the
+This command is a no-operation.  It puts a shared lock on the
 repository, but does not perform any operations.  This is really only
 used for diagnostic purposes.  So don't worry about it too much.
 
@@ -59,10 +59,9 @@ None.
 
 =over 4
 
-=item --sleep=N
+=item --sleep N
 
-Directs L<Pinto> to sleep for N seconds before releasing the lock and
-exiting.  Default is 0.
+Sleep for N seconds before releasing the lock and exiting.  Default is 0.
 
 =back
 
