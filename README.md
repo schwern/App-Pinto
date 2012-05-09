@@ -4,7 +4,18 @@ App::Pinto - Command-line driver for Pinto
 
 # VERSION
 
-version 0.040_02
+version 0.041
+
+# DESCRIPTION
+
+App::Pinto is the command-line drive for Pinto.  It is just a
+front-end.  To do anything useful, you'll also need to install one of
+the back-ends, which ship separately.  If you need to create
+repositories and work directly with repositories on the local disk,
+then install [Pinto](http://search.cpan.org/perldoc?Pinto).  If you already have a repository on a remote
+host that is running [pintod](http://search.cpan.org/perldoc?pintod), then install [Pinto::Remote](http://search.cpan.org/perldoc?Pinto::Remote).  If
+you're not sure what you need then install [Task::Pinto](http://search.cpan.org/perldoc?Task::Pinto) to get the
+whole wad.
 
 # METHODS
 
