@@ -57,7 +57,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT stack create [OPTIONS] STACK
+  pinto --root=REPOSITORY_ROOT new [OPTIONS] STACK
 
 =head1 DESCRIPTION
 
