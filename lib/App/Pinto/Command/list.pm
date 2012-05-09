@@ -23,7 +23,8 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'distributions|D=s' => 'Limit to matching distribution paths' ],
+        [ 'author|A=s'        => 'Limit to distributions by author' ],
+        [ 'distributions|D=s' => 'Limit to matching distribution names' ],
         [ 'packages|P=s'      => 'Limit to matching package names' ],
         [ 'pinned!'           => 'Limit to pinned packages (negatable)' ],
         [ 'format=s'          => 'Format specification (See POD for details)' ],
@@ -38,9 +39,6 @@ sub validate_args {
 
     $self->usage_error('Multiple arguments are not allowed')
         if @{ $args } > 1;
-
-    $self->usage_error('Cannot specify packages and distributions together')
-        if $opts->{packages} and $opts->{distributions};
 
     $opts->{format} = eval qq{"$opts->{format}"} ## no critic qw(StringyEval)
         if $opts->{format};
@@ -87,16 +85,23 @@ stack specified with the C<--stack> option.
 
 =over 4
 
-=item -D=PATTERN
+=itme --author AUTHOR
 
-=item --distributions=PATTERN
+=item -A AUTHOR
 
-Limit the listing to records where the distributions path matches
-C<PATTERN>.  Note that C<PATTERN> is just a plain string, not a regular
-expression.  The C<PATTERN> will match if it appears anywhere in the
-distribution path.
+Limit the listing to records where the distribution author is AUTHOR.
+Note this is an exact match, not a pattern match.
 
-=item --format=FORMAT_SPECIFICATION
+=item --distributions PATTERN
+
+=item -D PATTERN
+
+Limit the listing to records where the distribution archive name
+matches C<PATTERN>.  Note that C<PATTERN> is just a plain string, not
+a regular expression.  The C<PATTERN> will match if it appears
+anywhere in the distribution archive name.
+
+=item --format FORMAT_SPECIFICATION
 
 Format of the output using C<printf>-style placeholders.  Valid
 placeholders are:
@@ -107,19 +112,20 @@ placeholders are:
   %N             Package name-version
   %v             Package version
   %y             Pin status:                     (+) = is pinned
+  %a             Distribution author
+  %f             Distribution archive filename
   %m             Distribution maturity:          (d) = developer, (r) = release
   %p             Distribution index path [1]
   %P             Distribution physical path [2]
   %s             Distribution origin:            (l) = local, (f) = foreign
   %S             Distribution source repository
-  %a             Distribution author
   %d             Distribution name
   %D             Distribution name-version
   %w             Distribution version
   %u             Distribution url
   %k             Stack name
   %e             Stack description
-  %M             Stack status                   (*) = is default
+  %M             Stack status:                   (*) = default
   %U             Stack last-modified-time
   %j             Stack last-modified-user
   %%             A literal '%'
@@ -132,14 +138,14 @@ placeholders are:
        and is relative to the root directory of the repository.
 
 You can also specify the minimum field widths and left or right
-justification, using the usual notation.  For example, this is what
-the default format looks like.
+justification, using the usual notation.  For example, the default
+format looks something like this:
 
-  %m%s %-38n %v %p\n
+  %m%s %-38n %12v %a/%f\n
 
-=item -P=PATTERN
+=item --packages PATTERN
 
-=item --packages=PATTERN
+=item -P PATTERN
 
 Limit the listing to records where the package name matches
 C<PATTERN>.  Note that C<PATTERN> is just a plain string, not a
@@ -150,7 +156,9 @@ in the package name.
 
 Limit the listing to records for packages that are pinned.
 
-=item --stack=NAME
+=item --stack NAME
+
+=item -s NAME
 
 List the contents of the stack with the given NAME.  Defaults to the
 name of whichever stack is currently marked as the default stack.  Use
