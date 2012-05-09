@@ -35,10 +35,10 @@ sub global_opt_spec {
 
 #------------------------------------------------------------------------------
 
-=method pinto()
+=method pinto
 
-Returns a reference to a L<Pinto> object that has been constructed for
-this application.
+Returns a reference to a L<Pinto> or L<Pinto::Remote> object that has
+been constructed for this application.
 
 =cut
 
