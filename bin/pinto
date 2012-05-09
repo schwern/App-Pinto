@@ -28,32 +28,37 @@ __END__
 =head1 BASIC USAGE
 
   # Create an empty repository at /some/dir
-  pinto --root=/some/dir create
+  pinto --root=/some/dir init
 
   # Add your own distribution to the repository
   pinto --root=/some/dir add Foo-Bar-1.2.tar.gz
 
-  # Fetch a module and all its dependencies
+  # Fetch a CPAN module and all its dependencies
   pinto --root=/some/dir pull Plack
 
-  # Fetch the latest version of all modules
-  pinto --root=/some/dir mirror
-
-  # Then install stuff, forcing everything to come from your repository
-  cpanm --mirror-only --mirror file:///some/dir Foo::Bar
-
-  # Or install stuff, falling back to a CPAN for missing dependencies
-  cpanm --mirror file:///some/dir Foo::Bar
+  # Then install stuff, from your repository
+  pinto --root=/some/dir install Foo::Bar Plack
 
 =head1 DESCRIPTION
 
-C<pinto> is a command line utility for creating and managing a
-local Pinto repository.  The repository can contain your own
-distributions and/or foreign distributions from another repository
-(such as a CPAN mirror).  You can also put locally patched versions of
-foreign distributions in your repository.  Then you can then point
-L<cpan> (or L<cpanm> or L<cpanp>) at your Pinto repository and
-build/install your distributions.
+C<pinto> is a tool for creating and operating a L<Pinto> repository.
+The repository can contain your own distributions and/or distributions
+from another repository (such as a CPAN mirror).  From this
+repository, you can build up your application using the standard Perl
+tools (L<cpan>, L<cpanm>, L<cpanp>).  C<pinto> provides various
+commands for gathering and managing distribution dependencies within
+the repository, so that you can control precisely which dependencies
+go into building your application.
+
+=head1 IMPORTANT NOTE
+
+C<pinto> is just a front-end.  To do anything useful, you'll also need
+to install one of the back-ends, which ship separately.  If you need
+to create new repositories and/or work directly with repositories on
+the local disk, then install L<Pinto>.  If you already have a
+repository on a remote host that is running L<pintod>, then install
+L<Pinto::Remote>.  If you're not sure what you need, then install
+L<Task::Pinto> to get the whole kit.
 
 =head1 GLOBAL OPTIONS
 
@@ -61,11 +66,15 @@ The following options are available for all commands.
 
 =over 4
 
-=item  --root=/path/to/your/repository
+=item  --root DIRECTORY | URL
 
-Specifies the path to the root directory of your repository.  This is
-mandatory for all commands unless you've set the C<PINTO_REPOSITORY_ROOT>
-environment variable to point to your repository.
+=item  -r DIRECTORY | URL
+
+Specifies the root of your repository.  This is mandatory for (almost)
+all commands unless you've set the C<PINTO_REPOSITORY_ROOT>
+environment variable to point to your repository.  The root can be a
+path to a local directory, or the URL where a L<pintod> server is
+listening.
 
 =item --nocolor
 
@@ -114,37 +123,12 @@ trailing whitespace is discarded.  Comments start with a semi-colon
 
 =over 4
 
-=item devel = 0|1
-
-If true, L<Pinto> will allow development releases to appear in the
-index when they are the "latest" version.  Otherwise, development
-releases are accepted into the repository but never included in the
-index.  Defaults to 0.
-
 =item log_level = debug|notice|info|warn|error
 
 Sets the minimum logging level for the repository's log file.  The
-default is C<notice>.  This is independent of the screen logs
-that L<pinto> and L<pinto-server> emit.
+default is C<notice>.  This is independent of the screen logs that
+C<pinto> emits.
 
-=item noinit = 0|1
-
-If true, L<Pinto> will not pull/update the repository from the VCS
-before each operation.  This is only relevant if you are using a
-VCS‐based storage mechanism.  This can speed up operations
-considerably, but should only be used if you *know* that your working
-copy is up to date and you are going to be the only actor touching the
-Pinto repository within the VCS.  Defaults to 0.
-
-=item store = CLASS_NAME
-
-The name of the class that will handle storage of your Pinto
-repository.  The default is L<Pinto::Store>, which simply stores your
-repository on the local file system.  Alternatives Stores like
-L<Pinto::Store::VCS::Svn> and L<Pinto::Store::VCS::Git> will also
-store your repository inside a version control system (VCS).  See the
-documentation for each of those modules for information on setting up
-L<Pinto> with a VCS.
 
 =item sources = URL [ URL URL ... ]
 
@@ -157,11 +141,8 @@ Defaults to L<http://cpan.perl.org>.
 
 =head1 SEE ALSO
 
-L<Pinto::Manual> for detailed information on using the Pinto tools.
+L<Pinto::Manual> for general information on using Pinto.
 
-L<pinto-server> to allow remote access to your Pinto repository.
-
-L<pinto-remote> to interact with a remote Pinto repository.
+L<pintod> to allow remote access to your Pinto repository.
 
 =cut
-
