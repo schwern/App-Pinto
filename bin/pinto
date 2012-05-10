@@ -25,40 +25,15 @@ __END__
 
   pinto --root=REPOSITORY_ROOT [global options] COMMAND [command options] [args]
 
-=head1 BASIC USAGE
-
-  # Create an empty repository at /some/dir
-  pinto --root=/some/dir init
-
-  # Add your own distribution to the repository
-  pinto --root=/some/dir add Foo-Bar-1.2.tar.gz
-
-  # Fetch a CPAN module and all its dependencies
-  pinto --root=/some/dir pull Plack
-
-  # Then install stuff, from your repository
-  pinto --root=/some/dir install Foo::Bar Plack
-
 =head1 DESCRIPTION
 
-C<pinto> is a tool for creating and operating a L<Pinto> repository.
-The repository can contain your own distributions and/or distributions
-from another repository (such as a CPAN mirror).  From this
-repository, you can build up your application using the standard Perl
-tools (L<cpan>, L<cpanm>, L<cpanp>).  C<pinto> provides various
-commands for gathering and managing distribution dependencies within
-the repository, so that you can control precisely which dependencies
-go into building your application.
-
-=head1 IMPORTANT NOTE
-
-C<pinto> is just a front-end.  To do anything useful, you'll also need
-to install one of the back-ends, which ship separately.  If you need
-to create new repositories and/or work directly with repositories on
-the local disk, then install L<Pinto>.  If you already have a
-repository on a remote host that is running L<pintod>, then install
-L<Pinto::Remote>.  If you're not sure what you need, then install
-L<Task::Pinto> to get the whole kit.
+pinto is a tool for creating and managing a custom CPAN-like
+repository of Perl modules.  The purpose of such a repository is to
+provide a stable, curated stack of dependencies from which you can
+reliably build, test, and delploy your application using the standard
+Perl tool chain.  pinto provides various commands for gathering and
+managing distribution dependencies within the repository, so that you
+can control precisely which dependencies go into your application.
 
 =head1 GLOBAL OPTIONS
 
@@ -80,12 +55,16 @@ listening.
 
 Do not colorize diagnostic messages according to severity.
 
-=item --quiet | -q
+=item --quiet
+
+=item -q
 
 Report only fatal errors.  This option silently overrides the
 C<--verbose> options.
 
-=item --verbose | -v
+=item --verbose
+
+=item -v
 
 Display more diagnostic messages.  This switch can be repeated multiple
 times for greater effect.
@@ -94,9 +73,9 @@ times for greater effect.
 
 =head1 COMMANDS
 
-L<pinto> supports several commands that perform various
-operations on your repository, or report information about your
-repository.  To get a listing of all the available commands:
+pinto supports several commands that perform various operations on
+your repository, or report information about your repository.  To get
+a listing of all the available commands:
 
   $> pinto commands
 
@@ -127,17 +106,27 @@ trailing whitespace is discarded.  Comments start with a semi-colon
 
 Sets the minimum logging level for the repository's log file.  The
 default is C<notice>.  This is independent of the screen logs that
-C<pinto> emits.
+pinto emits.
 
 
 =item sources = URL [ URL URL ... ]
 
-A space-delimited list of the URLs of the repositories that L<Pinto>
-will pull foreign distributions from.  These could be public CPAN
-mirrors, a private L<CPAN::Mini> mirror, or other Pinto repositories.
+A space-delimited list of the URLs of the repositories that pinto
+will pull dependencies from.  These could be public CPAN mirrors, the
+BackPAN, a private L<CPAN::Mini> mirror, or other Pinto repositories.
 Defaults to L<http://cpan.perl.org>.
 
 =back
+
+=head1 IMPORTANT NOTE
+
+pinto is just a front-end.  To do anything useful, you'll also need
+to install one of the back-ends, which ship separately.  If you need
+to create new repositories and/or work directly with repositories on
+the local disk, then install L<Pinto>.  If you already have a
+repository on a remote host that is running L<pintod>, then install
+L<Pinto::Remote>.  If you're not sure what you need, then install
+L<Task::Pinto> to get the whole kit.
 
 =head1 SEE ALSO
 
