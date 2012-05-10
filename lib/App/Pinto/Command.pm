@@ -22,7 +22,7 @@ sub usage_desc {
     my ($class_or_self, @args) = @_;
 
     my $class  = ref $class_or_self || $class_or_self;
-    my $file   = $class . '.pm'; $file =~ s{::}{/}g;
+    my $file   = $class . '.pm'; $file =~ s{::}{/}xg;
     my $path   = $INC{$file} or return;
     my $handle = IO::String->new;
 
