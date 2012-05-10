@@ -85,7 +85,7 @@ stack specified with the C<--stack> option.
 
 =over 4
 
-=itme --author AUTHOR
+=item --author AUTHOR
 
 =item -A AUTHOR
 
