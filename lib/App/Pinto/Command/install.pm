@@ -23,7 +23,7 @@ sub opt_spec {
         [ 'cpanm-options|o:s%'      => 'name=value pairs of cpanm options'            ],
         [ 'local-lib|l=s'           => 'install into a local lib directory'           ],
         [ 'local-lib-contained|L=s' => 'install into a contained local lib directory' ],
-        [ 'nopull'                  => 'do not pull prereqs onto the stack first'     ],
+        [ 'pull'                    => 'pull missing prereqs onto the stack first'    ],
         [ 'stack|s=s'               => 'Use the index for this stack'                 ],
 
     );
@@ -71,8 +71,8 @@ __END__
 
 Installs packages from the repository into your environment.  This is
 just a thin wrapper around L<cpanm> that is wired to fetch everything
-from the Pinto repository, rather than a public CPAN mirror.  Unless
-the C<--nopull> option is given, all prerequisites (including the
+from the Pinto repository, rather than a public CPAN mirror.  If the
+the C<--pull> option is given, all prerequisites (including the
 targets themselves) will be pulled onto the stack before attempting to
 install them.  If the repository does not contain a prerequisite, it
 will be pulled from one of the upstream repositories.  If any
@@ -126,11 +126,14 @@ Shortcut for setting the C<--local-lib-contained> option on L<cpanm>.
 Same as C<--cpanm-options local-lib-containted=DIRECTORY> or C<-o
 L=DIRECTORY>.
 
-=item --nopull
+=item --pull
 
-Do not pull prerequsistes (or the targets themselves) onto the stack
-before installing.  In this case, all prerequisites must already be on
-the stack.
+Recursively Pull prerequsiste packages (or the targets themselves)
+onto the stack before installing.  Without the C<--pull> option, all
+prerequisites must already be on the stack.  See the
+L<pull|App::Pinto::Command::pull> command to explicitly pull packages
+onto a stack or the L<merge|App::Pinto::Command::merge> command to
+merge packages from one stack to another.
 
 =item --stack=NAME
 
