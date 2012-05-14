@@ -70,7 +70,7 @@ specified as packages (with or without a minimum version number) or
 a distributions.  For example:
 
   Foo::Bar                                 # Pulls any version of Foo::Bar
-  Foo::Bar-1.2                             # Pulls Foo::Bar 1.2 or higher
+  Foo::Bar~1.2                             # Pulls Foo::Bar 1.2 or higher
   SHAKESPEARE/King-Lear-1.2.tar.gz         # Pulls a specific distribuion
   SHAKESPEARE/tragedies/Hamlet-4.2.tar.gz  # Ditto, but from a subdirectory
 
