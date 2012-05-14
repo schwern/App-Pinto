@@ -23,6 +23,7 @@ sub opt_spec {
         [ 'cpanm-options|o:s%'      => 'name=value pairs of cpanm options'            ],
         [ 'local-lib|l=s'           => 'install into a local lib directory'           ],
         [ 'local-lib-contained|L=s' => 'install into a contained local lib directory' ],
+        [ 'nopull'                  => 'do not pull prereqs onto the stack first'     ],
         [ 'stack|s=s'               => 'Use the index for this stack'                 ],
 
     );
@@ -70,7 +71,13 @@ __END__
 
 Installs packages from the repository into your environment.  This is
 just a thin wrapper around L<cpanm> that is wired to fetch everything
-from the Pinto repository, rather than a public CPAN mirror.
+from the Pinto repository, rather than a public CPAN mirror.  Unless
+the C<--nopull> option is given, all prerequisites (including the
+targets themselves) will be pulled onto the stack before attempting to
+install them.  If the repository does not contain a prerequisite, it
+will be pulled from one of the upstream repositories.  If any
+prerequisite cannot be pulled because it does not exist or blocked by
+a pin, then the installation will not proceed.
 
 =head1 COMMAND ARGUMENTS
 
@@ -118,6 +125,12 @@ C<--cpanm-options local-lib=DIRECTORY> or C<-o l=DIRECTORY>.
 Shortcut for setting the C<--local-lib-contained> option on L<cpanm>.
 Same as C<--cpanm-options local-lib-containted=DIRECTORY> or C<-o
 L=DIRECTORY>.
+
+=item --nopull
+
+Do not pull prerequsistes (or the targets themselves) onto the stack
+before installing.  In this case, all prerequisites must already be on
+the stack.
 
 =item --stack=NAME
 
