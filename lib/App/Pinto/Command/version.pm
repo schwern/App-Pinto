@@ -19,13 +19,14 @@ sub execute {
     my ($self, $opts, $args) = @_;
 
     my $app_class = ref $self->app();
-    my $app_version = $self->app->VERSION();
-    printf "$app_class $app_version\n";
+    my $app_version = $self->app->VERSION;
+    print "$app_class $app_version\n";
 
-    my $pinto_class = $self->app->pinto_class();
-    Class::Load::load_class( $pinto_class );
-    my $pinto_version = $pinto_class->VERSION();
-    printf "$pinto_class $pinto_version\n";
+    for my $pinto_class ( qw(Pinto Pinto::Remote) ) {
+        Class::Load::try_load_class( $pinto_class ) or next;
+        my $pinto_version = $pinto_class->VERSION;
+        print "$pinto_class $pinto_version\n";
+    }
 
     return 0;
 }
