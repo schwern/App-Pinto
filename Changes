@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.041     2012-05-15 11:09:56 America/Los_Angeles
+
      First production release.  The included pinto utility replaces
      both the pinto-admin and pinto-remote utilities.  However, you
      still have to decide which backend to install (either Pinto or
