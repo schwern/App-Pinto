@@ -36,7 +36,7 @@ sub execute {
 
     my $global_opts = $self->app->global_options;
 
-    $global_opts->{root}
+    $global_opts->{root} ||= $ENV{PINTO_REPOSITORY_ROOT}
         or die "Must specify a repository root directory\n";
 
     $global_opts->{root} =~ m{^https?://}x
