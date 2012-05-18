@@ -1,5 +1,10 @@
 {{$NEXT}}
 
+     * Bug Fixes
+
+     The init command did not honor the PINTO_REPOSITORY_ROOT
+     environment variable.  Thanks fibo.
+
 0.041     2012-05-15 11:09:56 America/Los_Angeles
 
      First production release.  The included pinto utility replaces
