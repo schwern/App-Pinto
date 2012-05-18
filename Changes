@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.042     2012-05-18 16:37:10 America/Los_Angeles
+
      * Bug Fixes
 
      The init command did not honor the PINTO_REPOSITORY_ROOT
