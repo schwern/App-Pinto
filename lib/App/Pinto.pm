@@ -1,6 +1,6 @@
-package App::Pinto;
-
 # ABSTRACT: Command-line driver for Pinto
+
+package App::Pinto;
 
 use strict;
 use warnings;
@@ -26,7 +26,9 @@ sub global_opt_spec {
     return (
         [ 'root|r=s'    => 'Path to your repository root directory'  ],
         [ 'nocolor'     => 'Do not colorize diagnostic messages'     ],
+        [ 'password|p'  => 'Password for server authentication'      ],
         [ 'quiet|q'     => 'Only report fatal errors'                ],
+        [ 'username|u'  => 'Username for server authentication'      ],
         [ 'verbose|v+'  => 'More diagnostic output (repeatable)'     ],
     );
 
