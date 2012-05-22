@@ -5,8 +5,9 @@ package App::Pinto;
 use strict;
 use warnings;
 
+use Encode;
 use Class::Load;
-
+use Term::Prompt;
 use List::Util qw(min);
 use Log::Dispatch::Screen;
 use Log::Dispatch::Screen::Color;
@@ -48,15 +49,18 @@ sub pinto {
     my ($self) = @_;
 
     return $self->{pinto} ||= do {
-        my %global_options = %{ $self->global_options() };
+        my %global_options = %{ $self->global_options };
 
         $global_options{root} ||= $ENV{PINTO_REPOSITORY_ROOT}
             || $self->usage_error('Must specify a repository root');
 
+        $global_options{password} = $self->_prompt_for_password
+            if defined $global_options{password} and $global_options{password} eq '-';
+
         # TODO: Give helpful error message if the right backend
         # is not installed.
 
-        my $pinto_class = $self->pinto_class($global_options{root});
+        my $pinto_class = $self->pinto_class_for($global_options{root});
         Class::Load::load_class($pinto_class);
 
         my $pinto = $pinto_class->new(%global_options);
@@ -68,7 +72,7 @@ sub pinto {
 
 #------------------------------------------------------------------------------
 
-sub pinto_class {
+sub pinto_class_for {
     my ($self, $root) = @_;
     return $root =~ m{^http://}x ? 'Pinto::Remote' : 'Pinto';
 }
@@ -110,6 +114,19 @@ sub log_colors {
 sub default_log_colors { return $PINTO_DEFAULT_LOG_COLORS }
 
 #------------------------------------------------------------------------------
+
+sub _prompt_for_password {
+   my ($self) = @_;
+
+   my $input    = Term::Prompt::prompt('p', 'Password:', '', '');
+   my $password = Encode::decode_utf8($input);
+   print "\n"; # Get on a new line
+
+   return $password;
+}
+
+#-------------------------------------------------------------------------------
+
 
 1;
 
