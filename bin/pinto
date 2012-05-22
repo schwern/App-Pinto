@@ -55,12 +55,27 @@ listening.
 
 Do not colorize diagnostic messages according to severity.
 
+=item --password PASS
+
+=itme -p PASS
+
+The password to use for server authentication.  This is only relevant
+if using a remote repository.  If the PASS is "-" then you will
+be prompted for a password.
+
 =item --quiet
 
 =item -q
 
 Report only fatal errors.  This option silently overrides the
 C<--verbose> options.
+
+=item --username NAME
+
+=item -u NAME
+
+The username to user for server authentication.  This is only relevant
+if using a remote repository.  Defaults to your current login.
 
 =item --verbose
 
