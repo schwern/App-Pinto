@@ -49,22 +49,26 @@ sub pinto {
     my ($self) = @_;
 
     return $self->{pinto} ||= do {
-        my %global_options = %{ $self->global_options };
+        my $global_options = $self->global_options;
 
-        $global_options{root} ||= $ENV{PINTO_REPOSITORY_ROOT}
+        $global_options->{root} ||= $ENV{PINTO_REPOSITORY_ROOT}
             || $self->usage_error('Must specify a repository root');
 
-        $global_options{password} = $self->_prompt_for_password
-            if defined $global_options{password} and $global_options{password} eq '-';
+        $global_options->{password} = $self->_prompt_for_password
+            if defined $global_options->{password} and $global_options->{password} eq '-';
+
+        # Translate (progressive) verbose value into a (regressive) log_level value
+        $global_options->{log_level} = 3 - min(delete $global_options->{verbose} || 0, 3);
+        $global_options->{log_level} = 4 if delete $global_options->{quiet};
 
         # TODO: Give helpful error message if the right backend
         # is not installed.
 
-        my $pinto_class = $self->pinto_class_for($global_options{root});
+        my $pinto_class = $self->pinto_class_for($global_options->{root});
         Class::Load::load_class($pinto_class);
 
-        my $pinto = $pinto_class->new(%global_options);
-        $pinto->add_logger($self->logger(%global_options));
+        my $pinto = $pinto_class->new( %{ $global_options } );
+        $pinto->add_logger($self->make_logger( %{ $global_options } ));
 
         $pinto;
     };
@@ -79,18 +83,15 @@ sub pinto_class_for {
 
 #------------------------------------------------------------------------------
 
-sub logger {
+sub make_logger {
     my ($self, %options) = @_;
 
     my $nocolor   = $options{nocolor};
     my $colors    = $nocolor ? {} : ($self->log_colors);
     my $log_class = 'Log::Dispatch::Screen';
-    $log_class .= '::Color' unless $nocolor;
+    $log_class   .= '::Color' unless $nocolor;
 
-    my $verbose = min($options{verbose} || 0, 2);
-
-    my $log_level = 2 - $verbose;      # Defaults to 'notice'
-    $log_level = 4 if $options{quiet}; # Only 'error' or higher
+    my $log_level = $options{log_level};
 
     return $log_class->new( min_level => $log_level,
                             color     => $colors,
