@@ -61,7 +61,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT create [OPTIONS]
+  pinto --root=REPOSITORY_ROOT init [OPTIONS]
 
 =head1 DESCRIPTION
 
