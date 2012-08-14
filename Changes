@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.043     2012-08-14 14:53:41 America/Los_Angeles
+
      Added global options for username and password.  These only
      matter if using a remote repository that has authentication
      enabled.
