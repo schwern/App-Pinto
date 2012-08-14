@@ -57,7 +57,7 @@ Do not colorize diagnostic messages according to severity.
 
 =item --password PASS
 
-=itme -p PASS
+=item -p PASS
 
 The password to use for server authentication.  This is only relevant
 if using a remote repository.  If the PASS is "-" then you will
