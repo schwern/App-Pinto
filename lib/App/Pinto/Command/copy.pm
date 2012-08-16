@@ -60,7 +60,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT stack copy [OPTIONS] FROM_STACK TO_STACK
+  pinto --root=REPOSITORY_ROOT copy [OPTIONS] FROM_STACK TO_STACK
 
 =head1 DESCRIPTION
 
