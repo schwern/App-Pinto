@@ -28,8 +28,9 @@ __END__
 
 =head1 DESCRIPTION
 
-This command reports some statistics about the repository.  It is
-currently only reports information about the default stack.
+!! THIS COMMAND IS EXPERIMENTAL !!
+
+This command reports some statistics about the repository.
 
 =head1 COMMAND ARGUMENTS
 
