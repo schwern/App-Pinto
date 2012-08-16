@@ -69,15 +69,16 @@ __END__
 
 !! THIS COMMAND IS EXPERIMENTAL !!
 
-Installs packages from the repository into your environment.  This is
-just a thin wrapper around L<cpanm> that is wired to fetch everything
-from the Pinto repository, rather than a public CPAN mirror.  If the
-the C<--pull> option is given, all prerequisites (including the
-targets themselves) will be pulled onto the stack before attempting to
-install them.  If the repository does not contain a prerequisite, it
-will be pulled from one of the upstream repositories.  If any
-prerequisite cannot be pulled because it does not exist or blocked by
-a pin, then the installation will not proceed.
+Installs packages from the repository into your environment.  This
+is just a thin wrapper around L<cpanm> that is wired to fetch
+everything from the Pinto repository, rather than a public CPAN
+mirror.
+
+If the C<--pull> option is given, all prerequisites
+(including the targets themselves) will be pulled onto the stack
+before attempting to install them.  If any prerequisite cannot be
+pulled because it does not exist or blocked by a pin, then the
+installation will not proceed.
 
 =head1 COMMAND ARGUMENTS
 
@@ -120,7 +121,7 @@ C<--cpanm-options local-lib=DIRECTORY> or C<-o l=DIRECTORY>.
 
 =item --local-lib-contained DIRECTORY
 
-=item -l DIRECTORY
+=item -L DIRECTORY
 
 Shortcut for setting the C<--local-lib-contained> option on L<cpanm>.
 Same as C<--cpanm-options local-lib-containted=DIRECTORY> or C<-o
@@ -137,10 +138,14 @@ merge packages from one stack to another.
 
 =item --stack=NAME
 
-Use the stack with the given NAME as the repository index.  Defaults
-to the name of whichever stack is currently marked as the default
-stack.  Use the L<stacks|App::Pinto::Command::stacks> command to see
-the stacks in the repository.
+=item -s NAME
+
+Use the stack with the given NAME as the repository index.  When
+used with the C<--pull> option, this also determines which stack
+prerequisites will be pulled onto. Defaults to the name of whichever
+stack is currently marked as the default stack.  Use the
+L<stacks|App::Pinto::Command::stacks> command to see the stacks in
+the repository.
 
 =back
 
