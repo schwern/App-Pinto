@@ -56,7 +56,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT stack edit [OPTIONS] [STACK]
+  pinto --root=REPOSITORY_ROOT edit [OPTIONS] [STACK]
 
 =head1 DESCRIPTION
 
@@ -78,9 +78,9 @@ currently marked as default.  Stack names must be alphanumeric
 =item --default
 
 Causes the selected stack to be marked as the "default".  The
-"default" stack becomes the default for all operations where you do no
+default stack becomes the default for all operations where you do no
 not specify an explicit stack.  The default stack also governs the
-index file for your repository.  DO NOT CHANGE THE DEFAULT STACK
+static index file for your repository.  DO NOT CHANGE THE DEFAULT STACK
 WITHOUT DUE DILLIGENCE.  It has broad impact, especially if your
 repository has multiple users.
 
