@@ -1,6 +1,6 @@
-package App::Pinto::Command::stacks;
-
 # ABSTRACT: show available stacks
+
+package App::Pinto::Command::stacks;
 
 use strict;
 use warnings;
@@ -71,7 +71,7 @@ Valid placeholders are:
   -----------------------------------------------------------------------------
   %k             Stack name
   %e             Stack description
-  %M             Stack default status                               (*) = default
+  %M             Stack default status                             (*) = default
   %U             Stack last-modified-on
   %j             Stack last-modified-by
   %%             A literal '%'
