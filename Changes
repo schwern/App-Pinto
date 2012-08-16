@@ -1,5 +1,8 @@
 {{$NEXT}}
 
+     Added a 'clean' command to force removal of orphaned
+     archives on the filesystem.  See POD for details.
+
 0.043     2012-08-14 14:53:41 America/Los_Angeles
 
      Added global options for username and password.  These only
