@@ -52,13 +52,14 @@ __END__
 
 =head1 DESCRIPTION
 
-This command creates deletes a stack.  Only the stack itself is deleted
--- all distributuions that were registered on the stack will remain in
-the repository.
+This command deletes a stack.  Any distributions that were registered
+on that stack will be permanently deleted, unless they are also
+registered on another stack.
 
 The stack that is currently marked as the default can never be
 deleted.  If you wish to delete it, you must first mark another stack
-as the default.
+as the default. Use the L<edit|App::Pinto::Command::edit> command
+to control which stack is the default.
 
 =head1 COMMAND ARGUMENTS
 
