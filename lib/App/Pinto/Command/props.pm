@@ -58,7 +58,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT stack props [OPTIONS] STACK
+  pinto --root=REPOSITORY_ROOT props [OPTIONS] STACK
 
 =head1 DESCRIPTION
 
