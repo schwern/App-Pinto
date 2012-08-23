@@ -1,5 +1,9 @@
 {{$NEXT}}
 
+     The 'index' command is no longer supported.  With the latest
+     versions of Pinto and Pinto::Server, this command is no longer
+     useful.
+
 0.045     2012-08-16 11:47:51 America/Los_Angeles
      
      Just documentaiton edits.  No code changes.
