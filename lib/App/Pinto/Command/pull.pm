@@ -89,6 +89,14 @@ impact the stack.
 Do not recursively pull any distributions required to satisfy
 prerequisites for the targets.
 
+=item --pin
+
+Pins the packages to the stack, so they cannot be changed until you
+unpin them.  Only the packages in the requested targets will be pinned
+-- packages in prerequisites will not be pinned.  However, you may pin
+them separately with the L<pin|App::Pinto::Command::pin> command if
+you so desire.
+
 =item --stack=NAME
 
 Puts all the packages onto the stack with the given NAME.  Defaults
