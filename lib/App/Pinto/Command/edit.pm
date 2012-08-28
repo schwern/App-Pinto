@@ -19,7 +19,6 @@ sub opt_spec {
 
     return (
         ['default'              => 'mark stack as the default'     ],
-        [ 'dryrun'              => 'Do not commit any changes'     ],
         ['properties|prop|P=s%' => 'name=value pairs of properties'],
     );
 }
@@ -83,12 +82,6 @@ not specify an explicit stack.  The default stack also governs the
 static index file for your repository.  DO NOT CHANGE THE DEFAULT STACK
 WITHOUT DUE DILLIGENCE.  It has broad impact, especially if your
 repository has multiple users.
-
-=item --dryrun
-
-Go through all the motions, but do not actually commit any changes to
-the repository.  Use this option to see how operations would
-potentially impact the stack.
 
 =item --properties name1=value1
 
