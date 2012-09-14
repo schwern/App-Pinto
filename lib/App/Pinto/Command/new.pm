@@ -19,6 +19,7 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
+        [ 'message|m=s'     => 'Message to describe the change' ],
         [ 'description|d=s' => 'Brief description of the stack' ],
     );
 
@@ -77,9 +78,19 @@ forced to lowercase.
 
 =over 4
 
-=item --description TEXT
+=item --description=TEXT
 
-Annotates this stack with a description of its purpose.
+=item -d TEXT
+
+Use TEXT for the description of the stack.  This is usually used to
+help explain the purpose of the stack.
+
+=item --message=TEXT
+
+=item -m TEXT
+
+Use TEXT as the revision history log message.  At the moment, this is
+optional but it will become mandatory in the future.
 
 =back
 

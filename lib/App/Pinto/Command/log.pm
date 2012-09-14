@@ -34,20 +34,19 @@ sub opt_spec {
 sub validate_args {
     my ($self, $opts, $args) = @_;
 
-    $DB::single = 1;
     $self->usage_error('Multiple arguments are not allowed')
         if @{ $args } > 1;
 
 
     if ($args->[0]) {
 
-        ($opts->{stack}, $opts->{revision}) = split /@/, $args->[0], 2;
+        my ($stack, $revision) = split /@/, $args->[0], 2;
 
         # split returns '' for empty fields.  But to make Moose
         # happy, they need to be undef if they really don't exist.
 
-        delete $opts->{stack}    if not length $opts->{stack};
-        delete $opts->{revision} if not length $opts->{revision};
+        $opts->{stack}    = $stack    if length $stack;
+        $opts->{revision} = $revision if length $revision;
     }
 
     return 1;
@@ -78,8 +77,17 @@ examples are equivalent:
   pinto --root REPOSITORY_ROOT log --stack=dev --revision=289
   pinto --root REPOSITORY_ROOT log dev@289
 
-A C<stack@revision> argument in this fashion will override anything
-specified with the C<--stack> or C<--revision> options.
+A C<stack@revision> argument will override anything specified with the
+C<--stack> or C<--revision> switches.
+
+If neither the stack nor revision is specified using either the
+arguments or switches, then all revisions of the default stack
+will be shown.  So if the default stack is called C<"dev"> then
+the following are all equivalent:
+
+  pinto --root REPOSITORY_ROOT log --stack=dev
+  pinto --root REPOSITORY_ROOT log dev
+  pinto --root REPOSITORY_ROOT log
 
 =head1 COMMAND OPTIONS
 
@@ -96,8 +104,9 @@ in the revision.
 
 =item -R NUMBER
 
-Show only the history for the revision with the given NUMBER.  Defaults
-to the head revision of the stack.
+Show only the history for the revision with the given NUMBER.
+Otherwise, the entire history of the stack is shown in
+reverse-chronological order.
 
 =item --stack NAME
 
