@@ -21,6 +21,7 @@ sub opt_spec {
     return (
         [ 'author=s'    => 'Your (alphanumeric) author ID'     ],
         [ 'dryrun'      => 'Do not commit any changes'         ],
+        [ 'message|m=s' => 'Message to describe the change'    ],
         [ 'norecurse'   => 'Do not recursively import prereqs' ],
         [ 'pin'         => 'Pin packages to the stack'         ],
         [ 'stack|s=s'   => 'Put packages into this stack'      ],
@@ -83,6 +84,12 @@ Go through all the motions, but do not actually commit any changes to
 the repository.  Use this option to see how operations would
 potentially impact the stack.
 
+=item --message=TEXT
+
+=item -m TEXT
+
+Use TEXT as the revision history log message.  At the moment, this is
+optional but it will become mandatory in the future.
 
 =item --norecurse
 

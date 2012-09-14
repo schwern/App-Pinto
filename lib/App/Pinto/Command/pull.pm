@@ -20,6 +20,7 @@ sub opt_spec {
 
     return (
         [ 'dryrun'      => 'Do not commit any changes'         ],
+        [ 'message|m=s' => 'Message to describe the change'    ],
         [ 'norecurse'   => 'Do not recursively pull prereqs'   ],
         [ 'pin'         => 'Pin all the packages to the stack' ],
         [ 'stack|s=s'   => 'Put packages into this stack'      ],
@@ -88,6 +89,13 @@ impact the stack.
 
 Do not recursively pull any distributions required to satisfy
 prerequisites for the targets.
+
+=item --message=TEXT
+
+=item -m TEXT
+
+Use TEXT as the revision history log message.  At the moment, this is
+optional but it will become mandatory in the future.
 
 =item --pin
 
