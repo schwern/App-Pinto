@@ -34,11 +34,21 @@ sub opt_spec {
 sub validate_args {
     my ($self, $opts, $args) = @_;
 
+    $DB::single = 1;
     $self->usage_error('Multiple arguments are not allowed')
         if @{ $args } > 1;
 
-    ($opts->{stack}, $opts->{revision}) = split /@/, $args->[0]
-        if $args->[0];
+
+    if ($args->[0]) {
+
+        ($opts->{stack}, $opts->{revision}) = split /@/, $args->[0], 2;
+
+        # split returns '' for empty fields.  But to make Moose
+        # happy, they need to be undef if they really don't exist.
+
+        delete $opts->{stack}    if not length $opts->{stack};
+        delete $opts->{revision} if not length $opts->{revision};
+    }
 
     return 1;
 }
@@ -61,24 +71,15 @@ in each revision.
 
 =head1 COMMAND ARGUMENTS
 
-As an alternative to the C<--stack> option, you can also specify the
-stack as an argument. So the following examples are equivalent:
+As an alternative to the C<--stack> and C<--revision> options, you can
+also specify them stack as a single argument. So the following
+examples are equivalent:
 
-  pinto --root REPOSITORY_ROOT list --stack dev
-  pinto --root REPOSITORY_ROOT list dev
+  pinto --root REPOSITORY_ROOT log --stack=dev --revision=289
+  pinto --root REPOSITORY_ROOT log dev@289
 
-A stack specified as an argument in this fashion will override any
-stack specified with the C<--stack> option.
-
-You can also append a single revision number to the stack argument
-with the '@' characters.  So the following examples are also
-equivalent:
-
-  pinto --root REPOSITORY_ROOT list --stack dev --revision 289
-  pinto --root REPOSITORY_ROOT list dev@289
-
-A revision number specified in this fashion will override any
-revision number specified with the C<--revision> option.
+A C<stack@revision> argument in this fashion will override anything
+specified with the C<--stack> or C<--revision> options.
 
 =head1 COMMAND OPTIONS
 
