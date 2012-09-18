@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.048     2012-09-18 16:07:04 America/Los_Angeles
+
      Now requires Pinto-0.52 or newer, if using local repositories.
      For remote repositories, App::Pinto should still work with
      your current version of Pinto::Remote.  However, you'll need
