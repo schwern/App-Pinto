@@ -61,7 +61,7 @@ __END__
 
 This command dumps all the archives in the repository and the complete
 revision history to a single file.  This file can then be loaded into
-another (empty) repository using the C<load|App::Pinto::Command::load>
+another (empty) repository using the L<load|App::Pinto::Command::load>
 command.
 
 =head1 COMMAND ARGUMENTS
