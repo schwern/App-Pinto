@@ -21,7 +21,7 @@ sub opt_spec {
     return (
         [ 'dryrun'      => 'Do not commit any changes'         ],
         [ 'message|m=s' => 'Message to describe the change'    ],
-        [ 'norecurse'   => 'Do not recursively pull prereqs'   ],
+        [ 'norecurse|n' => 'Do not recursively pull prereqs'   ],
         [ 'pin'         => 'Pin all the packages to the stack' ],
         [ 'stack|s=s'   => 'Put packages into this stack'      ],
     );
@@ -86,6 +86,8 @@ the repository.  Use this option to see how upgrades would potentially
 impact the stack.
 
 =item --norecurse
+
+=item -n
 
 Do not recursively pull any distributions required to satisfy
 prerequisites for the targets.

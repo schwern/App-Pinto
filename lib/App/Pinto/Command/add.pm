@@ -22,7 +22,7 @@ sub opt_spec {
         [ 'author=s'    => 'Your (alphanumeric) author ID'     ],
         [ 'dryrun'      => 'Do not commit any changes'         ],
         [ 'message|m=s' => 'Message to describe the change'    ],
-        [ 'norecurse'   => 'Do not recursively import prereqs' ],
+        [ 'norecurse|n' => 'Do not recursively pull prereqs'   ],
         [ 'pin'         => 'Pin packages to the stack'         ],
         [ 'stack|s=s'   => 'Put packages into this stack'      ],
     );
@@ -96,6 +96,8 @@ required whenever the C<--dryrun> option is set, or if the action did
 not yield any changes to the repository.
 
 =item --norecurse
+
+=item -n
 
 Do not recursively pull distributions required to satisfy the
 prerequisites of the added distributions.
