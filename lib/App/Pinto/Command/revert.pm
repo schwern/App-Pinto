@@ -2,7 +2,6 @@
 
 package App::Pinto::Command::revert;
 
-
 use strict;
 use warnings;
 
@@ -60,12 +59,14 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT revert [OPTIONS]
+  pinto --root=REPOSITORY_ROOT revert [STACK[@REVISION]] [OPTIONS]
 
 =head1 DESCRIPTION
 
-This command restores a stack to the state at a prior revision.  That state
-becomes the new head revision of the stack.
+!! THIS COMMAND IS EXPERIMENTAL !!
+
+This command restores a stack to the state at a prior revision.  That
+state becomes the new head revision of the stack.
 
 =head1 COMMAND ARGUMENTS
 
@@ -98,8 +99,12 @@ the following are all equivalent:
 
 =item -m TEXT
 
-Use TEXT as the revision history log message.  At the moment, this is
-optional but it will become mandatory in the future.
+Use TEXT as the revision history log message.  If you do not use
+C<--message> option, then you will be prompted to enter the message
+via your text editor.  Use the C<EDITOR> or C<VISUAL> environment
+variables to control which editor is used.  A log message is not
+required whenever the C<--dryrun> option is set, or if the action did
+not yield any changes to the repository.
 
 =item --revision=NUMBER
 

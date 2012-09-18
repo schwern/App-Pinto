@@ -1,6 +1,6 @@
-package App::Pinto::Command::log;
-
 # ABSTRACT: show the revision history of a stack
+
+package App::Pinto::Command::log;
 
 use strict;
 use warnings;
@@ -60,9 +60,11 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT log [OPTIONS]
+  pinto --root=REPOSITORY_ROOT log [STACK[@REVISION]] [OPTIONS]
 
 =head1 DESCRIPTION
+
+!! THIS COMMAND IS EXPERIMENTAL !!
 
 This command shows the revision history for the stack.  You can see
 the log messages as well as which packages were added or removed

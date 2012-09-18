@@ -77,8 +77,12 @@ or ';') will be ignored.
 
 =item -m TEXT
 
-Use TEXT as the revision history log message.  At the moment, this is
-optional but it will become mandatory in the future.
+Use TEXT as the revision history log message.  If you do not use
+C<--message> option, then you will be prompted to enter the message
+via your text editor.  Use the C<EDITOR> or C<VISUAL> environment
+variables to control which editor is used.  A log message is not
+required whenever the C<--dryrun> option is set, or if the action did
+not yield any changes to the repository.
 
 =item --stack=NAME
 
