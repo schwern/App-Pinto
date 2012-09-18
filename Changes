@@ -1,5 +1,23 @@
 {{$NEXT}}
 
+     Now requires Pinto-0.52 or newer, if using local repositories.
+     For remote repositories, App::Pinto should still work with
+     your current version of Pinto::Remote.  However, you'll need
+     to upgrade Pinto and Pinto::Server on the remote host to
+     use the new commands (listed below).
+
+     Added the 'revert' command, which resores the stack
+     to a revision of your choosing.  See POD for detais.
+
+     Added the 'log' command, which shows the changes that
+     have happened on a stack.
+
+     The --dryrun option is available (again) on all commands
+     that change the state of the repository.
+
+     All commands that affect the state of the repository
+     now require a commit message.
+
 0.047     2012-08-28 15:48:00 America/Los_Angeles
 
      The 'index' command is no longer supported.  With the latest
