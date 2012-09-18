@@ -21,9 +21,26 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'log_level=s' => 'Minimum logging level for the repository log file' ],
-        [ 'source=s@'   => 'URL of upstream repository (repeatable)'           ],
+        [ 'bare'          => 'Do not create any initial stack'         ],
+        [ 'description=s' => 'Description of the initial stack'        ],
+        [ 'log_level=s'   => 'Minimum logging level for the log file'  ],
+        [ 'source=s@'     => 'URL of upstream repository (repeatable)' ],
+        [ 'stack|s=s'     => 'Name of the initial stack'               ],
     );
+}
+
+#------------------------------------------------------------------------------
+
+sub validate_args {
+    my ($self, $opts, $args) = @_;
+
+    $self->usage_error('Arguments are not allowed')
+      if @{ $args };
+
+    $self->usage_error('Cannot use --bare with --stack or --description')
+      if $opts->{bare} and ($opts->{stack} or $opts->{description});
+
+    return 1;
 }
 
 #------------------------------------------------------------------------------
@@ -79,7 +96,17 @@ None.
 
 =over 4
 
-=item --source URL
+=item --bare
+
+Do not create an initial stack in the repository.  Use this option
+if you plan to load the repository from a dump file.
+
+=item --description=TEXT
+
+A brief description of the initial stack.  Defaults to "the initial
+stack".
+
+=item --source=URL
 
 The URL of a repository where foreign distributions will be pulled
 from.  This is usually the URL of a CPAN mirror, and it defaults to
@@ -90,6 +117,13 @@ You can specify multiple repository URLs by repeating the C<--source>
 option.  Repositories that appear earlier in the list have priority
 over those that appear later.  See L<Pinto::Manual> for more
 information about using multiple source repositories.
+
+=item --stack-NAME
+
+=item -s NAME
+
+The name of the inital stack.  Stack names must be alphanumeric and
+will be force to lowercase.  Defalts to 'init'.
 
 =back
 
