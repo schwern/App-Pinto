@@ -70,24 +70,25 @@ state becomes the new head revision of the stack.
 
 =head1 COMMAND ARGUMENTS
 
-As an alternative to the C<--stack> and C<--revision> switches, you
-also specify them as a single argument. So the following examples are
-equivalent:
+As an alternative to the C<--stack> and C<--revision> options, you
+can also specify them as a single argument. So the following examples
+are equivalent:
 
   pinto --root REPOSITORY_ROOT revert --stack=dev --revision=298
   pinto --root REPOSITORY_ROOT revert dev@298
 
-A C<stack@revision> argument will override anything specified with the
-C<--stack> or C<--revision> switches.
+A C<STACK@REVISION> argument will override anything specified with the
+C<--stack> or C<--revision> options.
 
-If neither the stack nor revision is specified using either the
-arguments or switches, then the last revision of the default stack
-will be reverted.  So if the default stack is called C<"dev"> then
-the following are all equivalent:
+If neither the stack nor revision is specified using neither arguments
+nor options, then the last revision of the default stack will be
+reverted.  And if NUMBER is negative, it means to revert than many
+revisions back from the current head.  So if the default stack is
+called C<dev> then all the following would be equivalent:
 
   pinto --root REPOSITORY_ROOT revert --stack=dev --revision=-1
   pinto --root REPOSITORY_ROOT revert dev@-1
-  pinto --root REPOSITORY_ROOT revert
+  pinto --root REPOSITORY_ROOT revert dev
   pinto --root REPOSITORY_ROOT revert @-1
   pinto --root REPOSITORY_ROOT revert
 
@@ -111,8 +112,8 @@ not yield any changes to the repository.
 =item -R NUMBER
 
 The number of the revision that the stack will be reverted to.  If
-NUMBER is negative, it means to revert than many revisions from the
-current head.
+NUMBER is negative, it means to revert than many revisions back from
+the current head.
 
 =item --stack NAME
 
