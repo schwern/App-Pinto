@@ -1,6 +1,6 @@
 package App::Pinto::Command::init;
 
-# ABSTRACT: create a new empty repository
+# ABSTRACT: create a new repository
 
 use strict;
 use warnings;
