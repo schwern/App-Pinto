@@ -1,6 +1,7 @@
 {{$NEXT}}
 
-     Revised documentation.
+     Revised documentation.  Needs Pinto-0.054 or newer to
+     match behavior as documented here.
 
 0.049     2012-09-19 22:04:59 America/Los_Angeles
 
