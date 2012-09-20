@@ -1,7 +1,9 @@
 {{$NEXT}}
 
-     Revised documentation.  Needs Pinto-0.054 or newer to
-     match behavior as documented here.
+     For the 'list' command, the magic all-stack name has been
+     changed from '@' to '%'.  This was done to distinguish it
+     from revisions, which look like 'stack@1234'.  Requires
+     Pinto-0.055 for compatibility.
 
 0.049     2012-09-19 22:04:59 America/Los_Angeles
 
