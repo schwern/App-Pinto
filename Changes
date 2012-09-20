@@ -1,5 +1,9 @@
 {{$NEXT}}
 
+     Added --dryrun option to committable commands.  This
+     was already supported by Pinto.  It just wasn't
+     offered here in the command line.
+
 0.048     2012-09-18 16:07:04 America/Los_Angeles
 
      Now requires Pinto-0.52 or newer, if using local repositories.
