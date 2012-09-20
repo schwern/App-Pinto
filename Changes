@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.050     2012-09-20 13:19:38 America/Los_Angeles
+
      For the 'list' command, the magic all-stack name has been
      changed from '@' to '%'.  This was done to distinguish it
      from revisions, which look like 'stack@1234'.  Requires
