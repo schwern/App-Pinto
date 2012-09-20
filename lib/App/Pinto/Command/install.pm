@@ -23,6 +23,7 @@ sub opt_spec {
         [ 'cpanm-options|o:s%'      => 'name=value pairs of cpanm options'            ],
         [ 'local-lib|l=s'           => 'install into a local lib directory'           ],
         [ 'local-lib-contained|L=s' => 'install into a contained local lib directory' ],
+        [ 'message|m=s'             => 'Message to describe the change'               ],
         [ 'pull'                    => 'pull missing prereqs onto the stack first'    ],
         [ 'stack|s=s'               => 'Use the index for this stack'                 ],
 
@@ -41,6 +42,12 @@ sub validate_args {
     my $local_lib_contained = delete $opts->{local_lib_contained};
     $opts->{cpanm_options}->{'local-lib-contained'} = $local_lib_contained
         if $local_lib_contained;
+
+    $self->usage_error('--message is only useful with --pull')
+        if $opts->{message} and not $opts->{pull};
+
+    $self->usage_error('--dryrun is only useful with --pull')
+        if $opts->{dryrun} and not $opts->{pull};
 
     return 1;
 }
@@ -77,7 +84,7 @@ mirror.
 If the C<--pull> option is given, all prerequisites
 (including the targets themselves) will be pulled onto the stack
 before attempting to install them.  If any prerequisite cannot be
-pulled because it does not exist or blocked by a pin, then the
+pulled because it does not exist or is blocked by a pin, then the
 installation will not proceed.
 
 =head1 COMMAND ARGUMENTS
@@ -112,6 +119,13 @@ the option name with a '-'.  You can pass any option you like, but the
 C<--mirror> and C<--mirror-only> options will always be set to point
 to the Pinto repository.
 
+=item --dryrun
+
+Go through all the motions, but do not actually commit any changes to
+the repository.  Use this option to see how the command would
+potentially impact the stack.  This only has effect when using the
+C<--pull> option.
+
 =item --local-lib DIRECTORY
 
 =item -l DIRECTORY
@@ -126,6 +140,18 @@ C<--cpanm-options local-lib=DIRECTORY> or C<-o l=DIRECTORY>.
 Shortcut for setting the C<--local-lib-contained> option on L<cpanm>.
 Same as C<--cpanm-options local-lib-containted=DIRECTORY> or C<-o
 L=DIRECTORY>.
+
+=item --message=TEXT
+
+=item -m TEXT
+
+Use TEXT as the revision history log message.  This is only relevant
+if you also set the C<--pull> option.  If you do not use C<--message>
+option, then you will be prompted to enter the message via your text
+editor.  Use the C<EDITOR> or C<VISUAL> environment variables to
+control which editor is used.  A log message is not required whenever
+the C<--dryrun> option is set, or if the action did not yield any
+changes to the repository.
 
 =item --pull
 

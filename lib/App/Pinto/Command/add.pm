@@ -81,7 +81,7 @@ username.
 =item --dryrun
 
 Go through all the motions, but do not actually commit any changes to
-the repository.  Use this option to see how operations would
+the repository.  Use this option to see how the command would
 potentially impact the stack.
 
 =item --message=TEXT

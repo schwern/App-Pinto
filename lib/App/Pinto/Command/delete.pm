@@ -52,9 +52,9 @@ __END__
 
 =head1 DESCRIPTION
 
-This command deletes a stack.  Any distributions that were registered
-on that stack will be permanently deleted, unless they are also
-registered on another stack.
+This command permanently deletes a stack.  Once a stack is deleted,
+there is no way to get it back.  However, any distributions that were
+registered on the stack will always remain in the repository.
 
 The stack that is currently marked as the default can never be
 deleted.  If you wish to delete it, you must first mark another stack
