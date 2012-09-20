@@ -165,7 +165,7 @@ name of whichever stack is currently marked as the default stack.  Use
 the L<stacks|App::Pinto::Command::stack> command to see the
 stacks in the repository.
 
-If the stack name is "@" then the contents of all stacks will be
+If the stack name is "%" then the contents of all stacks will be
 listed.  And unless an explicit C<--format> was given, the listing
 will include the name of the stack on each record.
 
