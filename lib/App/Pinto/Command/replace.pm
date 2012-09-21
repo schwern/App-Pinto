@@ -21,7 +21,6 @@ sub opt_spec {
     return (
         [ 'author=s'    => 'Your (alphanumeric) author ID'          ],
         [ 'dryrun'      => 'Do not commit any changes'              ],
-        [ 'force'       => 'Replace even if pinned (not supported)' ],
         [ 'message|m=s' => 'Message to describe the change'         ],
         [ 'norecurse|n' => 'Do not recursively pull prereqs'        ],
         [ 'pin'         => 'Pin packages to all affected stacks'    ],
@@ -97,16 +96,6 @@ current login username.
 Go through all the motions, but do not actually commit any changes to
 the repository.  Use this option to see how the command would
 potentially impact the stack.
-
-=item --force
-
-Replaces the target distribution even if its packages are pinned to a
-stack.  Those pins will be transfered to the packages in the
-replacement distribution as well.  NOTE: This option is not yet
-supported, so attempting to replace a distribution that has pinned
-packages will cause the command to abort.  Meanwhile, you can use the
-L<unpin|App::Pinto::Command::unpin> and
-L<pin|App::Pinto::Command::pin> commands to move the pins as needed.
 
 =item --message=TEXT
 
