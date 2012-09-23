@@ -32,6 +32,9 @@ sub opt_spec {
 sub validate_args {
     my ($self, $opts, $args) = @_;
 
+    $self->usage_error('Too many arguments')
+        if @{$args} > 2;
+
     $self->usage_error('Must specify ARCHIVE_FILE and TARGET')
         if @{$args} != 2;
 
