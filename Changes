@@ -1,37 +1,41 @@
 {{$NEXT}}
 
+     Added the 'replace' command, which substitutes one distribution
+     for another across all stacks (Contributed by renormalist).
+     You'll need to upgrade Pinto to use this command.
+
 0.050     2012-09-20 13:19:38 America/Los_Angeles
 
-     For the 'list' command, the magic all-stack name has been
-     changed from '@' to '%'.  This was done to distinguish it
-     from revisions, which look like 'stack@1234'.  Requires
-     Pinto-0.055 for compatibility.
+     For the 'list' command, the magic all-stack name has been changed
+     from '@' to '%'.  This was done to distinguish it from revisions,
+     which look like 'stack@1234'.  Requires Pinto-0.055 for
+     compatibility.
 
 0.049     2012-09-19 22:04:59 America/Los_Angeles
 
-     Added --dryrun option to committable commands.  This
-     was already supported by Pinto.  It just wasn't
-     offered here in the command line.
+     Added --dryrun option to committable commands.  This was already
+     supported by Pinto.  It just wasn't offered here in the command
+     line.
 
 0.048     2012-09-18 16:07:04 America/Los_Angeles
 
      Now requires Pinto-0.52 or newer, if using local repositories.
-     For remote repositories, App::Pinto should still work with
-     your current version of Pinto::Remote.  However, you'll need
-     to upgrade Pinto and Pinto::Server on the remote host to
-     use the new commands (listed below).
+     For remote repositories, App::Pinto should still work with your
+     current version of Pinto::Remote.  However, you'll need to
+     upgrade Pinto and Pinto::Server on the remote host to use the new
+     commands (listed below).
 
-     Added the 'revert' command, which resores the stack
-     to a revision of your choosing.  See POD for detais.
+     Added the 'revert' command, which resores the stack to a revision
+     of your choosing.  See POD for detais.
 
-     Added the 'log' command, which shows the changes that
-     have happened on a stack.
+     Added the 'log' command, which shows the changes that have
+     happened on a stack.
 
-     The --dryrun option is available (again) on all commands
-     that change the state of the repository.
+     The --dryrun option is available (again) on all commands that
+     change the state of the repository.
 
-     All commands that affect the state of the repository
-     now require a commit message.
+     All commands that affect the state of the repository now require
+     a commit message.
 
 0.047     2012-08-28 15:48:00 America/Los_Angeles
 
@@ -39,8 +43,8 @@
      versions of Pinto and Pinto::Server, this command is no longer
      useful.
 
-     The --dryrun option is only supported on the add, pull, and
-     merge commands.  It didn't make much sense on other commands.
+     The --dryrun option is only supported on the add, pull, and merge
+     commands.  It didn't make much sense on other commands.
 
 0.045     2012-08-16 11:47:51 America/Los_Angeles
      
