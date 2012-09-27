@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.051     2012-09-27 13:46:59 America/Los_Angeles
+
      Added the 'replace' command, which substitutes one distribution
      for another across all stacks (Contributed by renormalist).
      You'll need to upgrade Pinto to use this command.
