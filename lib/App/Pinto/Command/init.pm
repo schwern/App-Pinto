@@ -118,12 +118,13 @@ option.  Repositories that appear earlier in the list have priority
 over those that appear later.  See L<Pinto::Manual> for more
 information about using multiple source repositories.
 
-=item --stack-NAME
+=item --stack=NAME
 
 =item -s NAME
 
-The name of the inital stack.  Stack names must be alphanumeric and
-will be force to lowercase.  Defalts to 'init'.
+The name of the inital stack.  Stack names must be alphanumeric
+plus hyphens and undercores, and are not case sensitive.  Defalts
+to 'init'.
 
 =back
 

@@ -4,6 +4,10 @@
      to modify a package in the stack (by either adding, pinning,
      or unpinning it).  Requires Pinto-0.058 or later.
 
+     Stack names and property names are no longer forced to lower-case.
+     Instead, the case will be preserved but any lookups or comparisons
+     will not be case sensitive.
+
 0.051     2012-09-27 13:46:59 America/Los_Angeles
 
      Added the 'replace' command, which substitutes one distribution

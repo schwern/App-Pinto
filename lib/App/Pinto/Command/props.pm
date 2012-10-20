@@ -70,8 +70,9 @@ properties.
 
 The argument is the name of the stack you wish to see the properties
 for.  If you do not specify a stack, it defaults to whichever stack is
-marked as the default.  Stack names must be alphanumeric (including "-"
-or "_") and will be forced to lowercase.
+marked as the default.  Stack names must be alphanumeric plus hyphens
+and underscores, and are not case sensitive. 
+
 
 =head1 COMMAND OPTIONS
 

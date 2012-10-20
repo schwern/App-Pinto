@@ -71,8 +71,8 @@ stack's properties after it has been created.
 =head1 COMMAND ARGUMENTS
 
 The required argument is the name of the stack you wish to create.
-Stack names must be alphanumeric (including "-" or "_") and will be
-forced to lowercase.
+Stack names must be alphanumeric plus hyphens and underscores, and
+are not case sensitive.
 
 =head1 COMMAND OPTIONS
 

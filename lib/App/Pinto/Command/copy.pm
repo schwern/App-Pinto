@@ -76,8 +76,9 @@ properties after it has been created.
 =head1 COMMAND ARGUMENTS
 
 The two required arguments are the name of the source and target
-stacks.  Stack names must be alphanumeric (including "-" or "_") and
-will be forced to lowercase.
+stacks.  Stack names must be alphanumeric plus hyphens and underscores,
+and are not case-sensitive.
+
 
 =head1 COMMAND OPTIONS
 
