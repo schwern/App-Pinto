@@ -2,7 +2,7 @@
 
      Added the 'blame' command, which shows who was the last person
      to modify a package in the stack (by either adding, pinning,
-     or unpinning it).  Requires Pinto-0.058 or later.
+     or unpinning it).  Requires Pinto-0.059 or later.
 
      Stack names and property names are no longer forced to lower-case.
      Instead, the case will be preserved but any lookups or comparisons
