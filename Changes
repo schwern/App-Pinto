@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.052     2012-10-20 00:00:34 America/Los_Angeles
+
      Added the 'blame' command, which shows who was the last person
      to modify a package in the stack (by either adding, pinning,
      or unpinning it).  Requires Pinto-0.059 or later.
