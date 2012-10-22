@@ -79,7 +79,7 @@ are not case sensitive.
 
 =over 4
 
-==item --default
+=item --default
 
 Also mark the new stack as the default stack.
 
