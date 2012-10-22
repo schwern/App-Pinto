@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.053     2012-10-22 12:39:01 America/Los_Angeles
+
      The 'new' and 'copy' commands now have a '--default' option for
      setting the default stack at the same time.  This is most useful
      for setting the default stack after creating a new stack in a
