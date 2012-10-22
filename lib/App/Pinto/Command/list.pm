@@ -90,7 +90,8 @@ stack specified with the C<--stack> option.
 =item -A AUTHOR
 
 Limit the listing to records where the distribution author is AUTHOR.
-Note this is an exact match, not a pattern match.
+Note this is an exact match, not a pattern match.  However, it is
+not case sensitive.
 
 =item --distributions PATTERN
 
@@ -113,6 +114,7 @@ placeholders are:
   %v             Package version
   %y             Pin status:                     (+) = is pinned
   %a             Distribution author
+  %A             Canonical distribution author (i.e. uppercase)
   %f             Distribution archive filename
   %m             Distribution maturity:          (d) = developer, (r) = release
   %p             Distribution index path [1]
