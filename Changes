@@ -1,5 +1,12 @@
 {{$NEXT}}
 
+     Commands that support the --message option also now have a
+     --use-default-message (or -M) option, which causes Pinto
+     to use the default log message that it generates for each
+     command.  This saves you the trouble of having to save and
+     close the default message in your text editor.  Requires
+     Pinto-0.062 or later.
+ 
 0.053     2012-10-22 12:39:01 America/Los_Angeles
 
      The 'new' and 'copy' commands now have a '--default' option for
