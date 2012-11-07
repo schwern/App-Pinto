@@ -27,6 +27,7 @@ sub opt_spec {
         [ 'message|m=s'    => 'Message to describe the change'      ],
         [ 'revision|R=i'   => 'Revision number to revert to'        ],
         [ 'stack|s=s'      => 'Revert stack other than the default' ],
+        [ 'use-default-message|M' => 'Use the generated message'    ],
     );
 }
 
@@ -107,12 +108,13 @@ potentially impact the stack.
 
 =item -m TEXT
 
-Use TEXT as the revision history log message.  If you do not use
-C<--message> option, then you will be prompted to enter the message
-via your text editor.  Use the C<EDITOR> or C<VISUAL> environment
-variables to control which editor is used.  A log message is not
-required whenever the C<--dryrun> option is set, or if the action did
-not yield any changes to the repository.
+Use TEXT as the revision history log message.  If you do not use the
+C<--message> option or the C<--use-default-message> option, then you
+will be prompted to enter the message via your text editor.  Use the
+C<EDITOR> or C<VISUAL> environment variables to control which editor
+is used.  A log message is not required whenever the C<--dryrun>
+option is set, or if the action did not yield any changes to the
+repository.
 
 =item --revision=NUMBER
 
@@ -130,6 +132,15 @@ Reverts the stack with the given NAME.  Defaults to the name of
 whichever stack is currently marked as the default stack.  Use the
 L<stacks|App::Pinto::Command::stack> command to see the stacks in the
 repository.
+
+=item --use-default-message
+
+=item -M
+
+Use the default value for the revision history log message.  Pinto
+will generate a semi-informative log message just based on the command
+and its arguments.  If you set an explicit message with C<--message>,
+the C<--use-default-message> option will be silently ignored.
 
 =back
 
