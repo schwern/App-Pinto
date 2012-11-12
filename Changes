@@ -3,7 +3,8 @@
      New Commands:
 
      * The "rename" command allows you to change the name of an existing
-     stack.  Say 'pinto manual rename' for details.
+     stack.  Say 'pinto manual rename' for details. This requires Pinto-0.063
+     or newer.
 
      New Features:
 
