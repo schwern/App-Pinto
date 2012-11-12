@@ -2,18 +2,17 @@
 
      New Commands:
 
-     * The "rename" command allows you to change the name of an existing
-     stack.  Say 'pinto manual rename' for details. This requires Pinto-0.063
-     or newer.
+     * The "rename" command allows you to change the name of an
+     existing stack.  Say 'pinto manual rename' for details. This
+     requires Pinto-0.063 or later.
 
      New Features:
 
      * Commands that support the --message option also now have a
-     --use-default-message (or -M) option, which causes Pinto
-     to use the default log message that it generates for each
-     command.  This saves you the trouble of having to save and
-     close the default message in your text editor.  Requires
-     Pinto-0.062 or later.
+     --use-default-message (or -M) option, which causes Pinto to use
+     the default log message that it generates for each command.  This
+     saves you the trouble of having to save and close the default
+     message in your text editor.  Requires Pinto-0.062 or later.
  
 0.053     2012-10-22 12:39:01 America/Los_Angeles
 
