@@ -1,5 +1,21 @@
 {{$NEXT}}
 
+     New Commands:
+
+     * The "props" and "edit" command have been unified into a single
+     "config" command that both shows and displays configuration
+     properties.  To set the default stack, there is a new "default"
+     command.  If using a local repository, you'll need to upgrade
+     to Pinto-0.066 or newer.  If using a remote repository, you
+     shouldn't need to upgrade Pinto::Remote.
+
+     Interface Changes:
+
+     * Stack and repository configuration properties are once again
+     forced to lowercase.  After some debate, I decided that this
+     was just more user friendly.  However, stack names are still
+     case-preserving but case-insensitive.
+
 0.054     2012-11-12 13:22:33 America/Los_Angeles
 
      New Commands:
