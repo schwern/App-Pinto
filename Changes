@@ -9,6 +9,10 @@
      to Pinto-0.066 or newer.  If using a remote repository, you
      shouldn't need to upgrade Pinto::Remote.
 
+     * The "default" command now takes the place of the --default
+     option that existed on the (now defunct) "props" command.  Use
+     the "default" command to mark the default stack.
+
      Interface Changes:
 
      * Stack and repository configuration properties are once again
