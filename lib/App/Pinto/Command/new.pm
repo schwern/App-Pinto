@@ -21,8 +21,6 @@ sub opt_spec {
     return (
         [ 'default'         => 'Make the new stack the default stack' ],
         [ 'description|d=s' => 'Brief description of the stack'       ],
-        [ 'message|m=s'     => 'Message to describe the change'       ],
-        [ 'use-default-message|M' => 'Use the generated message'      ],
     );
 
 
@@ -90,25 +88,6 @@ Also mark the new stack as the default stack.
 
 Use TEXT for the description of the stack.  This is usually used to
 help explain the purpose of the stack.
-
-=item --message=TEXT
-
-=item -m TEXT
-
-Use TEXT as the revision history log message.  If you do not use the
-C<--message> option or the C<--use-default-message> option, then you
-will be prompted to enter the message via your text editor.  Use the
-C<EDITOR> or C<VISUAL> environment variables to control which editor
-is used.
-
-=item --use-default-message
-
-=item -M
-
-Use the default value for the revision history log message.  Pinto
-will generate a semi-informative log message just based on the command
-and its arguments.  If you set an explicit message with C<--message>,
-the C<--use-default-message> option will be silently ignored.
 
 =back
 

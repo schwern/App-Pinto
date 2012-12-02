@@ -48,7 +48,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT delete [OPTIONS] STACK
+  pinto --root=REPOSITORY_ROOT delete STACK
 
 =head1 DESCRIPTION
 
