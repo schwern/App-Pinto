@@ -40,7 +40,9 @@ sub validate_args {
 sub execute {
     my ($self, $opts, $args) = @_;
 
-    my $result = $self->pinto->run($self->action_name, stack => $args->[0]);
+    $opts->{stack} = $args->[0] if $args->[0];
+
+    my $result = $self->pinto->run($self->action_name, %{ $opts });
 
     return $result->exit_status;
 }
@@ -61,14 +63,13 @@ __END__
 
 This command marks the given C<STACK> as the default stack for the
 repository.  The existing default stack (if one exists) is thereby
-unmarked as the default.  The default stack is used by most L<pinto>
-commands where a stack is not explicitly specified either by option or
-argument.
+unmarked.  The default stack is used by most L<pinto> commands where a
+stack is not explicitly specified either by option or argument.
 
 If the C<--none> option is given instaed of a C<STACK> argument, then
-the default stack is unmarked as the default (if one exists).  If the
-repository has no default stack, then you will have to explicitly
-specified the stack as option or argument for most L<pinto> commands.
+the default stack is unmarked (if one exists).  If the repository has
+no default stack, then you will have to explicitly specified the stack
+as option or argument for most L<pinto> commands.
 
 Changing the default stack does not create an event in the revision
 history, so the L<revert|App::Pinto::Command::revert> command will not
