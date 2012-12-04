@@ -3,25 +3,33 @@
      New Commands:
 
      * The "props" and "edit" command have been unified into a single
-     "config" command that both shows and displays configuration
-     properties.  To set the default stack, there is a new "default"
-     command.  If using a local repository, you'll need to upgrade
-     to Pinto-0.066 or newer.  If using a remote repository, you
-     shouldn't need to upgrade Pinto::Remote.
+     "config" command that both shows and sets configuration
+     properties (like Git).  If using a local repository, you'll need
+     to upgrade to Pinto-0.066 or newer.  If using a remote
+     repository, you shouldn't need to upgrade Pinto::Remote.
 
      * The "default" command now takes the place of the --default
-     option that existed on the (now defunct) "props" command.  Use
-     the "default" command to mark the default stack.
+     option that existed on the (now defunct) "edit" command.  Use the
+     "default" command to mark the default stack.  You can also choose
+     to have no default stack in your repository, so that that every
+     command will need to specify an explicit stack argument or
+     option.
 
      Interface Changes:
 
+     * The --bare and --stack options on the "init" command are no
+     longer supported.  Instead, you can specify the initial stack
+     name as an argument.  If you do not specify the stack name, then
+     you get a bare repository.  You can also choose whether the
+     initial stack is marked as the default or not.
+
      * Stack and repository configuration properties are once again
      forced to lowercase.  After some debate, I decided that this
-     was just more user friendly.  However, stack names are still
+     was just more user-friendly.  However, stack names are still
      case-preserving but case-insensitive.
 
      * The "copy" command no longer requires a commit message because
-     the operation no loger creates an event in the revision history.
+     the operation no longer creates an event in the revision history.
 
 0.054     2012-11-12 13:22:33 America/Los_Angeles
 
