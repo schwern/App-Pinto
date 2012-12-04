@@ -20,6 +20,9 @@
      was just more user friendly.  However, stack names are still
      case-preserving but case-insensitive.
 
+     * The "copy" command no longer requires a commit message because
+     the operation no loger creates an event in the revision history.
+
 0.054     2012-11-12 13:22:33 America/Los_Angeles
 
      New Commands:
