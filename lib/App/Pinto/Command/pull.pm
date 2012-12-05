@@ -47,7 +47,6 @@ __END__
 =head1 SYNOPSIS
 
   pinto --root=REPOSITORY_ROOT pull [OPTIONS] TARGET ...
-  pinto --root=REPOSITORY_ROOT pull [OPTIONS] < LIST_OF_TARGETS
 
 =head1 DESCRIPTION
 
