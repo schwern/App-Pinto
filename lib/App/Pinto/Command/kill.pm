@@ -1,6 +1,6 @@
 # ABSTRACT: delete a stack
 
-package App::Pinto::Command::delete;
+package App::Pinto::Command::kill;
 
 use strict;
 use warnings;
@@ -15,7 +15,7 @@ use base 'App::Pinto::Command';
 
 #------------------------------------------------------------------------------
 
-sub command_names { return qw(delete del rm) }
+sub command_names { return qw(kill) }
 
 #------------------------------------------------------------------------------
 
@@ -48,25 +48,20 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT delete STACK
+  pinto --root=REPOSITORY_ROOT kill STACK
 
 =head1 DESCRIPTION
 
-This command permanently deletes a stack.  Once a stack is deleted,
-there is no way to get it back.  However, any distributions that were
-registered on the stack will always remain in the repository.
-
-The stack that is currently marked as the default can never be
-deleted.  If you wish to delete it, you must first mark another stack
-as the default. Use the L<edit|App::Pinto::Command::edit> command
-to control which stack is the default.
+This command permanently deletes a stack and its entire revision
+history.  Once a stack is killed, there is no way to get it back.
+However, any distributions that were registered on the stack will
+still remain in the repository.
 
 =head1 COMMAND ARGUMENTS
 
 The required argument is the name of the stack you wish to delete.
 Stack names must be alphanumeric plus hyphens and undersocres, and
 are not case-sensitive.
-
 
 =head1 COMMAND OPTIONS
 
