@@ -5,6 +5,8 @@ package App::Pinto::Command::stacks;
 use strict;
 use warnings;
 
+use Pinto::Util qw(interpolate);
+
 #-----------------------------------------------------------------------------
 
 use base 'App::Pinto::Command';
@@ -31,8 +33,8 @@ sub validate_args {
     $self->usage_error('No arguments are allowed')
         if @{ $args };
 
-    $opts->{format} = eval qq{"$opts->{format}"} ## no critic qw(StringyEval)
-        if $opts->{format};
+    $opts->{format} = interpolate( $opts->{format} )
+        if exists $opts->{format};
 
     return 1;
 }

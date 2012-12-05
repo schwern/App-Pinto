@@ -35,7 +35,7 @@ sub validate_args {
         if @{$args} > 1;
 
     $opts->{format} = interpolate( $opts->{format} )
-        if $opts->{format};
+        if exists $opts->{format};
 
     return 1;
 }
