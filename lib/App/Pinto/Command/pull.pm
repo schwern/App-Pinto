@@ -22,7 +22,7 @@ sub opt_spec {
         [ 'dryrun'      => 'Do not commit any changes'           ],
         [ 'message|m=s' => 'Message to describe the change'      ],
         [ 'norecurse|n' => 'Do not recursively pull prereqs'     ],
-        [ 'pin'         => 'Pin all the packages to the stack'   ],
+        [ 'pin'         => 'Pin the packages to the stack'       ],
         [ 'stack|s=s'   => 'Put packages into this stack'        ],
         [ 'use-default-message|M' => 'Use the generated message' ],
     );
