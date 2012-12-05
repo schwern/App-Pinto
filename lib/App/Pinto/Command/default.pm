@@ -56,8 +56,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT default STACK
-  pinto --root=REPOSITORY_ROOT default --none
+  pinto --root=REPOSITORY_ROOT default [OPTIONS] [STACK]
 
 =head1 DESCRIPTION
 

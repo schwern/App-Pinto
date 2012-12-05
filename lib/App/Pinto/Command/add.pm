@@ -46,7 +46,6 @@ __END__
 =head1 SYNOPSIS
 
   pinto --root=REPOSITORY_ROOT add [OPTIONS] ARCHIVE_FILE ...
-  pinto --root=REPOSITORY_ROOT add [OPTIONS] < LIST_OF_ARCHIVE_FILES
 
 =head1 DESCRIPTION
 
