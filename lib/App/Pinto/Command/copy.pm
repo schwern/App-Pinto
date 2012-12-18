@@ -23,8 +23,9 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'default'         => 'Make the new stack the default stack' ],
-        [ 'description|d=s' => 'Brief description of the stack'       ],
+        [ 'default'         => 'Make the new stack the default stack'  ],
+        [ 'description|d=s' => 'Brief description of the stack'        ],
+        [ 'lock'            => 'Lock the new stack to prevent changes' ],
     );
 
 
@@ -94,6 +95,13 @@ Also mark the new stack as the default stack.
 
 Use TEXT for the description of the stack.  This is usually used to
 help explain the purpose of the stack.
+
+=item --lock
+
+Also lock the new stack to prevent future changes.  This is useful for
+creating a read-only "tag" of a stack.  You can always use the
+L<lock|App::Pinto::Command::lock> or
+L<unlock|App::Pinto::Command::unlock> commands at a later time.
 
 =back
 
