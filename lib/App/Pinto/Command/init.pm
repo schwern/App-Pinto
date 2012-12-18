@@ -50,9 +50,6 @@ sub validate_args {
 sub execute {
     my ($self, $opts, $args) = @_;
 
-    Class::Load::try_load_class('Pinto::Initializer')
-        or die "Must install Pinto to create new repositories\n";
-
     my $global_opts = $self->app->global_options;
 
     $global_opts->{root} ||= $ENV{PINTO_REPOSITORY_ROOT}
@@ -67,6 +64,9 @@ sub execute {
 
     # Stuff the stack argument into the options hash (if it exists)
     $opts->{stack} = $args->[0] if $args->[0];
+
+    Class::Load::try_load_class('Pinto::Initializer')
+        or die "Must install Pinto to create new repositories\n";
 
     my $initializer = Pinto::Initializer->new( %{ $global_opts } );
     $initializer->init( %{$opts} );
