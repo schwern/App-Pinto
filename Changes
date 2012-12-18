@@ -1,19 +1,63 @@
 {{$NEXT}}
 
+     IMPORTANT:
+
+     This release requires a new version of Pinto (either locally or
+     on the remote server) which is not compatible with repositories
+     that were created with older versions.  If you need have an older
+     repository, please contact thaljef@cpan.org to discuss a
+     migration plan.
+
+     Also, several commands have been added and/or renamed.  I strongly
+     suggest that you remove your current installation of App::Pinto
+     and Pinto before installing.  This will remove old commands that
+     are not supported any more.
+ 
      New Commands:
 
-     * The "props" and "edit" command have been unified into a single
+     * The "props" and "edit" command have been unified into a new
      "config" command that both shows and sets configuration
-     properties (like Git).  If using a local repository, you'll need
-     to upgrade to Pinto-0.066 or newer.  If using a remote
-     repository, you shouldn't need to upgrade Pinto::Remote.
+     properties (like Git).
 
-     * The "default" command now takes the place of the --default
+     * The new "default" command now takes the place of the --default
      option that existed on the (now defunct) "edit" command.  Use the
      "default" command to mark the default stack.  You can also choose
      to have no default stack in your repository, so that that every
-     command will need to specify an explicit stack argument or
+     command will need to specify an explicit stack as an argument or
      option.
+
+     * The new "kill" command takes the place of the "delete" command,
+     which has been repurposed (see below).  The command also accepts
+     a --force option which kills the stack even if it is locked.
+
+     * The "delete" command has been repurposed to permanently remove
+     an archive (and all of it's history) from the repository.  This
+     command is highly experimental.  Be sure to read the caveats in
+     the manual for this command.
+
+     * The new "lock" command locks a stack so that its packages
+     cannot be changed by future commands.  This is useful for
+     creating a read-only "tag" of a stack.
+
+     * The new "unlock" command unlocks a stack so that you can
+     modify its packages.
+
+     * The new "migrate" command migrates existing repositories to be
+     compatible with the current version of Pinto.  This will only
+     work for repositories that were created with THIS version of
+     Pinto or later.  Contact thaljef@cpan.org if you need to migrate
+     an older repository.
+
+     * The new "reindex" command reregisters the packages within an
+     existing archive on a stack.  The archive must already be in the
+     repository.  At present, it does not recurse into dependencies,
+     but it might in the future.
+
+     * The new "pop" command unregisters an archive from a stack, so
+     that its packages will no longer appear in the index but the
+     archive still remains in the repository.  The --force option
+     will permit you to unregister packages even if they are pinned.
+     
 
      Interface Changes:
 
