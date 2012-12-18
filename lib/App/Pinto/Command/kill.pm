@@ -1,4 +1,4 @@
-# ABSTRACT: delete a stack
+# ABSTRACT: permanently delete a stack
 
 package App::Pinto::Command::kill;
 
