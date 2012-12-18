@@ -19,6 +19,16 @@ sub command_names { return qw(kill) }
 
 #------------------------------------------------------------------------------
 
+sub opt_spec {
+    my ($self, $app) = @_;
+
+    return (
+        [ 'force'  => 'Kill even if stack is locked'  ],
+    );
+}
+
+#------------------------------------------------------------------------------
+
 sub validate_args {
     my ($self, $opts, $args) = @_;
 
@@ -48,7 +58,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT kill STACK
+  pinto --root=REPOSITORY_ROOT kill [OPTIONS] STACK
 
 =head1 DESCRIPTION
 
@@ -65,7 +75,15 @@ are not case-sensitive.
 
 =head1 COMMAND OPTIONS
 
-None.
+=over 4
+
+=item --force
+
+Kill the stack even if it is currently locked.  Normally, locked
+stacks cannot be deleted.  Take care when deleting a locked stack --
+it usually means that the stack is important to someone.
+
+=back
 
 =cut
 
