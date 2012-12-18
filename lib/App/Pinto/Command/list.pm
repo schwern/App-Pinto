@@ -166,7 +166,7 @@ Limit the listing to records for packages that are pinned.
 
 List the contents of the stack with the given NAME.  Defaults to the
 name of whichever stack is currently marked as the default stack.  Use
-the L<stacks|App::Pinto::Command::stack> command to see the
+the L<stacks|App::Pinto::Command::stacks> command to see the
 stacks in the repository.
 
 If the stack name is "%" then the contents of all stacks will be
