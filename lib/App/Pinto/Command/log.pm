@@ -1,4 +1,4 @@
-# ABSTRACT: show the revision history of a stack
+# ABSTRACT: show the commit logs of a stack
 
 package App::Pinto::Command::log;
 
@@ -23,7 +23,6 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'detailed|d'        => 'Show detailed history'                         ],
         [ 'revision|R=i'      => 'Only show selected revision'                   ],
         [ 'stack|s=s'         => 'Show history for stack other than the default' ],
     );
@@ -66,9 +65,9 @@ __END__
 
 !! THIS COMMAND IS EXPERIMENTAL !!
 
-This command shows the revision history for the stack.  You can see
-the log messages as well as which packages were added or removed
-in each revision.
+This command shows the commit log for the stack.  To see the precise
+changes in any particular commit, use the L<App::Pinto::Command::show>
+command.
 
 =head1 COMMAND ARGUMENTS
 
@@ -94,13 +93,6 @@ the following are all equivalent:
 =head1 COMMAND OPTIONS
 
 =over 4
-
-=item --detailed
-
-=item -d
-
-Show detailed history, including which packages were added and removed
-in the revision.
 
 =item --revision=NUMBER
 
