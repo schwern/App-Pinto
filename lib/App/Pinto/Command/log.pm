@@ -100,7 +100,8 @@ the following are all equivalent:
 
 Show only the commit with the given COMMIT ID.  Otherwise, the entire
 history of the stack is shown in reverse-chronological order.  The
-COMMIT ID may be abbreviated to uniqueness.
+COMMIT ID may be abbreviated to uniqueness, but can be no less than
+four characters.
 
 =item --stack NAME
 
