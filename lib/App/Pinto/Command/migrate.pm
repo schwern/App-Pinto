@@ -39,10 +39,8 @@ sub execute {
     $global_opts->{root} =~ m{^https?://}x
         && die "Cannot migrate remote repositories\n";
 
-    Class::Load::try_load_class('Pinto::Migrator')
-        or die "Must install Pinto to migrate repositories\n";
-
-    my $migrator = Pinto::Migrator->new( %{ $global_opts } );
+    my $class = $self->load_migrator;
+    my $migrator = $class->new( %{ $global_opts } );
     $migrator->migrate;
 
     return 0;
@@ -50,6 +48,20 @@ sub execute {
 
 #------------------------------------------------------------------------------
 
+sub load_migrator {
+
+    my $class = 'Pinto::Migrator';
+
+    my ($ok, $error) = Class::Load::try_load_class($class);
+    return $class if $ok;
+
+    my $msg = $error =~ m/Can't locate .* in \@INC/
+                     ? "Must install Pinto to migrate repositories\n"
+                     : $error;
+    die $msg;
+}
+
+#------------------------------------------------------------------------------
 1;
 
 __END__

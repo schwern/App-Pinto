@@ -39,9 +39,6 @@ sub validate_args {
     $self->usage_error('Cannot use --description without specifying a stack')
       if $opts->{description} and not @{ $args };
 
-    $self->usage_error('Cannot use --nodefault without specifying a stack')
-      if $opts->{nodefault} and not @{ $args };
-
     return 1;
 }
 
@@ -65,12 +62,25 @@ sub execute {
     # Stuff the stack argument into the options hash (if it exists)
     $opts->{stack} = $args->[0] if $args->[0];
 
-    Class::Load::try_load_class('Pinto::Initializer')
-        or die "Must install Pinto to create new repositories\n";
-
-    my $initializer = Pinto::Initializer->new( %{ $global_opts } );
+    my $class = $self->load_initializer;
+    my $initializer = $class->new( %{ $global_opts } );
     $initializer->init( %{$opts} );
     return 0;
+}
+
+#------------------------------------------------------------------------------
+
+sub load_initializer {
+
+    my $class = 'Pinto::Initializer';
+
+    my ($ok, $error) = Class::Load::try_load_class($class);
+    return $class if $ok;
+
+    my $msg = $error =~ m/Can't locate .* in \@INC/
+                     ? "Must install Pinto to create new repositories\n"
+                     : $error;
+    die $msg;
 }
 
 #------------------------------------------------------------------------------
