@@ -23,8 +23,8 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'revision|R=i'      => 'Only show selected revision'                   ],
-        [ 'stack|s=s'         => 'Show history for stack other than the default' ],
+        [ 'commit|c=s'  => 'Only show selected commit'                     ],
+        [ 'stack|s=s'   => 'Show history for stack other than the default' ],
     );
 }
 
@@ -39,13 +39,13 @@ sub validate_args {
 
     if ($args->[0]) {
 
-        my ($stack, $revision) = split /@/, $args->[0], 2;
+        my ($stack, $commit) = split /@/, $args->[0], 2;
 
         # split returns '' for empty fields.  But to make Moose
         # happy, they need to be undef if they really don't exist.
 
-        $opts->{stack}    = $stack    if length $stack;
-        $opts->{revision} = $revision if length $revision;
+        $opts->{stack}  = $stack  if length $stack;
+        $opts->{commit} = $commit if length $commit;
     }
 
     return 1;
@@ -59,7 +59,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT log [STACK[@REVISION]] [OPTIONS]
+  pinto --root=REPOSITORY_ROOT log [STACK[@COMMIT]] [OPTIONS]
 
 =head1 DESCRIPTION
 
@@ -75,14 +75,14 @@ As an alternative to the C<--stack> and C<--revision> options, you can
 also specify them stack as a single argument. So the following
 examples are equivalent:
 
-  pinto --root REPOSITORY_ROOT log --stack=dev --revision=289
-  pinto --root REPOSITORY_ROOT log dev@289
+  pinto --root REPOSITORY_ROOT log --stack=dev --revision=e45fa21
+  pinto --root REPOSITORY_ROOT log dev@e45fa21
 
-A C<stack@revision> argument will override anything specified with the
-C<--stack> or C<--revision> switches.
+A C<stack@commit> argument will override anything specified with the
+C<--stack> or C<--commit> options.
 
-If neither the stack nor revision is specified using either the
-arguments or switches, then all revisions of the default stack
+If neither the stack nor commit is specified using either the
+arguments or options, then all commits of the default stack
 will be shown.  So if the default stack is called C<"dev"> then
 the following are all equivalent:
 
@@ -94,22 +94,22 @@ the following are all equivalent:
 
 =over 4
 
-=item --revision=NUMBER
+=item --commit=ID
 
-=item -R NUMBER
+=item -c ID
 
-Show only the history for the revision with the given NUMBER.
-Otherwise, the entire history of the stack is shown in
-reverse-chronological order.
+Show only the commit with the given ID.  Otherwise, the entire history
+of the stack is shown in reverse-chronological order.  The ID may be
+abbreviated to unqiueness.
 
 =item --stack NAME
 
 =item -s NAME
 
-Show the revision history of the stack with the given NAME.  Defaults
-to the name of whichever stack is currently marked as the default
-stack.  Use the L<stacks|App::Pinto::Command::stack> command to see
-the stacks in the repository.
+Show the history of the stack with the given NAME.  Defaults to the
+name of whichever stack is currently marked as the default stack.  Use
+the L<stacks|App::Pinto::Command::stack> command to see the stacks in
+the repository.
 
 =back
 
