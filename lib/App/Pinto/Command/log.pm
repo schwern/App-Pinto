@@ -75,7 +75,7 @@ As an alternative to the C<--stack> and C<--revision> options, you can
 also specify them stack as a single argument. So the following
 examples are equivalent:
 
-  pinto --root REPOSITORY_ROOT log --stack=dev --revision=e45fa21
+  pinto --root REPOSITORY_ROOT log --stack=dev --commit=e45fa21
   pinto --root REPOSITORY_ROOT log dev@e45fa21
 
 A C<stack@commit> argument will override anything specified with the
@@ -94,13 +94,13 @@ the following are all equivalent:
 
 =over 4
 
-=item --commit=ID
+=item --commit=COMMIT
 
-=item -c ID
+=item -c COMMIT
 
-Show only the commit with the given ID.  Otherwise, the entire history
-of the stack is shown in reverse-chronological order.  The ID may be
-abbreviated to unqiueness.
+Show only the commit with the given COMMIT ID.  Otherwise, the entire
+history of the stack is shown in reverse-chronological order.  The
+COMMIT ID may be abbreviated to uniqueness.
 
 =item --stack NAME
 
