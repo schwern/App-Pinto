@@ -21,6 +21,7 @@ sub opt_spec {
     return (
         [ 'dryrun'      => 'Do not commit any changes'           ],
         [ 'message|m=s' => 'Message to describe the change'      ],
+        [ 'nofail'      => 'Do not fail when there is an error'  ],
         [ 'norecurse|n' => 'Do not recursively pull prereqs'     ],
         [ 'pin'         => 'Pin the packages to the stack'       ],
         [ 'stack|s=s'   => 'Put packages into this stack'        ],
@@ -85,6 +86,10 @@ Go through all the motions, but do not actually commit any changes to
 the repository.  Use this option to see how upgrades would potentially
 impact the stack.
 
+=item --nofail
+
+Behavior is not yet specified.  Do not use.
+
 =item --norecurse
 
 =item -n
@@ -113,6 +118,8 @@ them separately with the L<pin|App::Pinto::Command::pin> command if
 you so desire.
 
 =item --stack=NAME
+
+=itme -s NAME
 
 Puts all the packages onto the stack with the given NAME.  Defaults
 to the name of whichever stack is currently marked as the default

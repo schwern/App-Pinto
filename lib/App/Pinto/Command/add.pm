@@ -22,6 +22,7 @@ sub opt_spec {
         [ 'author=s'    => 'Your (alphanumeric) author ID'       ],
         [ 'dryrun'      => 'Do not commit any changes'           ],
         [ 'message|m=s' => 'Message to describe the change'      ],
+        [ 'nofail'      => 'Do not fail when there is an error'  ],
         [ 'norecurse|n' => 'Do not recursively pull prereqs'     ],
         [ 'pin'         => 'Pin packages to the stack'           ],
         [ 'stack|s=s'   => 'Put packages into this stack'        ],
@@ -96,6 +97,10 @@ is used.  A log message is not required whenever the C<--dryrun>
 option is set, or if the action did not yield any changes to the
 repository.
 
+=item --nofail
+
+Behavior is not yet specified.  Do not use.
+
 =item --norecurse
 
 =item -n
@@ -112,6 +117,8 @@ may pin them separately with the
 L<pin|App::Pinto::Command::pin> command, if you so desire.
 
 =item --stack NAME
+
+=item -s NAME
 
 Puts all the packages onto the stack with the given NAME.  Defaults
 to the name of whichever stack is currently marked as the default
