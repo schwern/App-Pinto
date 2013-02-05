@@ -81,9 +81,9 @@ examples are equivalent:
 A C<stack@commit> argument will override anything specified with the
 C<--stack> or C<--commit> options.
 
-If neither the stack nor commit is specified using either the
-arguments or options, then all commits of the default stack
-will be shown.  So if the default stack is called C<"dev"> then
+If neither the stack nor commit is specified using neither the
+arguments nor options, then all commits of the default stack
+will be shown.  So if the default stack is called C<dev> then
 the following are all equivalent:
 
   pinto --root REPOSITORY_ROOT log --stack=dev
