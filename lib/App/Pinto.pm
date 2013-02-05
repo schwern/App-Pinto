@@ -26,7 +26,7 @@ sub global_opt_spec {
 
     return (
         [ 'root|r=s'     => 'Path to your repository root directory'  ],
-        [ 'nocolor'      => 'Do not colorize diagnostic messages'     ],
+        [ 'nocolor'      => 'Do not colorize any output'              ],
         [ 'password|p=s' => 'Password for server authentication'      ],
         [ 'quiet|q'      => 'Only report fatal errors'                ],
         [ 'username|u=s' => 'Username for server authentication'      ],
