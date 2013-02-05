@@ -1,4 +1,4 @@
-# ABSTRACT: restore stack to a prior revision
+# ABSTRACT: restore stack to a prior commit
 
 package App::Pinto::Command::revert;
 
@@ -25,7 +25,7 @@ sub opt_spec {
     return (
         [ 'dryrun'         => 'Do not commit any changes'           ],
         [ 'message|m=s'    => 'Message to describe the change'      ],
-        [ 'revision|R=i'   => 'Revision number to revert to'        ],
+        [ 'commit|c=i'     => 'Commit to revert to'                 ],
         [ 'stack|s=s'      => 'Revert stack other than the default' ],
         [ 'use-default-message|M' => 'Use the generated message'    ],
     );
@@ -41,13 +41,13 @@ sub validate_args {
 
    if ($args->[0]) {
 
-        my ($stack, $revision) = split /@/, $args->[0], 2;
+        my ($stack, $commit) = split /@/, $args->[0], 2;
 
         # split returns '' for empty fields.  But to make Moose
         # happy, they need to be undef if they really don't exist.
 
-        $opts->{stack}    = $stack    if length $stack;
-        $opts->{revision} = $revision if length $revision;
+        $opts->{stack}  = $stack  if length $stack;
+        $opts->{commit} = $commit if length $commit;
     }
 
     return 1;
@@ -61,37 +61,35 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT revert [STACK[@REVISION]] [OPTIONS]
+  pinto --root=REPOSITORY_ROOT revert [STACK[@COMMIT]] [OPTIONS]
 
 =head1 DESCRIPTION
 
 !! THIS COMMAND IS EXPERIMENTAL !!
 
-This command restores a stack to the state at a prior revision.  That
-state becomes the new head revision of the stack.
+This command restores a stack to a prior commit by patching the head
+of the stack so it match the state at the prior commit.
 
 =head1 COMMAND ARGUMENTS
 
-As an alternative to the C<--stack> and C<--revision> options, you
+As an alternative to the C<--stack> and C<--commit> options, you
 can also specify them as a single argument. So the following examples
 are equivalent:
 
-  pinto --root REPOSITORY_ROOT revert --stack=dev --revision=298
-  pinto --root REPOSITORY_ROOT revert dev@298
+  pinto --root REPOSITORY_ROOT revert --stack=dev --commit=9ef38
+  pinto --root REPOSITORY_ROOT revert dev@9ef38
 
-A C<STACK@REVISION> argument will override anything specified with the
-C<--stack> or C<--revision> options.
+A C<STACK@COMMIT> argument will silently override anything specified
+with the C<--stack> or C<--commit> options.
 
-If neither the stack nor revision is specified using neither arguments
-nor options, then the last revision of the default stack will be
-reverted.  And if NUMBER is negative, it means to revert than many
-revisions back from the current head.  So if the default stack is
-called C<dev> then all the following would be equivalent:
+If neither the stack nor commit is specified using neither arguments
+nor options, then the last commit of the default stack will be
+reverted.  So if the default stack is called C<dev> and the previous
+commit was C<9ef38>, then all the following would be equivalent:
 
-  pinto --root REPOSITORY_ROOT revert --stack=dev --revision=-1
-  pinto --root REPOSITORY_ROOT revert dev@-1
+  pinto --root REPOSITORY_ROOT revert --stack=dev --commit=9ef38
+  pinto --root REPOSITORY_ROOT revert dev@9ef38
   pinto --root REPOSITORY_ROOT revert dev
-  pinto --root REPOSITORY_ROOT revert @-1
   pinto --root REPOSITORY_ROOT revert
 
 =head1 COMMAND OPTIONS
@@ -116,13 +114,13 @@ is used.  A log message is not required whenever the C<--dryrun>
 option is set, or if the action did not yield any changes to the
 repository.
 
-=item --revision=NUMBER
+=item --commit=COMMIT
 
-=item -R NUMBER
+=item -c COMMIT
 
-The number of the revision that the stack will be reverted to.  If
-NUMBER is negative, it means to revert than many revisions back from
-the current head.
+The ID of the commit that the stack will be reverted to.   The
+COMMIT ID may be abbreviated to uniqueness, but can be no less than
+four characters.
 
 =item --stack NAME
 
