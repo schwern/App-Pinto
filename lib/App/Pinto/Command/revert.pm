@@ -23,9 +23,9 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
+        [ 'commit|c=s'     => 'Commit to revert to'                 ],
         [ 'dryrun'         => 'Do not commit any changes'           ],
         [ 'message|m=s'    => 'Message to describe the change'      ],
-        [ 'commit|c=i'     => 'Commit to revert to'                 ],
         [ 'stack|s=s'      => 'Revert stack other than the default' ],
         [ 'use-default-message|M' => 'Use the generated message'    ],
     );
@@ -96,6 +96,13 @@ commit was C<9ef38>, then all the following would be equivalent:
 
 =over 4
 
+=item --commit=ID
+
+=item -c ID
+
+The ID commit that the stack will be reverted to.  The ID may be
+abbreviated to uniqueness, but can be no less than four characters.
+
 =item --dryrun
 
 Go through all the motions, but do not actually commit any changes to
@@ -113,14 +120,6 @@ C<EDITOR> or C<VISUAL> environment variables to control which editor
 is used.  A log message is not required whenever the C<--dryrun>
 option is set, or if the action did not yield any changes to the
 repository.
-
-=item --commit=COMMIT
-
-=item -c COMMIT
-
-The ID of the commit that the stack will be reverted to.   The
-COMMIT ID may be abbreviated to uniqueness, but can be no less than
-four characters.
 
 =item --stack NAME
 
