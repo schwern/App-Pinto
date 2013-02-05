@@ -23,7 +23,7 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'stack|s=s'   => 'Show history for stack other than the default' ],
+        [ 'stack|s=s' => 'Show history for stack other than the default' ],
     );
 }
 
@@ -33,6 +33,8 @@ sub validate_args {
     my ($self, $opts, $args) = @_;
 
     $self->usage_error('Multiple arguments are not allowed') if @{ $args } > 1;
+
+    $opts->{nocolor} = 1 if $self->global_options->{nocolor};
 
     $opts->{stack} = $args->[0] if $args->[0];
 
