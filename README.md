@@ -4,7 +4,7 @@ App::Pinto - Command-line driver for Pinto
 
 # VERSION
 
-version 0.055
+version 0.055\_01
 
 # DESCRIPTION
 
