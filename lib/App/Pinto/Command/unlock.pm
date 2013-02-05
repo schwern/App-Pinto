@@ -1,4 +1,4 @@
-# ABSTRACT: allow a stack to change
+# ABSTRACT: mark a stack as read-write
 
 package App::Pinto::Command::unlock;
 

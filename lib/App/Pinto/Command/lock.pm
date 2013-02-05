@@ -1,4 +1,4 @@
-# ABSTRACT: block all changes to a stack
+# ABSTRACT: mark a stack as read-only
 
 package App::Pinto::Command::lock;
 

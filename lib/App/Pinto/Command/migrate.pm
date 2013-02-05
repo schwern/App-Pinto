@@ -1,4 +1,4 @@
-# ABSTRACT: migrate existing repository to a new version
+# ABSTRACT: migrate repository to a new version
 
 package App::Pinto::Command::migrate;
 
