@@ -58,10 +58,13 @@ on a stack, use the L<reindex|App::Pinto::Command::reindex> command.
 
 =head1 COMMAND ARGUMENTS
 
-Arguments are the archives containing the packages you want to pop.
-Archives are specified as C<AUTHOR/ARCHIVE_NAME>.  For example:
+Arguments are the targets that you want to pop  Targets can be
+specified as packages (with or without a minimum version number) or
+a distributions.  For example:
 
-  SHAKESPEARE/King-Lear-1.2.tar.gz
+  Foo::Bar                                 # Pops any version of Foo::Bar
+  Foo::Bar~1.2                             # Pops Foo::Bar 1.2 or higher
+  SHAKESPEARE/King-Lear-1.2.tar.gz         # Pops a specific distribuion
 
 You can also pipe arguments to this command over STDIN.  In that case,
 blank lines and lines that look like comments (i.e. starting with "#"
