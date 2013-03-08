@@ -34,6 +34,10 @@ Normally, L<Pinto> tries to clean up those orphaned archives.  But in
 some cases it might not.  Running this command will force their
 removal.
 
+This command also runs some optimizations on the database.  So if
+your repository seems to be running slowly, try running this command
+to see if performance improves.
+
 =head1 COMMAND ARGUMENTS
 
 None.
