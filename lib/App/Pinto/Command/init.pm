@@ -23,6 +23,7 @@ sub opt_spec {
     return (
         [ 'description=s' => 'Description of the initial stack'             ],
         [ 'nodefault'     => 'Do not mark the initial stack as the default' ],
+        [ 'nohistory'     => 'Do not record stack history'                  ],
         [ 'log-level=s'   => 'Minimum logging level for the log file'       ],
         [ 'source=s@'     => 'URL of upstream repository (repeatable)'      ],
     );
@@ -149,6 +150,17 @@ If you choose not to mark the default stack, then you'll be required
 to specify the C<--stack> option for most commands.  You can always
 mark (or ummark) the default stack by at any time by using the
 L<default|App::Pinto::Command::default> command.
+
+
+=item --nohistory
+
+Do not record the state of the stack at each revision.  This makes
+the database smaller and faster.  But it also means you'll never be 
+able to revert, reset, or diff the stack with a prior revision.  
+However, log messages will still be recorded and can be displayed as 
+usual.  This option should only be used if creating an archival repository 
+where you don't really care about the individual changes in each revision 
+(for example, tracking all of BackPAN or CPAN in a Pinto repository).
 
 
 =item --source=URL
