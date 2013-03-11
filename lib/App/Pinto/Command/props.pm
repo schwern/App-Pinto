@@ -1,6 +1,6 @@
-# ABSTRACT: show or set configuration properties
+# ABSTRACT: show or set stack properties
 
-package App::Pinto::Command::config;
+package App::Pinto::Command::props;
 
 use strict;
 use warnings;
@@ -63,7 +63,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT config [OPTIONS] [STACK]
+  pinto --root=REPOSITORY_ROOT props [OPTIONS] [STACK]
 
 =head1 DESCRIPTION
 
@@ -103,8 +103,8 @@ Specifies property names and values.  You can repeat this option to
 set multiple properties.  If the property with that name does not
 already exist, it will be created.  Property names must be
 alphanumeric plus hyphens and underscores, and will be forced to
-lower case.  Setting a property value to an empty string will 
-cause it to be deleted.
+lower case.  Setting a property to an empty string will cause it 
+to be deleted.
 
 Properties starting with the prefix C<pinto-> are reserved for
 internal use, SO DO NOT CREATE OR CHANGE THEM.
@@ -112,4 +112,3 @@ internal use, SO DO NOT CREATE OR CHANGE THEM.
 =back
 
 =cut
-
