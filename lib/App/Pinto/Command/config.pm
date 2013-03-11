@@ -37,6 +37,8 @@ sub validate_args {
     $opts->{format} = interpolate( $opts->{format} )
         if exists $opts->{format};
 
+    $opts->{nocolor} = $self->app->global_options->{nocolor};
+
     return 1;
 }
 
@@ -65,14 +67,16 @@ __END__
 
 =head1 DESCRIPTION
 
-This command shows or sets configuration properties.  If the
+This command shows or sets stack configuration properties.  If the
 C<--properties> option is given, then the properties will be set.  If
 the C<--properties> option is not given, then properties will just be
 shown.
 
-If the C<STACK> argument is given, then the properties for the stack
-will be set/shown.  If the C<STACK> argument is not given, then global
-properties for the repository will be set/shown.
+=head1 COMMAND ARGUMENTS
+
+If the C<STACK> argument is given, then the properties for that stack
+will be set/shown.  If the C<STACK> argument is not given, then
+properties for the default stack will be set/shown.
 
 
 =head1 COMMAND OPTIONS
@@ -86,7 +90,7 @@ matters when showing properties.  Valid placeholders are:
 
   Placeholder    Meaning
   -----------------------------------------------------------------------------
-  %n             Property name
+  %p             Property name
   %v             Package value
 
 =item --properties name=value
@@ -99,11 +103,11 @@ Specifies property names and values.  You can repeat this option to
 set multiple properties.  If the property with that name does not
 already exist, it will be created.  Property names must be
 alphanumeric plus hyphens and underscores, and will be forced to
-lower case.
+lower case.  Setting a property value to an empty string will 
+cause it to be deleted.
 
 Properties starting with the prefix C<pinto-> are reserved for
-internal use, SO DO NOT CREATE OR CHANGE THEM.  At present there is no
-way to delete a property -- you can only set them to an empty string.
+internal use, SO DO NOT CREATE OR CHANGE THEM.
 
 =back
 
