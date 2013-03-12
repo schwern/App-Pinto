@@ -53,6 +53,8 @@ listening.
 
 =item --no-color
 
+=item --no-colour
+
 Do not colorize command output.
 
 =item --password PASS

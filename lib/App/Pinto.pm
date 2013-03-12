@@ -25,15 +25,13 @@ use App::Cmd::Setup -app;
 sub global_opt_spec {
 
     return (
-        [ 'root|r=s'     => 'Path to your repository root directory'  ],
-        [ 'no-color'     => 'Do not colorize any output'              ],
-        [ 'password|p=s' => 'Password for server authentication'      ],
-        [ 'quiet|q'      => 'Only report fatal errors'                ],
-        [ 'username|u=s' => 'Username for server authentication'      ],
-        [ 'verbose|v+'   => 'More diagnostic output (repeatable)'     ],
+        [ 'root|r=s'           => 'Path to your repository root directory'  ],
+        [ 'no-color|no-colour' => 'Do not colorize any output'              ],
+        [ 'password|p=s'       => 'Password for server authentication'      ],
+        [ 'quiet|q'            => 'Only report fatal errors'                ],
+        [ 'username|u=s'       => 'Username for server authentication'      ],
+        [ 'verbose|v+'         => 'More diagnostic output (repeatable)'     ],
     );
-
-    # TODO: Add options for color contols!
 }
 
 #------------------------------------------------------------------------------
