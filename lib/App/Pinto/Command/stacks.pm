@@ -21,7 +21,7 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'format=s' => 'Format of the listing' ],
+        [ 'format=s' => 'Format of the listing (See POD for details)' ],
     );
 }
 
@@ -55,7 +55,7 @@ __END__
 =head1 DESCRIPTION
 
 This command lists the names (and some other details) of all the
-stacks available in the repository.
+stacks currently available in the repository.
 
 =head1 COMMAND ARGUMENTS
 
@@ -75,8 +75,14 @@ Valid placeholders are:
   %k             Stack name
   %e             Stack description
   %M             Stack default status                             (*) = default
-  %U             Stack last-modified-on
-  %j             Stack last-modified-by
+  %L             Stack lock status                                (!) = locked
+  %i             Stack head revision id prefix
+  $I             Stack head revision id
+  %g             Stack head revision message (full)
+  %t             Stack head revision message title
+  %b             Stack head revision message body
+  %u             Stack head revision committed-on
+  %j             Stack head revision committed-by
   %%             A literal '%'
 
 =back

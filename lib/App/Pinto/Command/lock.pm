@@ -19,7 +19,7 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'stack|s=s' => 'Lock a stack other than the default' ],
+        [ 'stack|s=s' => 'Lock this stack' ],
     );
 }
 

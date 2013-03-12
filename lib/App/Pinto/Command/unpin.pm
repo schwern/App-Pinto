@@ -21,7 +21,7 @@ sub opt_spec {
     return (
         [ 'dryrun'      => 'Do not commit any changes'            ],
         [ 'message|m=s' => 'Message to describe the change'       ],
-        [ 'stack|s=s'   => 'Stack from which to unpin the target' ],
+        [ 'stack|s=s'   => 'Unpin targets from this stack'        ],
         [ 'use-default-message|M' => 'Use the generated message'  ],
     );
 }

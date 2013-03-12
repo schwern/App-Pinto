@@ -50,7 +50,8 @@ __END__
 
 This command unregisters packages from a stack, so that they no longer
 appear in its index.  However, the archives that contain the packages
-will remain in the repository.
+will remain in the repository.  When unregistering, all the sister 
+packages in the same distribution are also unregistered.
 
 To permanently remove an archive from the repository, use the
 L<delete|App::Pinto::Command::delete> command. To re-register packages
@@ -58,9 +59,9 @@ on a stack, use the L<reindex|App::Pinto::Command::register> command.
 
 =head1 COMMAND ARGUMENTS
 
-Arguments are the targets that you want to pop  Targets can be
-specified as packages (with or without a minimum version number) or
-a distributions.  For example:
+Arguments are the targets that you want to unregister.  Targets can be
+specified as packages (with or without version number) or distributions.  
+For example:
 
   Foo::Bar                                 # Unregisters any version of Foo::Bar
   Foo::Bar~1.2                             # Unregisters Foo::Bar 1.2 or higher
@@ -82,8 +83,8 @@ impact the stack.
 
 =item --force
 
-Pop packages even if they are pinned to the stack.  Take care when
-popping pinned packages, as it usually means that particular package
+Unregister packages even if they are pinned to the stack.  Take care when
+unregistering pinned packages, as it usually means that particular package
 is important to someone.
 
 =item --message=TEXT
@@ -100,8 +101,8 @@ repository.
 
 =item --stack=NAME
 
-Pops the targets from the stack with the given NAME.  Defaults to
-the name of whichever stack is currently marked as the default stack.
+Unregisters the targets from the stack with the given NAME.  Defaults 
+to the name of whichever stack is currently marked as the default stack.
 Use the L<stacks|App::Pinto::Command::stacks> command to see the
 stacks in the repository.
 

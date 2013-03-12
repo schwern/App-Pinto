@@ -1,4 +1,4 @@
-# ABSTRACT: mark a stack as read-write
+# ABSTRACT: mark a stack as writable
 
 package App::Pinto::Command::unlock;
 
@@ -19,7 +19,7 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'stack|s=s' => 'Unlock a stack other than the default' ],
+        [ 'stack|s=s' => 'Unlock this stack' ],
     );
 }
 

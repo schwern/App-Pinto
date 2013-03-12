@@ -1,6 +1,6 @@
-package App::Pinto::Command::statistics;
-
 # ABSTRACT: report statistics about the repository
+
+package App::Pinto::Command::statistics;
 
 use strict;
 use warnings;

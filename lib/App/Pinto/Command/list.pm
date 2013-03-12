@@ -30,7 +30,7 @@ sub opt_spec {
         [ 'packages|P=s'      => 'Limit to matching package names' ],
         [ 'pinned!'           => 'Limit to pinned packages (negatable)' ],
         [ 'format=s'          => 'Format specification (See POD for details)' ],
-        [ 'stack|s=s'         => 'List a stack other than the default' ],
+        [ 'stack|s=s'         => 'List contents of this stack' ],
     );
 }
 
