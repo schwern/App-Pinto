@@ -97,8 +97,5 @@ when the C<STACK> argument is specified.
 
 =back
 
-
-=back
-
 =cut
 

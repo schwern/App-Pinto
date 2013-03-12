@@ -174,7 +174,7 @@ the repository.
 
 =back
 
-=head COMPATIBILITY
+=head1 COMPATIBILITY
 
 The C<install> does not support some of the newer features found in
 version 1.6 (or later) of L<cpanm>, such as installing from a Git 

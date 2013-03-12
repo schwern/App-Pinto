@@ -130,7 +130,7 @@ you so desire.
 
 =item --stack=NAME
 
-=itme -s NAME
+=item -s NAME
 
 Puts all the packages onto the stack with the given NAME.  Defaults
 to the name of whichever stack is currently marked as the default
