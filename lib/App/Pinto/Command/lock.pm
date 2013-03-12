@@ -66,7 +66,7 @@ stack as an argument. So the following examples are equivalent:
 
 A stack specified as an argument in this fashion will override any
 stack specified with the C<--stack> option.  If a stack is not
-specified by neither argument nor option, then it defautls to the
+specified by neither argument nor option, then it defaults to the
 stack that is currently marked as the default stack.
 
 =head1 COMMAND OPTIONS

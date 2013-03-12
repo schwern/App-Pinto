@@ -76,7 +76,7 @@ __END__
 
 This command migrates an existing repository to a format that is compatible
 with the current version of L<Pinto> that you have.  At present, it only
-works for repositories created wth version 0.070 or later.  If you need
+works for repositories created with version 0.070 or later.  If you need
 to migrate a repository that was created with an earlier version, please
 contact C<thaljef@cpan.org> and I'll help you come up with a migration
 plan that fits your situation.

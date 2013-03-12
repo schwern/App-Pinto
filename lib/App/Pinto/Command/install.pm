@@ -154,7 +154,7 @@ changes to the repository.
 
 =item --pull
 
-Recursively Pull prerequsiste packages (or the targets themselves)
+Recursively pull prerequisite packages (or the targets themselves)
 onto the stack before installing.  Without the C<--pull> option, all
 prerequisites must already be on the stack.  See the
 L<pull|App::Pinto::Command::pull> command to explicitly pull packages

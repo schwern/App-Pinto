@@ -69,7 +69,7 @@ registered on the stack will still remain in the repository.
 =head1 COMMAND ARGUMENTS
 
 The required argument is the name of the stack you wish to kill.
-Stack names must be alphanumeric plus hyphens and undersocres, and
+Stack names must be alphanumeric plus hyphens and underscores, and
 are not case-sensitive.
 
 =head1 COMMAND OPTIONS

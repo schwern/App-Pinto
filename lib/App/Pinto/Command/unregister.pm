@@ -55,7 +55,7 @@ packages in the same distribution are also unregistered.
 
 To permanently remove an archive from the repository, use the
 L<delete|App::Pinto::Command::delete> command. To re-register packages
-on a stack, use the L<reindex|App::Pinto::Command::register> command.
+on a stack, use the L<register|App::Pinto::Command::register> command.
 
 =head1 COMMAND ARGUMENTS
 

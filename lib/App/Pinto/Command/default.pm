@@ -65,7 +65,7 @@ repository.  The existing default stack (if one exists) is thereby
 unmarked.  The default stack is used by most L<pinto> commands where a
 stack is not explicitly specified either by option or argument.
 
-If the C<--none> option is given instaed of a C<STACK> argument, then
+If the C<--none> option is given instead of a C<STACK> argument, then
 the default stack is unmarked (if one exists).  When a repository has
 no default stack, you will have to explicitly specify the stack
 as option or argument for most L<pinto> commands.

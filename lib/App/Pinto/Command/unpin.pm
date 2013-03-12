@@ -64,7 +64,7 @@ specified as packages or distributions, such as:
 
 When unpinning a distribution, all the packages in that distribution
 become unpinned.  Likewise when unpinning a package, all its sister
-packages in the same distributon also become unpinned.
+packages in the same distribution also become unpinned.
 
 You can also pipe arguments to this command over STDIN.  In that case,
 blank lines and lines that look like comments (i.e. starting with "#"
