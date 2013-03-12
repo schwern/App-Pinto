@@ -88,7 +88,16 @@ impact the stack.
 
 =item --nofail
 
-Behavior is not yet specified.  Do not use.
+Normally, failure to pull a target (or its prerequisites) causes the 
+command to immediately abort and rollback the changes to the repository.  
+But if C<--nofail> is set, then only the changes caused by the failed
+target (and its prerequisites) will be rolled back and the command
+will continue processing the remaining targets.
+
+This option is useful if you want to throw a list of targets into
+a repository and see which ones are problematic.  Once you've fixed
+the broken ones, you can throw the whole list at the repository
+again.
 
 =item --norecurse
 
