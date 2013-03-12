@@ -1,4 +1,4 @@
-# ABSTRACT: add existing packages to a stack
+# ABSTRACT: put existing packages on a stack
 
 package App::Pinto::Command::register;
 
@@ -92,7 +92,7 @@ repository.
 
 =item -s NAME
 
-Adds the targets from the stack with the given NAME.  Defaults to the
+Registers the targets on the stack with the given NAME.  Defaults to the
 name of whichever stack is currently marked as the default stack.  Use
 the L<stacks|App::Pinto::Command::stacks> command to see the stacks in
 the repository.
