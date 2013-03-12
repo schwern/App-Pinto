@@ -51,9 +51,9 @@ environment variable to point to your repository.  The root can be a
 path to a local directory, or the URL where a L<pintod> server is
 listening.
 
-=item --nocolor
+=item --no-color
 
-Do not colorize diagnostic messages according to severity.
+Do not colorize command output.
 
 =item --password PASS
 

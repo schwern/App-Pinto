@@ -91,10 +91,10 @@ sub pinto_class_for {
 sub make_logger {
     my ($self, %options) = @_;
 
-    my $nocolor   = $options{no_color};
-    my $colors    = $nocolor ? {} : ($self->log_colors);
+    my $no_color  = $options{no_color};
+    my $colors    = $no_color ? {} : ($self->log_colors);
     my $log_class = 'Log::Dispatch::Screen';
-    $log_class   .= '::Color' unless $nocolor;
+    $log_class   .= '::Color' unless $no_color;
 
     my $log_level = $options{log_level};
 
