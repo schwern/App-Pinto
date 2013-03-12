@@ -62,7 +62,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT diff [OPTIONS] [LEFT_STACK[@COMMIT]] RIGHT_STACK[@COMMIT]
+  pinto --root=REPOSITORY_ROOT diff [OPTIONS] [LEFT_STACK] RIGHT_STACK
 
 =head1 DESCRIPTION
 
@@ -73,26 +73,11 @@ format similar to diff[1].
 
 =head1 COMMAND ARGUMENTS
 
-Command arguments are the names of the stacks to compare and/or the
-commit ID.  The commit ID may be abbreviated to uniqueness, but can be
-no less than four characters.  If you do not specify the stack name,
-then the default stack is implied.  If you do not specify a commit ID,
-then it defaults to the head commit of the stack.
-
-If you only specify one argument, then it is assumed to be the right
-stack and whichever stack is currently marked as the default will be
-used as the left stack.  To compare the same stack at two different
-commits, just use the same stack name for both the left and right
-stacks.
-
-Assuming that stack C<dev> was the default stack with head at commit
-C<3bd4a> and you wanted to compare the head of C<dev> to commit
-C<98e34>, then all of the following would be equivalent:
-
-  pinto --root REPOSITORY_ROOT diff dev@3bd4a dev@9ae34
-  pinto --root REPOSITORY_ROOT diff @3bd4a @9ae34
-  pinto --root REPOSITORY_ROOT diff dev@9ae34
-  pinto --root REPOSITORY_ROOT diff @9ae34
+Command arguments are the names of the stacks to compare.  If you only
+specify one argument, then it is assumed to be the right stack and
+whichever stack is currently marked as the default will be used as
+the left stack.  All comparisons are made between the head revisions
+of each stack.
 
 =head1 COMMAND OPTIONS
 

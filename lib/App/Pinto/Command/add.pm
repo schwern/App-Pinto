@@ -50,11 +50,11 @@ __END__
 
 =head1 DESCRIPTION
 
-This command adds local distribution archives to the repository.
-Then it recursively pulls all the distributions that are necessary
-to satisfy their prerequisites.
+This command adds local distribution archives to the repository and
+registers their packages on a stack. Then it recursively pulls all the 
+distributions that are necessary to satisfy their prerequisites.
 
-When locating packages, Pinto first looks at the the packages that
+When locating prerequisites, Pinto first looks at the packages that
 already exist in the local repository, then Pinto looks at the
 packages that are available on the upstream repositories.
 

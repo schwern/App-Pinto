@@ -52,14 +52,14 @@ __END__
 =head1 DESCRIPTION
 
 This command locates packages in your upstream repositories and then
-pulls the distributions providing those packages into your repository.
-Then it recursively locates and pulls all the distributions that are
-necessary to satisfy their prerequisites.  You can also request to
-directly pull particular distributions.
+pulls the distributions providing those packages into your repository
+and registers them on a stack.  Then it recursively locates and pulls 
+all the distributions that are necessary to satisfy their prerequisites.  
+You can also request to directly pull particular distributions.
 
-When locating packages, Pinto first looks at the the packages that
+When locating prerequisites, Pinto first looks at the packages that
 already exist in the local repository, then Pinto looks at the
-packages that are available available on the upstream repositories.
+packages that are available on the upstream repositories.
 
 =head1 COMMAND ARGUMENTS
 
