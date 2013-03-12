@@ -53,11 +53,11 @@ unregisters it from all stacks.  Beware that once an archive is
 deleted it cannot be recovered.
 
 To merely remove packages from a stack (while preserving the archive),
-use the L<reindex|App::Pinto::Command::deindex> command.
+use the L<unregister|App::Pinto::Command::unregister> command.
 
 =head1 COMMAND ARGUMENTS
 
-Arguments are the archives that you want to deindex.  Archives are
+Arguments are the archives that you want to delete.  Archives are
 specified as C<AUTHOR/ARCHIVE-NAME>.  For example:
 
   SHAKESPEARE/King-Lear-1.2.tar.gz
