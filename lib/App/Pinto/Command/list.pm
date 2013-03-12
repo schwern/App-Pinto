@@ -113,27 +113,21 @@ placeholders are:
 
   Placeholder    Meaning
   -----------------------------------------------------------------------------
-  %n             Package name
-  %N             Package name-version
+  %p             Package name
+  %P             Package name-version
   %v             Package version
-  %y             Pin status:                     (+) = is pinned
+  %y             Pin status:                     (!) = is pinned
   %a             Distribution author
-  %A             Canonical distribution author (i.e. uppercase)
   %f             Distribution archive filename
   %m             Distribution maturity:          (d) = developer, (r) = release
-  %p             Distribution index path [1]
-  %P             Distribution physical path [2]
-  %s             Distribution origin:            (l) = local, (f) = foreign
-  %S             Distribution source repository
+  %h             Distribution index path [1]
+  %H             Distribution physical path [2]
+  %s             Distribution origin:            (l) = local,     (f) = foreign
+  %S             Distribution source
   %d             Distribution name
   %D             Distribution name-version
-  %w             Distribution version
+  %V             Distribution version
   %u             Distribution url
-  %k             Stack name
-  %e             Stack description
-  %M             Stack status:                   (*) = default
-  %U             Stack last-modified-time
-  %j             Stack last-modified-user
   %%             A literal '%'
 
 
@@ -170,10 +164,6 @@ List the contents of the stack with the given NAME.  Defaults to the
 name of whichever stack is currently marked as the default stack.  Use
 the L<stacks|App::Pinto::Command::stacks> command to see the
 stacks in the repository.
-
-If the stack name is "%" then the contents of all stacks will be
-listed.  And unless an explicit C<--format> was given, the listing
-will include the name of the stack on each record.
 
 =back
 
