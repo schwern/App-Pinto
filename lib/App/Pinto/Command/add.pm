@@ -117,7 +117,7 @@ again.
 =item -n
 
 Do not recursively pull distributions required to satisfy the
-prerequisites of the added distributions.
+prerequisites of the added archives.
 
 =item --pin
 
