@@ -88,6 +88,8 @@ impact the stack.
 
 =item --nofail
 
+!! THIS OPTION IS EXPERIMENTAL !!
+
 Normally, failure to pull a target (or its prerequisites) causes the 
 command to immediately abort and rollback the changes to the repository.  
 But if C<--nofail> is set, then only the changes caused by the failed
