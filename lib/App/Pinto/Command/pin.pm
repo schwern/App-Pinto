@@ -1,6 +1,6 @@
-package App::Pinto::Command::pin;
-
 # ABSTRACT: force a package to stay in a stack
+
+package App::Pinto::Command::pin;
 
 use strict;
 use warnings;
@@ -47,16 +47,18 @@ __END__
 
 =head1 DESCRIPTION
 
-This command pins a package so that it stays in the stack even if a
-newer version is subsequently mirrored, imported, or added to that
-stack.  The pin is local to the stack and does not affect any other
-stacks.
+This command pins a package so that it cannot be changed even if a
+different version is added or pulled to the stack The pin is local
+to the stack and does not affect any other stacks.
 
-A package must be in the stack before you can pin it.  To bring a
-package into the stack, use the
-L<pull|App::Pinto::Command::pull> command.  To remove the pin
-from a package, please see the
-L<unpin|App::Pinto::Command::unpin> command.
+A package must be registered on the stack before you can pin it.  To bring a
+package onto the stack, use the L<pull|App::Pinto::Command::pull> or 
+L<register|App::Pinto::Command::register> commands.  To remove the pin
+from a package, see the L<unpin|App::Pinto::Command::unpin> command.
+
+When pinning, all its sister packages in that distribution also become 
+pinned.  Pinned packages also cannot be unregistered from the stack
+or deleted from the repository without the C<--force> option.
 
 =head1 COMMAND ARGUMENTS
 
@@ -68,10 +70,6 @@ specified as packages or distributions, such as:
 
   AUTHOR/Some-Dist-1.2.tar.gz
   AUTHOR/Some-Other-Dist-1.3.zip
-
-When pinning a distribution, all the packages in that distribution
-become pinned.  Likewise when pinning a package, all its sister
-packages in the same distributon also become pinned.
 
 You can also pipe arguments to this command over STDIN.  In that case,
 blank lines and lines that look like comments (i.e. starting with "#"

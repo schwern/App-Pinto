@@ -114,7 +114,7 @@ version 1.500 or newer is required.
 =item -o NAME=VALUE
 
 These are options that you wish to pass to L<cpanm>.  Do not prefix
-the option name with a '-'.  You can pass any option you like, but the
+the option NAME with a '-'.  You can pass any option you like, but the
 C<--mirror> and C<--mirror-only> options will always be set to point
 to the Pinto repository.
 
@@ -173,5 +173,13 @@ L<stacks|App::Pinto::Command::stacks> command to see the stacks in
 the repository.
 
 =back
+
+=head COMPATIBILITY
+
+The C<install> does not support some of the newer features found in
+version 1.6 (or later) of L<cpanm>, such as installing from a Git 
+repository, installing development releases, or using complex version 
+expressions. If you pass any of those as arguments to this command, the 
+behavior is unspecified.
 
 =cut

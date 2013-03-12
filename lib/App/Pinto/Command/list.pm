@@ -66,13 +66,12 @@ __END__
 =head1 DESCRIPTION
 
 This command lists the distributions and packages that are registered
-to a stack within the repository.  You can format the output to see
-the specific bits of information that you want.
+on a stack.  You can format the output to see the specific bits of 
+information that you want.
 
-For a large repository, it can take fair amount of time to list
-everything.  You might consider using the C<--packages> or
-C<--distributions> options to narrow the scope.  If you need even more
-precise filtering, consider running the output through C<grep>.
+For a large repository, it can take a long time to list everything.
+So consider using the C<--packages> or C<--distributions> options
+to narrow the scope.  
 
 =head1 COMMAND ARGUMENTS
 
@@ -83,7 +82,9 @@ stack as an argument. So the following examples are equivalent:
   pinto --root REPOSITORY_ROOT list dev
 
 A stack specified as an argument in this fashion will override any
-stack specified with the C<--stack> option.
+stack specified with the C<--stack> option.  If a stack is not
+specified by neither argument nor option, then it defautls to the
+stack that is currently marked as the default stack.
 
 =head1 COMMAND OPTIONS
 

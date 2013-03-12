@@ -66,14 +66,9 @@ unmarked.  The default stack is used by most L<pinto> commands where a
 stack is not explicitly specified either by option or argument.
 
 If the C<--none> option is given instaed of a C<STACK> argument, then
-the default stack is unmarked (if one exists).  If the repository has
-no default stack, then you will have to explicitly specified the stack
+the default stack is unmarked (if one exists).  When a repository has
+no default stack, you will have to explicitly specify the stack
 as option or argument for most L<pinto> commands.
-
-Changing the default stack does not create an event in the revision
-history, so the L<revert|App::Pinto::Command::revert> command will not
-"undo" this change.  However, you can change the default stack back at
-any time just by using this command again.
 
 Use the L<stacks|App::Pinto::Command::stacks> command to list the
 stacks that currently exist in the repository and show which one is

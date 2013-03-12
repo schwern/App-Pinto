@@ -1,6 +1,6 @@
-package App::Pinto::Command::init;
-
 # ABSTRACT: create a new repository
+
+package App::Pinto::Command::init;
 
 use strict;
 use warnings;
@@ -24,7 +24,7 @@ sub opt_spec {
         [ 'description=s' => 'Description of the initial stack'             ],
         [ 'nodefault'     => 'Do not mark the initial stack as the default' ],
         [ 'nohistory'     => 'Do not record stack history'                  ],
-        [ 'log-level=s'   => 'Minimum logging level for the log file'       ],
+        [ 'loglevel=s'    => 'Minimum logging level for the log file'       ],
         [ 'source=s@'     => 'URL of upstream repository (repeatable)'      ],
     );
 }
@@ -98,26 +98,16 @@ __END__
 
 =head1 DESCRIPTION
 
-This command creates a new, empty repository.  If the target directory
+This command creates a new repository.  If the target directory
 does not exist, it will be created for you.  If it does already exist,
 then it must be empty.  You can set the configuration properties of
 the new repository using the command line options listed below.
 
 =head1 COMMAND ARGUMENTS
 
-The argument is the name of the initial stack.  If given, the stack
-will be created and marked as the default stack (unless the
-C<--nodefault> option is specified).  Stack names must be alphanumeric
-plus hyphens and undercores, and are not case-sensitive.
-
-If the argument is not given, then no stack will be created.  But to
-do anything useful, you'll need to use the
-L<new|App::Pinto::Command::new> command to create a stack once the
-repository has been created.
-
-You should also consider marking a default stack by using the
-L<default|App::Pinto::Command::default> command.  Otherwise, you'll
-have to specify the C<--stack> option for most other commands.
+The argument is the name of the initial stack.  Stack names must be 
+alphanumeric plus hyphens and undercores, and are not case-sensitive.  
+Defaults to C<master>.
 
 =head1 COMMAND OPTIONS
 
@@ -130,7 +120,7 @@ stack".  This option is only allowed if the C<STACK> argument is
 given.
 
 
-=item --log-level=LEVEL
+=item --loglevel=LEVEL
 
 Sets the minimum level for the repository log file.  Valid C<LEVEL>s
 are C<debug>, C<info>, C<notice>, C<warning>, or C<error>.  The
@@ -143,8 +133,7 @@ configuration file at F<REPOSITORY_ROOT/.pinto/config/pinto.ini>.
 
 =item --nodefault
 
-Do not mark the initial stack as the default stack.  This option
-is only allowed if the C<STACK> argument is given.
+Do not mark the initial stack as the default stack.
 
 If you choose not to mark the default stack, then you'll be required
 to specify the C<--stack> option for most commands.  You can always
@@ -154,12 +143,14 @@ L<default|App::Pinto::Command::default> command.
 
 =item --nohistory
 
+!! THIS OPTION IS EXPERIMENTAL !!
+
 Do not record the state of the stack at each revision.  This makes
 the database smaller and faster.  But it also means you'll never be 
-able to revert, reset, or diff the stack with a prior revision.  
+able to revert, reset, or diff a stack with a prior revision.  
 However, log messages will still be recorded and can be displayed as 
-usual.  This option should only be used if creating an archival repository 
-where you don't really care about the individual changes in each revision 
+usual.  This option should only be used if creating an archival 
+repository where you don't really care about the changes in each revision 
 (for example, tracking all of BackPAN or CPAN in a Pinto repository).
 
 
@@ -167,8 +158,8 @@ where you don't really care about the individual changes in each revision
 
 The URL of the upstream repository where distributions will be pulled
 from.  This is usually the URL of a CPAN mirror, and it defaults to
-L<http://cpan.perl.org>.  But it could also be a L<CPAN::Mini> mirror,
-or another L<Pinto> repository.
+L<http://cpan.perl.org> and L<http://backpan.perl.org>.  But it could 
+also be a L<CPAN::Mini> mirror, or another L<Pinto> repository.
 
 You can specify multiple repository URLs by repeating the C<--source>
 option.  Repositories that appear earlier in the list have priority

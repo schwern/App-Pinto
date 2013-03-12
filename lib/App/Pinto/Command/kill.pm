@@ -62,14 +62,13 @@ __END__
 
 =head1 DESCRIPTION
 
-This command permanently deletes a stack and its entire revision
-history.  Once a stack is killed, there is no way to get it back.
-However, any distributions that were registered on the stack will
-still remain in the repository.
+This command permanently deletes a stack.  Once a stack is killed, there 
+is no direct way to get it back.  However, any distributions that were 
+registered on the stack will still remain in the repository.
 
 =head1 COMMAND ARGUMENTS
 
-The required argument is the name of the stack you wish to delete.
+The required argument is the name of the stack you wish to kill.
 Stack names must be alphanumeric plus hyphens and undersocres, and
 are not case-sensitive.
 
@@ -80,8 +79,8 @@ are not case-sensitive.
 =item --force
 
 Kill the stack even if it is currently locked.  Normally, locked
-stacks cannot be deleted.  Take care when deleting a locked stack --
-it usually means that the stack is important to someone.
+stacks cannot be deleted.  Take care when deleting a locked stack
+as it usually means the stack is important to someone.
 
 =back
 

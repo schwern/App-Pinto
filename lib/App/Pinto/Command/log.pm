@@ -1,4 +1,4 @@
-# ABSTRACT: show the commit logs of a stack
+# ABSTRACT: show the revision logs of a stack
 
 package App::Pinto::Command::log;
 
@@ -15,7 +15,7 @@ use base 'App::Pinto::Command';
 
 #------------------------------------------------------------------------------
 
-sub command_names { return qw( log hist ) }
+sub command_names { return qw(log history) }
 
 #------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'stack|s=s' => 'Show history for stack other than the default' ],
+        [ 'stack|s=s' => 'Show history for this stack' ],
     );
 }
 
@@ -61,22 +61,16 @@ command.
 
 =head1 COMMAND ARGUMENTS
 
-As an alternative to the C<--stack> option, you can specify it as a
-single argument.  So the following examples are equivalent:
+As an alternative to the C<--stack> option, you can specify it as
+an argument.  So the following examples are equivalent:
 
   pinto --root REPOSITORY_ROOT log --stack=dev
   pinto --root REPOSITORY_ROOT log dev
 
 A C<stack> argument will override anything specified with the
-C<--stack> option.
-
-If the stack is not specified using neither argument nor option, then
-the logs of the default stack will be shown.  So if the default
-stack is called C<dev> then the following are all equivalent:
-
-  pinto --root REPOSITORY_ROOT log --stack=dev
-  pinto --root REPOSITORY_ROOT log dev
-  pinto --root REPOSITORY_ROOT log
+C<--stack> option. If the stack is not specified using neither 
+argument nor option, then the logs of the default stack will 
+be shown.
 
 =head1 COMMAND OPTIONS
 

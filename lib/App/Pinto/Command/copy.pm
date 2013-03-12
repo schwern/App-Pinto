@@ -69,17 +69,15 @@ This command creates a new stack by copying an existing one.  All the
 pins and properties from the existing stack will also be copied to the
 new one.  The new stack must not already exist.
 
-Please see the L<new|App::Pinto::Command::new> command to
-create a new empty stack, or the
-L<edit|App::Pinto::Command::edit> command to change a stack's
-properties after it has been created.
+Use the L<new|App::Pinto::Command::new> command to create a new empty 
+stack, or the L<props|App::Pinto::Command::props> command to change 
+a stack's properties after it has been created.
 
 =head1 COMMAND ARGUMENTS
 
 The two required arguments are the name of the source and target
 stacks.  Stack names must be alphanumeric plus hyphens and underscores,
 and are not case-sensitive.
-
 
 =head1 COMMAND OPTIONS
 
@@ -93,8 +91,8 @@ Also mark the new stack as the default stack.
 
 =item -d TEXT
 
-Use TEXT for the description of the stack.  This is usually used to
-help explain the purpose of the stack.
+Use TEXT for the description of the stack.  If not specified, defaults
+to 'Copy of stack FROM_STACK'.
 
 =item --lock
 
