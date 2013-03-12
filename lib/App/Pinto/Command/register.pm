@@ -1,6 +1,6 @@
 # ABSTRACT: add existing packages to a stack
 
-package App::Pinto::Command::reindex;
+package App::Pinto::Command::register;
 
 use strict;
 use warnings;
@@ -42,7 +42,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT reindex [OPTIONS] ARCHIVE ...
+  pinto --root=REPOSITORY_ROOT register [OPTIONS] ARCHIVE ...
 
 =head1 DESCRIPTION
 
@@ -57,7 +57,7 @@ local archive, use the L<add|App::Pinto::Command::add> command.
 
 =head1 COMMAND ARGUMENTS
 
-Arguments are the archives you want to reindex.  Archives are specified
+Arguments are the archives you want to register.  Archives are specified
 as C<AUTHOR/ARCHIVE_NAME>.  For example:
 
   SHAKESPEARE/King-Lear-1.2.tar.gz

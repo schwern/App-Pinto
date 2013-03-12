@@ -1,6 +1,6 @@
 # ABSTRACT: remove packages from a stack
 
-package App::Pinto::Command::pop;
+package App::Pinto::Command::unregister;
 
 use strict;
 use warnings;
@@ -42,7 +42,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  pinto --root=REPOSITORY_ROOT pop [OPTIONS] TARGET ...
+  pinto --root=REPOSITORY_ROOT unregister [OPTIONS] TARGET ...
 
 =head1 DESCRIPTION
 
@@ -54,7 +54,7 @@ will remain in the repository.
 
 To permanently remove an archive from the repository, use the
 L<delete|App::Pinto::Command::delete> command. To re-register packages
-on a stack, use the L<reindex|App::Pinto::Command::reindex> command.
+on a stack, use the L<reindex|App::Pinto::Command::register> command.
 
 =head1 COMMAND ARGUMENTS
 
@@ -62,9 +62,9 @@ Arguments are the targets that you want to pop  Targets can be
 specified as packages (with or without a minimum version number) or
 a distributions.  For example:
 
-  Foo::Bar                                 # Pops any version of Foo::Bar
-  Foo::Bar~1.2                             # Pops Foo::Bar 1.2 or higher
-  SHAKESPEARE/King-Lear-1.2.tar.gz         # Pops a specific distribuion
+  Foo::Bar                                 # Unregisters any version of Foo::Bar
+  Foo::Bar~1.2                             # Unregisters Foo::Bar 1.2 or higher
+  SHAKESPEARE/King-Lear-1.2.tar.gz         # Unregisters a specific distribuion
 
 You can also pipe arguments to this command over STDIN.  In that case,
 blank lines and lines that look like comments (i.e. starting with "#"
