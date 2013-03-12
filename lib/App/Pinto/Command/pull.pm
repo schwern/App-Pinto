@@ -19,12 +19,12 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'dryrun'      => 'Do not commit any changes'           ],
-        [ 'message|m=s' => 'Message to describe the change'      ],
-        [ 'nofail'      => 'Do not fail when there is an error'  ],
-        [ 'norecurse|n' => 'Do not recursively pull prereqs'     ],
-        [ 'pin'         => 'Pin the packages to the stack'       ],
-        [ 'stack|s=s'   => 'Put packages into this stack'        ],
+        [ 'dryrun'       => 'Do not commit any changes'           ],
+        [ 'message|m=s'  => 'Message to describe the change'      ],
+        [ 'no-fail'      => 'Do not fail when there is an error'  ],
+        [ 'no-recurse|n' => 'Do not recursively pull prereqs'     ],
+        [ 'pin'          => 'Pin the packages to the stack'       ],
+        [ 'stack|s=s'    => 'Put packages into this stack'        ],
         [ 'use-default-message|M' => 'Use the generated message' ],
     );
 }
@@ -86,13 +86,13 @@ Go through all the motions, but do not actually commit any changes to
 the repository.  Use this option to see how upgrades would potentially
 impact the stack.
 
-=item --nofail
+=item --no-fail
 
 !! THIS OPTION IS EXPERIMENTAL !!
 
 Normally, failure to pull a target (or its prerequisites) causes the 
 command to immediately abort and rollback the changes to the repository.  
-But if C<--nofail> is set, then only the changes caused by the failed
+But if C<--no-fail> is set, then only the changes caused by the failed
 target (and its prerequisites) will be rolled back and the command
 will continue processing the remaining targets.
 
@@ -101,7 +101,7 @@ a repository and see which ones are problematic.  Once you've fixed
 the broken ones, you can throw the whole list at the repository
 again.
 
-=item --norecurse
+=item --no-recurse
 
 =item -n
 

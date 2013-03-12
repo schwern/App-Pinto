@@ -22,9 +22,9 @@ sub opt_spec {
 
     return (
         [ 'description=s' => 'Description of the initial stack'             ],
-        [ 'nodefault'     => 'Do not mark the initial stack as the default' ],
-        [ 'nohistory'     => 'Do not record stack history'                  ],
-        [ 'loglevel=s'    => 'Minimum logging level for the log file'       ],
+        [ 'no-default'    => 'Do not mark the initial stack as the default' ],
+        [ 'no-history'    => 'Do not record stack history'                  ],
+        [ 'log-level=s'   => 'Minimum logging level for the log file'       ],
         [ 'source=s@'     => 'URL of upstream repository (repeatable)'      ],
     );
 }
@@ -120,7 +120,7 @@ stack".  This option is only allowed if the C<STACK> argument is
 given.
 
 
-=item --loglevel=LEVEL
+=item --log-level=LEVEL
 
 Sets the minimum level for the repository log file.  Valid C<LEVEL>s
 are C<debug>, C<info>, C<notice>, C<warning>, or C<error>.  The
@@ -131,7 +131,7 @@ You can change this property at any time by editing the repository
 configuration file at F<REPOSITORY_ROOT/.pinto/config/pinto.ini>.
 
 
-=item --nodefault
+=item --no-default
 
 Do not mark the initial stack as the default stack.
 
@@ -141,7 +141,7 @@ mark (or ummark) the default stack by at any time by using the
 L<default|App::Pinto::Command::default> command.
 
 
-=item --nohistory
+=item --no-history
 
 !! THIS OPTION IS EXPERIMENTAL !!
 

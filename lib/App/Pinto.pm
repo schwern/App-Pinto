@@ -26,7 +26,7 @@ sub global_opt_spec {
 
     return (
         [ 'root|r=s'     => 'Path to your repository root directory'  ],
-        [ 'nocolor'      => 'Do not colorize any output'              ],
+        [ 'no-color'     => 'Do not colorize any output'              ],
         [ 'password|p=s' => 'Password for server authentication'      ],
         [ 'quiet|q'      => 'Only report fatal errors'                ],
         [ 'username|u=s' => 'Username for server authentication'      ],
@@ -64,7 +64,7 @@ sub pinto {
         my $logger_options = {};
         $logger_options->{log_level} = 3 - min(delete $global_options->{verbose} || 0, 3);
         $logger_options->{log_level} = 4 if delete $global_options->{quiet};
-        $logger_options->{nocolor}   = 1 if delete $global_options->{nocolor};
+        $logger_options->{no_color}  = 1 if delete $global_options->{no_color};
 
         # TODO: Give helpful error message if the right backend
         # is not installed.
@@ -91,7 +91,7 @@ sub pinto_class_for {
 sub make_logger {
     my ($self, %options) = @_;
 
-    my $nocolor   = $options{nocolor};
+    my $nocolor   = $options{no_color};
     my $colors    = $nocolor ? {} : ($self->log_colors);
     my $log_class = 'Log::Dispatch::Screen';
     $log_class   .= '::Color' unless $nocolor;

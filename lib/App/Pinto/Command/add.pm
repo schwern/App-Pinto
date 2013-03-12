@@ -19,13 +19,13 @@ sub opt_spec {
     my ($self, $app) = @_;
 
     return (
-        [ 'author=s'    => 'Your (alphanumeric) author ID'       ],
-        [ 'dryrun'      => 'Do not commit any changes'           ],
-        [ 'message|m=s' => 'Message to describe the change'      ],
-        [ 'nofail'      => 'Do not fail when there is an error'  ],
-        [ 'norecurse|n' => 'Do not recursively pull prereqs'     ],
-        [ 'pin'         => 'Pin packages to the stack'           ],
-        [ 'stack|s=s'   => 'Put packages into this stack'        ],
+        [ 'author=s'     => 'Your (alphanumeric) author ID'       ],
+        [ 'dryrun'       => 'Do not commit any changes'           ],
+        [ 'message|m=s'  => 'Message to describe the change'      ],
+        [ 'no-fail'      => 'Do not fail when there is an error'  ],
+        [ 'no-recurse|n' => 'Do not recursively pull prereqs'     ],
+        [ 'pin'          => 'Pin packages to the stack'           ],
+        [ 'stack|s=s'    => 'Put packages into this stack'        ],
         [ 'use-default-message|M' => 'Use the generated message' ],
     );
 }
@@ -97,13 +97,13 @@ is used.  A log message is not required whenever the C<--dryrun>
 option is set, or if the action did not yield any changes to the
 repository.
 
-=item --nofail
+=item --no-fail
 
 !! THIS OPTION IS EXPERIMENTAL !!
 
 Normally, failure to add an archive (or its prerequisites) causes the 
 command to immediately abort and rollback the changes to the repository.  
-But if C<--nofail> is set, then only the changes caused by the failed
+But if C<--no-fail> is set, then only the changes caused by the failed
 archive (and its prerequisites) will be rolled back and the command
 will continue processing the remaining archives.
 
@@ -112,7 +112,7 @@ a repository and see which ones are problematic.  Once you've fixed
 the broken ones, you can throw the whole list at the repository
 again.
 
-=item --norecurse
+=item --no-recurse
 
 =item -n
 
