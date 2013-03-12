@@ -37,21 +37,12 @@ sub validate_args {
     $opts->{format} = interpolate( $opts->{format} )
         if exists $opts->{format};
 
+    $opts->{stack} = $args->[0]
+        if $args->[0];
+
     $opts->{nocolor} = $self->app->global_options->{nocolor};
 
     return 1;
-}
-
-#------------------------------------------------------------------------------
-
-sub execute {
-    my ($self, $opts, $args) = @_;
-
-    my %stack = $args->[0] ? (stack => $args->[0]) : ();
-    my %props = $opts->{properties} ? (properties => $opts->{properties}) : ();
-    my $result = $self->pinto->run($self->action_name, %stack, %props);
-
-    return $result->exit_status;
 }
 
 #------------------------------------------------------------------------------
