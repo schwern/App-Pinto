@@ -54,6 +54,8 @@ __END__
 
 =pod
 
+=for stopwords unmark unmarks
+
 =head1 SYNOPSIS
 
   pinto --root=REPOSITORY_ROOT default [OPTIONS] [STACK]

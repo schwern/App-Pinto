@@ -55,7 +55,7 @@ sub load_migrator {
     my ($ok, $error) = Class::Load::try_load_class($class);
     return $class if $ok;
 
-    my $msg = $error =~ m/Can't locate .* in \@INC/
+    my $msg = $error =~ m/Can't locate .* in \@INC/  ## no critic (ExtendedFormat)
                      ? "Must install Pinto to migrate repositories\n"
                      : $error;
     die $msg;

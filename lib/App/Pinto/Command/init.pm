@@ -78,7 +78,7 @@ sub load_initializer {
     my ($ok, $error) = Class::Load::try_load_class($class);
     return $class if $ok;
 
-    my $msg = $error =~ m/Can't locate .* in \@INC/
+    my $msg = $error =~ m/Can't locate .* in \@INC/ ## no critic (ExtendedFormatting)
                      ? "Must install Pinto to create new repositories\n"
                      : $error;
     die $msg;
@@ -106,7 +106,7 @@ the new repository using the command line options listed below.
 =head1 COMMAND ARGUMENTS
 
 The argument is the name of the initial stack.  Stack names must be 
-alphanumeric plus hyphens and undercores, and are not case-sensitive.  
+alphanumeric plus hyphens and underscores, and are not case-sensitive.  
 Defaults to C<master>.
 
 =head1 COMMAND OPTIONS
@@ -137,7 +137,7 @@ Do not mark the initial stack as the default stack.
 
 If you choose not to mark the default stack, then you'll be required
 to specify the C<--stack> option for most commands.  You can always
-mark (or ummark) the default stack by at any time by using the
+mark (or unmark) the default stack by at any time by using the
 L<default|App::Pinto::Command::default> command.
 
 

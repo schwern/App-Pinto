@@ -75,9 +75,9 @@ or ';') will be ignored.
 
 Set the identity of the distribution author.  The C<NAME> must be
 alphanumeric characters plus hyphens and underscores.  Defaults to
-the uppercased C<user> specified in your C<~/.pause> configuration
-file if such file exists.  Otherwise, defaults to your current login
-username.
+the C<user> specified in your C<~/.pause> configuration file if such 
+file exists.  Otherwise, defaults to your current login username.
+By convention, author IDs are always folded to uppercase.
 
 =item --dry-run
 

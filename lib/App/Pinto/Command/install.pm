@@ -64,6 +64,10 @@ __END__
 
 =pod
 
+=for stopwords 
+exe 
+cpanm
+
 =head1 SYNOPSIS
 
   pinto --root=REPOSITORY_ROOT install [OPTIONS] TARGET...
