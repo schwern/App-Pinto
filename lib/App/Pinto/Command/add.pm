@@ -20,7 +20,7 @@ sub opt_spec {
 
     return (
         [ 'author=s'     => 'Your (alphanumeric) author ID'       ],
-        [ 'dryrun'       => 'Do not commit any changes'           ],
+        [ 'dry-run'      => 'Do not commit any changes'           ],
         [ 'message|m=s'  => 'Message to describe the change'      ],
         [ 'no-fail'      => 'Do not fail when there is an error'  ],
         [ 'no-recurse|n' => 'Do not recursively pull prereqs'     ],
@@ -79,7 +79,7 @@ the uppercased C<user> specified in your C<~/.pause> configuration
 file if such file exists.  Otherwise, defaults to your current login
 username.
 
-=item --dryrun
+=item --dry-run
 
 Go through all the motions, but do not actually commit any changes to
 the repository.  Use this option to see how the command would
@@ -93,7 +93,7 @@ Use TEXT as the revision history log message.  If you do not use the
 C<--message> option or the C<--use-default-message> option, then you
 will be prompted to enter the message via your text editor.  Use the
 C<EDITOR> or C<VISUAL> environment variables to control which editor
-is used.  A log message is not required whenever the C<--dryrun>
+is used.  A log message is not required whenever the C<--dry-run>
 option is set, or if the action did not yield any changes to the
 repository.
 

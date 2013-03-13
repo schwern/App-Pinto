@@ -46,9 +46,6 @@ sub validate_args {
     $self->usage_error('--message is only useful with --pull')
         if $opts->{message} and not $opts->{pull};
 
-    $self->usage_error('--dryrun is only useful with --pull')
-        if $opts->{dryrun} and not $opts->{pull};
-
     return 1;
 }
 
@@ -118,7 +115,7 @@ the option NAME with a '-'.  You can pass any option you like, but the
 C<--mirror> and C<--mirror-only> options will always be set to point
 to the Pinto repository.
 
-=item --dryrun
+=item --dry-run
 
 Go through all the motions, but do not actually commit any changes to
 the repository.  Use this option to see how the command would
@@ -149,7 +146,7 @@ if you also set the C<--pull> option.  If you do not use C<--message>
 option, then you will be prompted to enter the message via your text
 editor.  Use the C<EDITOR> or C<VISUAL> environment variables to
 control which editor is used.  A log message is not required whenever
-the C<--dryrun> option is set, or if the action did not yield any
+the C<--dry-run> option is set, or if the action did not yield any
 changes to the repository.
 
 =item --pull
