@@ -63,9 +63,8 @@ sub execute {
     # Stuff the stack argument into the options hash (if it exists)
     $opts->{stack} = $args->[0] if $args->[0];
 
-    my $class = $self->load_initializer;
-    my $initializer = $class->new( %{ $global_opts } );
-    $initializer->init( %{$opts} );
+    my $initializer = $self->load_initializer->new;
+    $initializer->init( %{ $global_opts }, %{$opts} );
     return 0;
 }
 
