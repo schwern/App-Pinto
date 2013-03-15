@@ -175,6 +175,36 @@ the repository.
 
 =back
 
+=head1 USING cpan OR cpanm DIRECTLY
+
+On the surface, A Pinto repository looks like an ordinary CPAN repository,
+so you can use any client to install modules.  All you have to do is "point" 
+it at the URL of your Pinto repository.  Each client has a slightly different 
+interface for setting the URL.
+
+For L<cpanm>, use the C<--mirror> and C<--mirror-only> options like this:
+
+  $> cpanm --mirror file:///path/to/repo --mirror-only Some::Package ...
+
+For L<cpan>, set the C<urllist> config option via the shell like this:
+
+  $> cpan
+  cpan[1]> o conf urllist file:///path/to/repo
+  cpan[2]> reload index
+  cpan[3]> install Some::Package
+  cpan[4]> o conf commit     # If you want to make the change permanent
+
+Pointing your client at the top of your repository will install modules
+from the default stack.  To install from a particular stack, just add it 
+to the URL.  For example:
+
+  file:///path/to/repo                # Install from default stack
+  file:///path/to/repo/stacks/dev     # Install from "dev" stack
+  file:///path/to/repo/stacks/prod    # Install from "prod" stack
+
+If your repository does not have a default stack then you must specify the
+full URL to one of the stacks as shown above.
+
 =head1 COMPATIBILITY
 
 The C<install> does not support some of the newer features found in
