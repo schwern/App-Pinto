@@ -1,23 +1,41 @@
 {{$NEXT}}
 
+     !! DEVELOPER RELEASE !!
+
+     This requires Pinto 0.065_01 (also a developer release).
+     
      IMPORTANT:
 
-     This release requires a new version of Pinto (either locally or
-     on the remote server) which is not compatible with repositories
-     that were created with older versions.  If you need have an older
-     repository, please contact thaljef@cpan.org to discuss a
-     migration plan.
+     Bad news:  This version of pinto is not compatible with
+     *existing* repositories.  To migrate, you'll need to create a new
+     repository (using this version of pinto) and then "pull" all the
+     distributons from your old repository into the new one.  Repeat
+     this process for each stack.  Unfortunatley, you will loose your 
+     revision history.  If you bug me about it, I'll write a script to 
+     automate this for you.  I am thaljef@cpan.org.
 
-     Also, several commands have been added and/or renamed.  I strongly
-     suggest that you remove your current installation of App::Pinto
-     and Pinto before installing.  This will remove old commands that
-     are not supported any more.
+     Good news:  This version of pinto has hooks to do future migrations 
+     automatically.  So any repository you create with *this version* 
+     of pinto can be easily migrated to any future versions. I'm also pretty 
+     confident that the schema is now stable, so a migration will not be 
+     required for a while.
+
+     Also: several classes have been renamed or removed.  I strongly 
+     recommend removing your current installation of Pinto and App::Pinto 
+     before installing this one.  This will remove things that are no 
+     longer supported.  
+
+
+     COMMANDS:
+
+     Many pinto commands have been been renamed, removed, or repurposed.
+     Read the manual for each command to get full details.  Here is a
+     summary of changes:
  
      New Commands:
 
-     * The "props" and "edit" command have been unified into a new
-     "config" command that both shows and sets configuration
-     properties (like Git).
+     * The "props" command now shows AND sets configuration properties.
+     The old "edit" command has been removed.
 
      * The new "default" command now takes the place of the --default
      option that existed on the (now defunct) "edit" command.  Use the
@@ -31,16 +49,14 @@
      a --force option which kills the stack even if it is locked.
 
      * The "delete" command has been repurposed to permanently remove
-     an archive (and all of it's history) from the repository.  This
+     an archive (and all of its history) from the repository.  This
      command is highly experimental.  Be sure to read the caveats in
      the manual for this command.
 
      * The new "lock" command locks a stack so that its packages
      cannot be changed by future commands.  This is useful for
-     creating a read-only "tag" of a stack.
-
-     * The new "unlock" command unlocks a stack so that you can
-     modify its packages.
+     creating a read-only "tag" of a stack.  There is also an "unlock"
+     command.
 
      * The new "migrate" command migrates existing repositories to be
      compatible with the current version of Pinto.  This will only
@@ -48,32 +64,73 @@
      Pinto or later.  Contact thaljef@cpan.org if you need to migrate
      an older repository.
 
-     * The new "reindex" command reregisters the packages within an
+     * The new "register" command registers the packages within an
      existing archive on a stack.  The archive must already be in the
-     repository.  At present, it does not recurse into dependencies,
-     but it might in the future.
+     repository.
 
-     * The new "pop" command unregisters an archive from a stack, so
-     that its packages will no longer appear in the index but the
-     archive still remains in the repository.  The --force option
-     will permit you to unregister packages even if they are pinned.
+     * The new "unregister" command unregisters an archive from a stack,
+     so that its packages will no longer appear in the index but the
+     archive still remains in the repository.
      
 
-     Interface Changes:
+     Changed Commands:
 
-     * The --bare and --stack options on the "init" command are no
-     longer supported.  Instead, you can specify the initial stack
-     name as an argument.  If you do not specify the stack name, then
-     you get a bare repository.  You can also choose whether the
-     initial stack is marked as the default or not.
-
-     * Stack and repository configuration properties are once again
-     forced to lowercase.  After some debate, I decided that this
-     was just more user-friendly.  However, stack names are still
-     case-preserving but case-insensitive.
+     * The --stack option on the "init" command are no longer supported.  
+     Instead, you can specify the initial stack name as an argument.  Also
+     the --bare option is not supported either.  When you create a repository
+     with the "init" command the initial stack is now called "master".
 
      * The "copy" command no longer requires a commit message because
      the operation no longer creates an event in the revision history.
+
+     * The "list" command no longer supports "%" to indicate that it should
+     list the contents of all stacks.  Instead, use the "diff" command for 
+     a more concise way to compare stacks. 
+
+     * The "log" command no longer takes a revision argument ("dev@673")
+     because revisions are no longer identified by a sequence number.  But  
+     a similar feature will be avialable in the next release.  Also, the
+     --details opton is not supported any more, but it will probably come
+     back in the next release.
+
+     * The --norecurse and --dryrun options have been renamed to --no-recurse
+     and --dry-run on all commands that support them.  This is to be consistent 
+     with other multi-word option names.
+
+
+     Removed Commands:
+
+     * The "merge" and "revert" commands have been removed.  At this time
+     it just isn't clear how they should behave or even what their use case
+     is.  When I know more, I may bring these back.
+
+     * The "edit" command is also gone.  It's functionality has been
+     replaced with the "props" command (see above).
+
+     * The "blame" command has been removed.  It never worked in the first
+     place and fixing it is a low priority right now.
+
+
+     ENHANCEMENTS:
+
+     * The version control system within Pinto has been redesigned to be
+     simpler and faster.  It is more Git-like and stores full snapshots of
+     the stack at each revision (rather than just storing deltas).  It also
+     organizes history into a directed graph and uses unique non-sequential
+     identifiers for each revision.
+
+     * Due to the new version control system, the performance and scalability
+     of Pinto is much improved.  Benchmark tests show that common operations still
+     perform well with as many as 10,000 commits (I estimate that is 10 years of
+     work).  And a Pinto repository can scale to 100,000 distributions with good 
+     performance too (that's almost all of CPAN).
+
+     * The output of several commands are now colorized to improve readability.
+     Use the --no-color option or set PINTO_NO_COLOR to disable color
+     globally.
+
+
+
 
 0.054     2012-11-12 13:22:33 America/Los_Angeles
 
@@ -86,7 +143,7 @@
      New Features:
 
      * Commands that support the --message option also now have a
-     --use-default-message (or -M) option, which causes Pinto to use
+     --use-default-message (or -M) option, which causes pinto to use
      the default log message that it generates for each command.  This
      saves you the trouble of having to save and close the default
      message in your text editor.  Requires Pinto-0.062 or later.
