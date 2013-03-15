@@ -48,9 +48,10 @@ __END__
 
 !! THIS COMMAND IS EXPERIMENTAL !!
 
-This command permanently removes an archive from the repository and
-unregisters it from all stacks.  Beware that once an archive is
-deleted it cannot be recovered.
+This command permanently removes an archive from the repository, thereby 
+unregistering it from all stacks and wiping it from all history (as if 
+it had never been put in the repository).  Beware that once an archive 
+is deleted it cannot be recovered.
 
 To merely remove packages from a stack (while preserving the archive),
 use the L<unregister|App::Pinto::Command::unregister> command.
