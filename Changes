@@ -1,5 +1,22 @@
 {{$NEXT}}
 
+     !! DEVELOPER RELEASE !!
+
+     This requires Pinto 0.065_03 (also a developer release).
+
+     Still not compatible with any existing Pinto::Remote.
+
+     The interface with the terminal has been completely redesigned.
+     You'll see fewer (but hopefully better) diagnostic messages
+     when running with --verbose.  And if not --verbose, then
+     you'll see a progress meter.  If you still want to see all
+     the gory details, then set the PINTO_DEBUG environment variable.
+
+     Still works with any repository created with Pinto 0.065_01
+     or later.  So no migration required for those.  For older
+     repositories, see the IMPORTANT note down below under the 0.065_01 
+     release.
+
 0.065_01  2013-03-15 16:06:25 America/Los_Angeles
 
      !! DEVELOPER RELEASE !!
