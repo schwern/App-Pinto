@@ -32,8 +32,6 @@ sub validate_args {
     $self->usage_error('Must specify at least one stack') if @{$args} < 1;
 
     $self->usage_error('Cannot specify more than two stacks') if @{$args} > 2;
-
-    $opts->{no_color} = $self->app->global_options->{no_color};
     
     return 1;
 }

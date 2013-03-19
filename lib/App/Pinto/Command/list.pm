@@ -42,8 +42,6 @@ sub validate_args {
     $self->usage_error('Multiple arguments are not allowed')
         if @{ $args } > 1;
 
-    $opts->{no_color} = $self->app->global_options->{no_color};
-
     $opts->{format} = interpolate( $opts->{format} )
         if exists $opts->{format};
 

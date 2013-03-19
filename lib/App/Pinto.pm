@@ -5,15 +5,7 @@ package App::Pinto;
 use strict;
 use warnings;
 
-use Encode;
 use Class::Load;
-use Term::Prompt;
-use List::Util qw(min);
-use Log::Dispatch::Screen;
-use Log::Dispatch::Screen::Color;
-
-use Pinto::Constants qw(:all);
-
 use App::Cmd::Setup -app;
 
 #------------------------------------------------------------------------------
@@ -36,13 +28,6 @@ sub global_opt_spec {
 
 #------------------------------------------------------------------------------
 
-=method pinto
-
-Returns a reference to a L<Pinto> or L<Pinto::Remote> object that has
-been constructed for this application.
-
-=cut
-
 sub pinto {
     my ($self) = @_;
 
@@ -55,25 +40,10 @@ sub pinto {
         $global_options->{password} = $self->_prompt_for_password
             if defined $global_options->{password} and $global_options->{password} eq '-';
 
-        # Translating (progressive) verbose values into (regressive) log_level values.
-        # Note that we must not pass log_level into the constructor for Pinto, or it
-        # will set the logging level for its own internal logs.
-
-        my $logger_options = {};
-        $logger_options->{log_level} = 3 - min(delete $global_options->{verbose} || 0, 3);
-        $logger_options->{log_level} = 4 if delete $global_options->{quiet};
-        $logger_options->{no_color}  = 1 if delete $global_options->{no_color};
-
-        # TODO: Give helpful error message if the right backend
-        # is not installed.
-
         my $pinto_class = $self->pinto_class_for($global_options->{root});
         Class::Load::load_class($pinto_class);
 
-        my $pinto = $pinto_class->new( %{ $global_options } );
-        $pinto->add_logger($self->make_logger( %{ $logger_options } ));
-
-        $pinto;
+        $pinto_class->new( %{ $global_options } );
     };
 }
 
@@ -86,41 +56,11 @@ sub pinto_class_for {
 
 #------------------------------------------------------------------------------
 
-sub make_logger {
-    my ($self, %options) = @_;
-
-    my $no_color  = $options{no_color};
-    my $colors    = $no_color ? {} : ($self->log_colors);
-    my $log_class = 'Log::Dispatch::Screen';
-    $log_class   .= '::Color' unless $no_color;
-
-    my $log_level = $options{log_level};
-
-    return $log_class->new( min_level => $log_level,
-                            color     => $colors,
-                            stderr    => 1,
-                            newline   => 1 );
-}
-
-#------------------------------------------------------------------------------
-
-sub log_colors {
-    my ($self) = @_;
-
-    # TODO: Create command line options for controlling colors and
-    # process them here.
-
-    return $self->default_log_colors;
-}
-
-#------------------------------------------------------------------------------
-
-sub default_log_colors { return $PINTO_DEFAULT_LOG_COLORS }
-
-#------------------------------------------------------------------------------
-
 sub _prompt_for_password {
    my ($self) = @_;
+
+   require Encode;
+   require Term::Prompt;
 
    my $input    = Term::Prompt::prompt('p', 'Password:', '', '');
    my $password = Encode::decode_utf8($input);
@@ -149,10 +89,12 @@ whole kit.
 
 =head1 SEE ALSO
 
-L<Pinto::Manual> for general information on using Pinto.
-
 L<pinto> to create and manage a Pinto repository.
 
 L<pintod> to allow remote access to your Pinto repository.
+
+L<Pinto::Manual> for general information on using Pinto.
+
+L<Stratopan|http://stratopan.com> for hosting your Pinto repository in the cloud.
 
 =cut

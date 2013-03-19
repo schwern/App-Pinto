@@ -36,8 +36,6 @@ sub validate_args {
     $opts->{format} = interpolate( $opts->{format} )
         if exists $opts->{format};
 
-    $opts->{no_color} = $self->app->global_options->{no_color};
-
     return 1;
 }
 

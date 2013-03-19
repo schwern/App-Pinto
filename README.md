@@ -17,20 +17,15 @@ host that is running [pintod](http://search.cpan.org/perldoc?pintod), then insta
 you're not sure what you need, then install [Task::Pinto](http://search.cpan.org/perldoc?Task::Pinto) to get the
 whole kit.
 
-# METHODS
-
-## pinto
-
-Returns a reference to a [Pinto](http://search.cpan.org/perldoc?Pinto) or [Pinto::Remote](http://search.cpan.org/perldoc?Pinto::Remote) object that has
-been constructed for this application.
-
 # SEE ALSO
-
-[Pinto::Manual](http://search.cpan.org/perldoc?Pinto::Manual) for general information on using Pinto.
 
 [pinto](http://search.cpan.org/perldoc?pinto) to create and manage a Pinto repository.
 
 [pintod](http://search.cpan.org/perldoc?pintod) to allow remote access to your Pinto repository.
+
+[Pinto::Manual](http://search.cpan.org/perldoc?Pinto::Manual) for general information on using Pinto.
+
+[Stratopan](http://stratopan.com) for hosting your Pinto repository in the cloud.
 
 # SUPPORT
 

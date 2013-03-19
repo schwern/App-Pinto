@@ -40,8 +40,6 @@ sub validate_args {
     $opts->{stack} = $args->[0]
         if $args->[0];
 
-    $opts->{no_color} = $self->app->global_options->{no_color};
-
     return 1;
 }
 

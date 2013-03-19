@@ -24,7 +24,6 @@ sub opt_spec {
         [ 'description=s' => 'Description of the initial stack'             ],
         [ 'no-default'    => 'Do not mark the initial stack as the default' ],
         [ 'no-history'    => 'Do not record stack history'                  ],
-        [ 'log-level=s'   => 'Minimum logging level for the log file'       ],
         [ 'source=s@'     => 'URL of upstream repository (repeatable)'      ],
     );
 }
@@ -95,6 +94,7 @@ __END__
 
   pinto --root=REPOSITORY_ROOT init [OPTIONS] [STACK]
 
+
 =head1 DESCRIPTION
 
 This command creates a new repository.  If the target directory
@@ -102,11 +102,13 @@ does not exist, it will be created for you.  If it does already exist,
 then it must be empty.  You can set the configuration properties of
 the new repository using the command line options listed below.
 
+
 =head1 COMMAND ARGUMENTS
 
 The argument is the name of the initial stack.  Stack names must be 
 alphanumeric plus hyphens and underscores, and are not case-sensitive.  
 Defaults to C<master>.
+
 
 =head1 COMMAND OPTIONS
 
@@ -117,17 +119,6 @@ Defaults to C<master>.
 A brief description of the initial stack.  Defaults to "the initial
 stack".  This option is only allowed if the C<STACK> argument is
 given.
-
-
-=item --log-level=LEVEL
-
-Sets the minimum level for the repository log file.  Valid C<LEVEL>s
-are C<debug>, C<info>, C<notice>, C<warning>, or C<error>.  The
-default is C<notice>.
-
-Beware that lowering the log level may seriously degrade performance.
-You can change this property at any time by editing the repository
-configuration file at F<REPOSITORY_ROOT/.pinto/config/pinto.ini>.
 
 
 =item --no-default
