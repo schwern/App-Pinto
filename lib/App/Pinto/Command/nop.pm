@@ -1,6 +1,6 @@
-package App::Pinto::Command::nop;
+# ABSTRACT: do nothing
 
-# ABSTRACT: initialize Pinto and exit
+package App::Pinto::Command::nop;
 
 use strict;
 use warnings;
