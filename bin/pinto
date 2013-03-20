@@ -101,7 +101,7 @@ be prompted for a password.
 =item -q
 
 Report only fatal errors.  This option silently overrides the
-C<--verbose> options.
+C<--verbose> options.  Also suppresses the progress meter.
 
 =item --username NAME
 
@@ -115,7 +115,7 @@ if using a remote repository.  Defaults to your current login.
 =item -v
 
 Display more diagnostic messages.  This switch can be repeated multiple
-times for greater effect.
+times for greater effect.  Diagnostic messages are always sent to STDERR.
 
 =back
 
