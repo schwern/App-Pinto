@@ -98,6 +98,30 @@ to be deleted.
 Properties starting with the prefix C<pinto-> are reserved for
 internal use, SO DO NOT CREATE OR CHANGE THEM.
 
+=head1 SUPPORTED PROPERTIES
+
+The following properties are supported for each stack:
+
+=over 4
+
+=item description
+
+A description of the stack, usually to inform users of the application
+and/or environment that the stack is intended for.  For a new stack, 
+defaults to "The STACK_NAME stack".  For a copied stack, defaults to 
+"Copy of stack STACK_NAME".
+
+=item target_perl_version
+
+The version of perl that this stack is targeted at.  This is used
+to determine whether a particular package is satisfied by the perl
+core and therefore does not need to be added to the stack.
+
+It must be a version string or number for an existing perl release, 
+and cannot be higher than the version of perl that you are running 
+pinto.  It defaults to the version of perl you were using to 
+run pinto when you created the stack.
+
 =back
 
 =cut
