@@ -25,6 +25,7 @@ __END__
 
   pinto --root=REPOSITORY_ROOT [global options] COMMAND [command options] [args]
 
+
 =head1 DESCRIPTION
 
 pinto is a tool for creating and managing a custom CPAN-like
@@ -34,6 +35,18 @@ reliably build, test, and deploy your application using the standard
 Perl tool chain.  pinto provides various commands for gathering and
 managing distribution dependencies within the repository, so that you
 can control precisely which dependencies go into your application.
+
+
+=head1 IMPORTANT NOTE
+
+pinto is just a front-end.  To do anything useful, you'll also need
+to install one of the back-ends, which ship separately.  If you need
+to create new repositories and/or work directly with repositories on
+the local disk, then install L<Pinto>.  If you already have a
+repository on a remote host that is running L<pintod>, then install
+L<Pinto::Remote>.  If you're not sure what you need, then install
+L<Task::Pinto> to get the whole kit.
+
 
 =head1 GLOBAL OPTIONS
 
@@ -88,6 +101,7 @@ times for greater effect.
 
 =back
 
+
 =head1 COMMANDS
 
 pinto supports several commands that perform various operations on
@@ -105,50 +119,13 @@ To see the complete manual for a command:
 
   $> pinto manual COMMAND
 
-=head1 CONFIGURATION
-
-The F<.pinto/config> directory of every repository contains a
-configuration file named F<pinto.ini>.  This file will be generated
-for you whenever you create a new repository.  Thereafter, it is up to
-you to manually adjust the configuration file as you see fit.
-
-The configuration file is in the typical INI-file format.  Parameters
-are C<NAME = VALUE> pairs.  Blank lines are ignored, leading and
-trailing whitespace is discarded.  Comments start with a semi-colon
-(;).
-
-=over 4
-
-=item log_level = debug|notice|info|warn|error
-
-Sets the minimum logging level for the repository's log file.  The
-default is C<notice>.  This is independent of the screen logs that
-pinto emits.
-
-
-=item sources = URL [ URL URL ... ]
-
-A space-delimited list of the URLs of the repositories that pinto
-will pull dependencies from.  These could be public CPAN mirrors, the
-BackPAN, a private L<CPAN::Mini> mirror, or other Pinto repositories.
-Defaults to L<http://cpan.perl.org>.
-
-=back
-
-=head1 IMPORTANT NOTE
-
-pinto is just a front-end.  To do anything useful, you'll also need
-to install one of the back-ends, which ship separately.  If you need
-to create new repositories and/or work directly with repositories on
-the local disk, then install L<Pinto>.  If you already have a
-repository on a remote host that is running L<pintod>, then install
-L<Pinto::Remote>.  If you're not sure what you need, then install
-L<Task::Pinto> to get the whole kit.
 
 =head1 SEE ALSO
 
+L<pintod> to allow remote access to your Pinto repository.
+
 L<Pinto::Manual> for general information on using Pinto.
 
-L<pintod> to allow remote access to your Pinto repository.
+L<Stratopan|http://stratopan.com> for hosting your Pinto repository in the cloud.
 
 =cut
