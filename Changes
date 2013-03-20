@@ -1,5 +1,13 @@
 {{$NEXT}}
 
+     !! DEVELOPER RELEASE !!
+
+     This requires Pinto 0.065_03 (also a developer release).
+
+     Still not compatible with any existing Pinto::Remote.
+
+     Just revised and expanded documenation. No functional changes.
+     
 0.065_02  2013-03-19 15:27:54 America/Los_Angeles
 
      !! DEVELOPER RELEASE !!
