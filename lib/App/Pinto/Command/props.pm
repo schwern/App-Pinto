@@ -98,6 +98,9 @@ to be deleted.
 Properties starting with the prefix C<pinto-> are reserved for
 internal use, SO DO NOT CREATE OR CHANGE THEM.
 
+=back
+
+
 =head1 SUPPORTED PROPERTIES
 
 The following properties are supported for each stack:
