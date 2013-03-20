@@ -4,7 +4,7 @@ App::Pinto - Command-line driver for Pinto
 
 # VERSION
 
-version 0.065\_02
+version 0.065\_03
 
 # DESCRIPTION
 
@@ -84,7 +84,7 @@ in addition to those websites please use your favorite search engine to discover
 
 # AUTHOR
 
-Jeffrey Thalhammer <jeff@imaginative-software.com>
+Jeffrey Ryan Thalhammer <jeff@stratopan.com>
 
 # COPYRIGHT AND LICENSE
 
