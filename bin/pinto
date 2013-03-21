@@ -119,6 +119,65 @@ times for greater effect.  Diagnostic messages are always sent to STDERR.
 
 =back
 
+=head1 ENVRIONMENT VARIABLES
+
+The following environemnt variables influence the behavior of pinto:
+
+=over 4
+
+=item C<PINTO_REPOSITORY_ROOT>
+
+Sets the default path or URL of the pinto repository, if the C<--root>
+option is not given.
+
+=item C<PINTO_EDITOR>
+
+Sets the path to editor application that will be used to edit log
+messages.  If not set, defaults to C<VISUAL> or C<EDITOR>.
+
+=item C<PINTO_NO_COLOR>
+
+=item C<PINTO_NO_COLOUR>
+
+If set to a true value, suppresses color in all command output.
+
+=item C<PINTO_COLORS>
+
+=item C<PINTO_COLOURS>
+
+A comma-separated list of exactly three color names.  Any name supported 
+by L<Term::ANSIColor> is allowed.  These will be the colors that pinto 
+uses to colorize various output.  For example:
+
+  PINTO_COLORS='red, light blue, green on_white'
+
+Listing too many or too few colors will cause pinto to throw
+an exception, as will using an invalid color name.
+
+=item C<PINTO_USERNAME>
+
+Sets the default username when the C<--username> option is not specified.
+This is only used for authentication with a remote server.  Defaults
+to your current shell username.
+
+=item C<PINTO_AUTHOR_ID>
+
+Sets the default author identity when the C<--author> option is not specified
+(currently, only used by the L<add|App::Pinto::Commmand::add>) command.
+Defaults to the upper-cased version of your current shell username.
+
+=item C<PINTO_PAGER>
+
+Sets the path to the pager application that will be used to page output from
+each command.  Defaults to C<PAGER>.  If none of these are set, then
+no pager is used.
+
+=item C<PINTO_DEBUG>
+
+If set to a true value, pinto will spew lots of diagnostic messages to STDERR.
+
+=back
+
 
 =head1 SEE ALSO
 
