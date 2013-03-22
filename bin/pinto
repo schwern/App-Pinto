@@ -19,7 +19,7 @@ if ($home_dir) {
 }
 
 unless ( eval {require App::Pinto; 1} ) {
-	die $@ if $debug or not $home_dir;
+	die $@ if $home_dir or $debug;
 	die "Failed to load Pinto.  Did you set $home_var?\n";
 }
 
