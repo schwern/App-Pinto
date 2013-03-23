@@ -1,5 +1,19 @@
 {{$NEXT}}
 
+     !! DEVELOPER RELEASE !!
+
+     This requires Pinto 0.065_06 (also a developer release).
+
+     Still not compatible with any existing Pinto::Remote.
+
+     Documented environment vars in the pinto(1) documentation.
+
+     Added Pinto::Manual::Installing for tips on installing pinto.
+
+     If PINTO_HOME is set, pinto(1) now adds it to @INC at startup.
+     The idea here is to make it easier to install pinto as a
+     stand-alone application.
+
 0.065_03  2013-03-20 15:52:29 America/Los_Angeles
 
      !! DEVELOPER RELEASE !!
