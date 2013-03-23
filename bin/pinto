@@ -19,7 +19,7 @@ my $home_dir = $ENV{$home_var};
 
 if ($home_dir) {
 	die "$home_var ($home_dir) does not exist!\n" unless -e $home_dir;
-	eval qq{use lib '$home_dir'; 1} or die $@; # if 'use lib' failed
+	eval qq{use lib '$home_dir'; 1} or die $@; ## no critic (Eval)
 }
 
 unless ( eval {require App::Pinto; 1} ) {
@@ -136,9 +136,9 @@ times for greater effect.  Diagnostic messages are always sent to STDERR.
 
 =back
 
-=head1 ENVRIONMENT VARIABLES
+=head1 ENVIRONMENT VARIABLES
 
-The following environemnt variables influence the behavior of pinto:
+The following environment variables influence the behavior of pinto:
 
 =over 4
 
