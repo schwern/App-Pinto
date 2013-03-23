@@ -11,7 +11,6 @@ use warnings;
 
 my $home_var = 'PINTO_HOME';
 my $home_dir = $ENV{$home_var};
-my $debug    = $ENV{PINTO_DEBUG};
 
 if ($home_dir) {
 	die "$home_var ($home_dir) does not exist!\n" unless -e $home_dir;
@@ -19,8 +18,7 @@ if ($home_dir) {
 }
 
 unless ( eval {require App::Pinto; 1} ) {
-	die $@ if $home_dir or $debug;
-	die "Failed to load Pinto.  Did you set $home_var?\n";
+	die $home_dir ? $@ : $@ . "Do you need to set $home_var?\n";
 }
 
 #-----------------------------------------------------------------------------
