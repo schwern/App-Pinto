@@ -1,5 +1,10 @@
 #!/usr/bin/env perl
 
+# ABSTRACT: Curate a custom repository of Perl modules
+# PODNAME: pinto
+
+#-----------------------------------------------------------------------------
+
 use strict;
 use warnings;
 
@@ -23,17 +28,15 @@ unless ( eval {require App::Pinto; 1} ) {
 
 #-----------------------------------------------------------------------------
 
-exit App::Pinto->run;
+exit App::Pinto->run if not caller;
 
 #-----------------------------------------------------------------------------
+1;
 
 __END__
 
 =pod
 
-=head1 NAME
-
-pinto -- Curate a custom repository of Perl modules
 
 =head1 SYNOPSIS
 
