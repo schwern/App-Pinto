@@ -7,8 +7,8 @@ use base 'Module::Build';
 
 #------------------------------------------------------------------------------
 
-my $MIN_PINTO_VERSION = 0.070;
-my $MIN_PINTO_REMOTE_VERSION = 0.046;
+my $MIN_PINTO_VERSION = 0.066;
+my $MIN_PINTO_REMOTE_VERSION = 0.066;
 
 #------------------------------------------------------------------------------
 
