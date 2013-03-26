@@ -1,65 +1,23 @@
 {{$NEXT}}
 
-0.065_04  2013-03-23 00:18:46 America/Los_Angeles
+     HEADLINES:
 
-     !! DEVELOPER RELEASE !!
+     * Your MUST uninstall both Pinto and App::Pinto before installing this.
 
-     This requires Pinto 0.065_06 (also a developer release).
+     * For local repositories, you'll need to have Pinto 0.066 or later.
 
-     Still not compatible with any existing Pinto::Remote.
+     * This release does not support remote repositories (yet).
 
-     Documented environment vars in the pinto(1) documentation.
-
-     Added Pinto::Manual::Installing for tips on installing pinto.
-
-     If PINTO_HOME is set, pinto(1) now adds it to @INC at startup.
-     The idea here is to make it easier to install pinto as a
-     stand-alone application.
-
-0.065_03  2013-03-20 15:52:29 America/Los_Angeles
-
-     !! DEVELOPER RELEASE !!
-
-     This requires Pinto 0.065_04 (also a developer release).
-
-     Still not compatible with any existing Pinto::Remote.
-
-     Just revised and expanded documenation. No functional changes.
-     
-0.065_02  2013-03-19 15:27:54 America/Los_Angeles
-
-     !! DEVELOPER RELEASE !!
-
-     This requires Pinto 0.065_03 (also a developer release).
-
-     Still not compatible with any existing Pinto::Remote.
-
-     The interface with the terminal has been completely redesigned.
-     You'll see fewer (but hopefully better) diagnostic messages
-     when running with --verbose.  And if not --verbose, then
-     you'll see a progress meter.  If you still want to see all
-     the gory details, then set the PINTO_DEBUG environment variable.
-
-     Still works with any repository created with Pinto 0.065_01
-     or later.  So no migration required for those.  For older
-     repositories, see the IMPORTANT note down below under the 0.065_01 
-     release.
-
-0.065_01  2013-03-15 16:06:25 America/Los_Angeles
-
-     !! DEVELOPER RELEASE !!
-
-     This requires Pinto 0.065_01 (also a developer release).
      
      IMPORTANT:
 
-     Bad news:  This version of pinto is not compatible with
-     *existing* repositories.  To migrate, you'll need to create a new
-     repository (using this version of pinto) and then "pull" all the
-     distributons from your old repository into the new one.  Repeat
-     this process for each stack.  Unfortunatley, you will loose your 
-     revision history.  If you bug me about it, I'll write a script to 
-     automate this for you.  I am thaljef@cpan.org.
+     Bad news:  This version of pinto is not compatible with *existing* 
+     repositories.  To migrate, you'll need to create a new repository 
+     (using this version of pinto) and then "pull" all the distributons 
+     from your old repository into the new one.  Repeat this process for each 
+     stack.  Unfortunatley, you will loose your revision history.  If you 
+     bug me about it, I'll write a script to automate this for you.  I am 
+     thaljef@cpan.org.
 
      Good news:  This version of pinto has hooks to do future migrations 
      automatically.  So any repository you create with *this version* 
@@ -67,22 +25,15 @@
      confident that the schema is now stable, so a migration will not be 
      required for a while.
 
-     Also: several classes have been renamed or removed.  I strongly 
-     recommend removing your current installation of Pinto and App::Pinto 
-     before installing this one.  This will remove things that are no 
-     longer supported.  
-
 
      COMMANDS:
 
      Many pinto commands have been been renamed, removed, or repurposed.
      Read the manual for each command to get full details.  Here is a
      summary of changes:
+
  
      New Commands:
-
-     * The "props" command now shows AND sets configuration properties.
-     The old "edit" command has been removed.
 
      * The new "default" command now takes the place of the --default
      option that existed on the (now defunct) "edit" command.  Use the
@@ -105,12 +56,6 @@
      creating a read-only "tag" of a stack.  There is also an "unlock"
      command.
 
-     * The new "migrate" command migrates existing repositories to be
-     compatible with the current version of Pinto.  This will only
-     work for repositories that were created with THIS version of
-     Pinto or later.  Contact thaljef@cpan.org if you need to migrate
-     an older repository.
-
      * The new "register" command registers the packages within an
      existing archive on a stack.  The archive must already be in the
      repository.
@@ -118,11 +63,20 @@
      * The new "unregister" command unregisters an archive from a stack,
      so that its packages will no longer appear in the index but the
      archive still remains in the repository.
+
+     * The new "diff" command shows the difference between the head
+     revisions of two stacks.
      
+     * The new "migrate" command migrates existing repositories to be
+     compatible with the current version of Pinto.  This will only
+     work for repositories that were created with THIS version of
+     Pinto or later.  Contact thaljef@cpan.org if you need to migrate
+     an older repository.
+
 
      Changed Commands:
 
-     * The --stack option on the "init" command are no longer supported.  
+     * The --stack option on the "init" command is no longer supported.  
      Instead, you can specify the initial stack name as an argument.  Also
      the --bare option is not supported either.  When you create a repository
      with the "init" command the initial stack is now called "master".
@@ -134,7 +88,7 @@
      list the contents of all stacks.  Instead, use the "diff" command for 
      a more concise way to compare stacks. 
 
-     * The "log" command no longer takes a revision argument ("dev@673")
+     * The "log" command no longer takes a revision argument (e.g. "dev@673")
      because revisions are no longer identified by a sequence number.  But  
      a similar feature will be avialable in the next release.  Also, the
      --details opton is not supported any more, but it will probably come
@@ -151,8 +105,8 @@
      it just isn't clear how they should behave or even what their use case
      is.  When I know more, I may bring these back.
 
-     * The "edit" command is also gone.  It's functionality has been
-     replaced with the "props" command (see above).
+     * The "edit" command is also gone.  It's functionality has been replaced
+     with the "props" command, which can now show & set properties.
 
      * The "blame" command has been removed.  It never worked in the first
      place and fixing it is a low priority right now.
@@ -161,22 +115,47 @@
      ENHANCEMENTS:
 
      * The version control system within Pinto has been redesigned to be
-     simpler and faster.  It is more Git-like and stores full snapshots of
-     the stack at each revision (rather than just storing deltas).  It also
-     organizes history into a directed graph and uses unique non-sequential
-     identifiers for each revision.
+     simpler and faster.  It is more Git-like and stores full snapshots 
+     of the stack at each revision (rather than just storing deltas).  It 
+     also organizes history into a directed graph and uses unique 
+     non-sequential identifiers for each revision.
 
      * Due to the new version control system, the performance and scalability
-     of Pinto is much improved.  Benchmark tests show that common operations still
-     perform well with as many as 10,000 commits (I estimate that is 10 years of
-     work).  And a Pinto repository can scale to 100,000 distributions with good 
-     performance too (that's almost all of CPAN).
+     of Pinto is much improved.  Benchmark tests show that common operations 
+     still perform well with as many as 10,000 commits (I estimate that is 10 
+     years of work).  And a Pinto repository can scale to 100,000
+     distributions with good performance too (that's almost all of CPAN).
 
-     * The output of several commands are now colorized to improve readability.
-     Use the --no-color option or set PINTO_NO_COLOR to disable color
-     globally.
+     * The interface with the terminal has been completely redesigned. You'll
+     see fewer (but hopefully better) diagnostic messages when running with 
+     --verbose.  And if not --verbose, then you'll see a progress meter.  If 
+     you still want to see all the gory details, then set the PINTO_DEBUG 
+     environment variable.
+
+     * The output of several commands are now colorized to improve
+     readability.  Use the --no-color option or set PINTO_NO_COLOR to disable
+     color globally.
+
+     * If the PINTO_HOME environment variable is set, pinto(1) now adds it to
+     @INC at startup. The idea here is to make it easier to install pinto as
+     a stand-alone application.  This is experimental.
 
 
+     DOCUMENTATION:
+
+     * Documented environment variables in the pinto(1) documentation.
+
+     * Added Pinto::Manual::Installing for tips on installing pinto.
+
+
+0.065_04  2013-03-23 00:18:46 America/Los_Angeles
+0.065_03  2013-03-20 15:52:29 America/Los_Angeles
+0.065_02  2013-03-19 15:27:54 America/Los_Angeles
+0.065_01  2013-03-15 16:06:25 America/Los_Angeles
+
+     !! DEVELOPER RELEASES !!
+
+     Changes consolidated above under version 0.066.
 
 
 0.054     2012-11-12 13:22:33 America/Los_Angeles
